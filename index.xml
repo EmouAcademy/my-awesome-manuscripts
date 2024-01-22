@@ -23,17 +23,17 @@ and Interchange DTD v1.2 20190208//EN" "JATS-archivearticle1.dtd">
 
 
 <title-group>
-<article-title>La Palma Earthquakes</article-title>
+<article-title>PM2 and PM10 concentrations</article-title>
 </title-group>
 
 <contrib-group>
 <contrib contrib-type="author" corresp="yes">
 <contrib-id contrib-id-type="orcid">0000-0002-0760-5497</contrib-id>
 <name>
-<surname>Purves</surname>
-<given-names>Steve</given-names>
+<surname>Munkh</surname>
+<given-names></given-names>
 </name>
-<string-name>Steve Purves</string-name>
+<string-name>Munkh and Shimizu</string-name>
 
 <email>steve@curvenote.com</email>
 <role vocab="https://credit.niso.org" vocab-term="investigation" vocab-term-identifier="https://credit.niso.org/contributor-roles/investigation/">Investigation</role>
@@ -250,16 +250,16 @@ Nacional (IGN). …</p>
 <sub-article article-type="notebook" id="nb-8-nb-article">
 <front-stub>
 <title-group>
-<article-title>La Palma Earthquakes</article-title>
+<article-title>PM2 and PM10 concentrations</article-title>
 </title-group>
 <contrib-group>
 <contrib contrib-type="author" corresp="yes">
 <contrib-id contrib-id-type="orcid">0000-0002-0760-5497</contrib-id>
 <name>
-<surname>Purves</surname>
-<given-names>Steve</given-names>
+<surname>Munkh</surname>
+<given-names></given-names>
 </name>
-<string-name>Steve Purves</string-name>
+<string-name>Munkh and Shimizu</string-name>
 
 <email>steve@curvenote.com</email>
 <role vocab="https://credit.niso.org" vocab-term="investigation" vocab-term-identifier="https://credit.niso.org/contributor-roles/investigation/">Investigation</role>

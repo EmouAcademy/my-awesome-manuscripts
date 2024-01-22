@@ -1,7 +1,7 @@
 ---
-title: La Palma Earthquakes
+title: PM2 and PM10 concentrations
 author:
-  - name: Steve Purves
+  - name: Munkh and Shimizu
     orcid: 0000-0002-0760-5497
     corresponding: true
     email: steve@curvenote.com
