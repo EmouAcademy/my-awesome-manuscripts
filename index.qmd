@@ -1,26 +1,27 @@
 ---
 title: PM2 and PM10 concentrations
 author:
-  - name: Munkh and Shimizu
+  - name: Munkhtsetseg Erdenebayar 
     orcid: 0000-0002-0760-5497
     corresponding: true
-    email: steve@curvenote.com
+    email: e.munkhtsetseg@yahoo.com
     roles:
       - Investigation
       - Project administration
       - Software
       - Visualization
     affiliations:
-      - Curvenote
-  - name: Rowan Cockett
+      - National University of Mongolia (NUM), Mongolia
+      - Kanazawa University, Japan
+  - name: Atsushi Shimizu
     orcid: 0000-0002-7859-8394
     corresponding: false
     roles: []
     affiliations:
-      - Curvenote
+      - National Institute of Environmental Studies (NIES), Japan
 keywords:
-  - La Palma
-  - Earthquakes
+  - particulate matters
+  - concentrations of PM10 and PM$2.5$
 abstract: |
   In September 2021, a significant jump in seismic activity on the island of La Palma (Canary Islands, Spain) signaled the start of a volcanic crisis that still continues at the time of writing. Earthquake data is continually collected and published by the Instituto Geográphico Nacional (IGN). ...
 plain-language-summary: |
