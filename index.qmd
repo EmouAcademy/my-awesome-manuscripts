@@ -1,9 +1,9 @@
 ---
 title: PM2 and PM10 concentrations
 author:
-  - name: Munkhtsetseg Erdenebayar 
-    orcid: 0000-0002-0760-5497
-    corresponding: true
+  - name: Erdenebayar Munkhtsetseg 
+    orcid: 0000-0001-9775-1924
+    corresponding: false
     email: e.munkhtsetseg@yahoo.com
     roles:
       - Investigation
@@ -14,11 +14,14 @@ author:
       - National University of Mongolia (NUM), Mongolia
       - Kanazawa University, Japan
   - name: Atsushi Shimizu
-    orcid: 0000-0002-7859-8394
-    corresponding: false
-    roles: []
+    orcid: 0000-0000-0000-0000
+    corresponding: true
+    email: shimizua@nies.go.jp
+    roles: 
+      - Editing
+      - Revising
     affiliations:
-      - National Institute of Environmental Studies (NIES), Japan
+      - National Institute for Environmental Studies (NIES), Japan
 keywords:
   - particulate matters
   - concentrations of PM10 and PM$2.5$
