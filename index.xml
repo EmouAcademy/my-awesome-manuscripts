@@ -127,9 +127,7 @@ Nacional (IGN). …</p>
 </abstract>
 <kwd-group kwd-group-type="author">
 <kwd>particulate matters</kwd>
-<kwd>concentrations of PM10 and PM<inline-formula><alternatives>
-<tex-math><![CDATA[2.5]]></tex-math>
-<mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mn>2.5</mml:mn></mml:math></alternatives></inline-formula></kwd>
+<kwd>concentrations of PM10 and PM2.5</kwd>
 </kwd-group>
 
 
@@ -250,8 +248,14 @@ Nacional (IGN). …</p>
 <sec id="sec-data-methods">
   <title>2 Data &amp; Methods</title>
 </sec>
-<sec id="conclusion">
-  <title>3 Conclusion</title>
+<sec id="sec-results">
+  <title>3 Results</title>
+</sec>
+<sec id="sec-discussion">
+  <title>4 Discussion</title>
+</sec>
+<sec id="sec-conclusions">
+  <title>5 Conclusions</title>
 </sec>
 </body>
 
@@ -509,8 +513,14 @@ avg_years_between_eruptions</code>
 <sec id="sec-data-methods-nb-article">
   <title>2 Data &amp; Methods</title>
 </sec>
-<sec id="conclusion-nb-article">
-  <title>3 Conclusion</title>
+<sec id="sec-results-nb-article">
+  <title>3 Results</title>
+</sec>
+<sec id="sec-discussion-nb-article">
+  <title>4 Discussion</title>
+</sec>
+<sec id="sec-conclusions-nb-article">
+  <title>5 Conclusions</title>
 </sec>
 </body>
 
