@@ -202,7 +202,7 @@ eruption is found \ldots{}
 
 
 
-\section{Introduction}\label{introduction}
+\subsection{Introduction}\label{introduction}
 
 \textsubscript{Source:
 \href{https://EmouAcademy.github.io/my-awesome-manuscripts/index.qmd.html}{Article
@@ -311,19 +311,133 @@ since 2017}
 \href{https://EmouAcademy.github.io/my-awesome-manuscripts/notebooks/explore-earthquakes-preview.html\#cell-fig-spatial-plot}{Explore
 Earthquakes}}
 
+kk
+
+\section{Explore Earthquakes}\label{explore-earthquakes}
+
+Munkhtsetseg
+
+Library
+
+\section{Import the dataset and remove the
+duplicates}\label{import-the-dataset-and-remove-the-duplicates}
+
+Import the dataset from the directory of: \textasciitilde/Data
+Input/Preprocessing data/Preprocessing data.csv, assign the dataset as
+object of df:
+
+Remove the duplicates with the function of distinct(), assign the
+dataset as df\_01:
+
+\subsection{Produce a table with missing
+data}\label{produce-a-table-with-missing-data}
+
+For date options as year, month, etc:
+
+\begin{verbatim}
+# A tibble: 52 × 9
+# Groups:   Station.name [4]
+   Station.name  Year NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
+   <chr>        <int>   <int>  <int>   <int>  <int> <int> <int>  <int>
+ 1 Dalanzadgad   2008    4630   1543    1672   1463  1566  1566   4630
+ 2 Dalanzadgad   2009    8760    715     929    659   748   748   8760
+ 3 Dalanzadgad   2010    8784    921    1086    756   787   787   8784
+ 4 Dalanzadgad   2011    8760   2652    3309   1759  2394  2394   8760
+ 5 Dalanzadgad   2012    5088   1074    3016    693  1412  1412   5088
+ 6 Dalanzadgad   2013    6096   1766    1809   2479  1240  1240   6096
+ 7 Dalanzadgad   2014    7800    843     921   6068  1482  1482   7800
+ 8 Dalanzadgad   2015    8760   1539    1587   8115  2635  2635   8760
+ 9 Dalanzadgad   2016    6288   1654    1613   5995  3306  3306   6288
+10 Dalanzadgad   2017    3264     36      45   3264  3264  3264   3264
+# ℹ 42 more rows
+\end{verbatim}
+
+For station
+
+\begin{verbatim}
+# A tibble: 4 × 8
+  Station.name NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
+  <chr>          <int>  <int>   <int>  <int> <int> <int>  <int>
+1 Dalanzadgad    69454  13081   16327  32475 20058 20058  69454
+2 Sainshand     101230  27588   36117  28986 13768 13768 101230
+3 UB             95662   7895    8785   3775  4121  4121  62421
+4 Zamynuud       99742  32281   33597  22525  5373  5373  99742
+\end{verbatim}
+
+By percentages
+
+\begin{verbatim}
+# A tibble: 4 × 2
+# Groups:   Station.name [4]
+  Station.name   sdq
+  <chr>        <dbl>
+1 Dalanzadgad   10.7
+2 Sainshand     25.9
+3 UB            17.9
+4 Zamynuud      39.6
+\end{verbatim}
+
+Note that the \texttt{echo\ =\ FALSE} parameter was added to the code
+chunk to prevent printing of the R code that generated the plot.
+
+\section{Remove the spikes, and produce an extended
+table}\label{remove-the-spikes-and-produce-an-extended-table}
+
+Remove the spikes in the datasets, and produce the table with NA, with
+removed spikes; express it in a percentages.
+
+\subsubsection{Remove the spikes Method 1. Mean value +-
+(3-5)SD}\label{remove-the-spikes-method-1.-mean-value---3-5sd}
+
+Method 2. Seasonal variations, and trend-mean
+
+\subsection{Save dataset in folder:
+01\_data\_raw}\label{save-dataset-in-folder-01_data_raw}
+
+\section{Tidy data}\label{tidy-data}
+
+\subsection{Fill the missing data}\label{fill-the-missing-data}
+
+Method 1. Fill the gap Method 2. Relationship equation Method 3. Look-up
+table
+
+\subsection{Save dataset in folder:
+02\_data\_tidy}\label{save-dataset-in-folder-02_data_tidy}
+
+Read a clean version of data:
+
+Create spatial plot:
+
+\begin{figure}[H]
+
+\centering{
+
+\includegraphics{index_files/figure-latex/notebooks-01-earthquakes-fig-spatial-plot-output-1.png}
+
+}
+
+\caption{\label{fig-spatial-plot}Locations of earthquakes on La Palma
+since 2017}
+
+\end{figure}%
+
+\textsubscript{Source:
+\href{https://EmouAcademy.github.io/my-awesome-manuscripts/notebooks/01-earthquakes-preview.html\#00f7f955-6d2f-4f9e-9800-046271588514}{Explore
+Earthquakes}}
+
 Figure~\ref{fig-spatial-plot} shows the location of recent Earthquakes
 on La Palma.
 
-\section{Data \& Methods}\label{sec-data-methods}
+\subsection{Data \& Methods}\label{sec-data-methods}
 
-\section{Results}\label{sec-results}
+\subsection{Results}\label{sec-results}
 
-\section{Discussion}\label{sec-discussion}
+\subsection{Discussion}\label{sec-discussion}
 
-\section{Conclusions}\label{sec-conclusions}
+\subsection{Conclusions}\label{sec-conclusions}
 
-\section*{References}\label{references}
-\addcontentsline{toc}{section}{References}
+\subsection*{References}\label{references}
+\addcontentsline{toc}{subsection}{References}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}

@@ -103,10 +103,10 @@ Japan</institution>
 <corresp id="cor-2">shimizua@nies.go.jp</corresp>
 </author-notes>
 
-<pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-01-22">
+<pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-01-23">
 <year>2024</year>
 <month>1</month>
-<day>22</day>
+<day>23</day>
 </pub-date>
 
 
@@ -139,7 +139,7 @@ Nacional (IGN). …</p>
 
 <body>
 <sec id="introduction">
-  <title>1 Introduction</title>
+  <title>0.1 Introduction</title>
   <fig id="fig-timeline">
     <caption><p>Figure 1: Timeline of recent earthquakes on La
     Palma</p></caption>
@@ -156,7 +156,7 @@ Nacional (IGN). …</p>
   <p>Eight eruptions have been recorded since the late 1400s
   (<xref alt="Figure 1" rid="fig-timeline">Figure 1</xref>).</p>
   <p>Data and methods are discussed in
-  <xref alt="Section 2" rid="sec-data-methods">Section 2</xref>.</p>
+  <xref alt="Section 4.3" rid="sec-data-methods">Section 4.3</xref>.</p>
   <p>Let <inline-formula><alternatives>
   <tex-math><![CDATA[x]]></tex-math>
   <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>x</mml:mi></mml:math></alternatives></inline-formula>
@@ -242,49 +242,135 @@ Nacional (IGN). …</p>
     2017</p></caption>
     <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/notebooks-explore-earthquakes-fig-spatial-plot-output-1.png" />
   </fig>
-  <p><xref alt="Figure 3" rid="fig-spatial-plot">Figure 3</xref> shows
-  the location of recent Earthquakes on La Palma.</p>
+  <p>kk</p>
 </sec>
-<sec id="sec-data-methods">
-  <title>2 Data &amp; Methods</title>
+<sec id="explore-earthquakes">
+  <title>1. Explore Earthquakes</title>
+  <p>Munkhtsetseg</p>
+  <p>Library</p>
 </sec>
-<sec id="sec-results">
-  <title>3 Results</title>
+<sec id="import-the-dataset-and-remove-the-duplicates">
+  <title>2. Import the dataset and remove the duplicates</title>
+  <p>Import the dataset from the directory of: ~/Data
+  Input/Preprocessing data/Preprocessing data.csv, assign the dataset as
+  object of df:</p>
+  <p>Remove the duplicates with the function of distinct(), assign the
+  dataset as df_01:</p>
+  <sec id="produce-a-table-with-missing-data">
+    <title>2.1 Produce a table with missing data</title>
+    <p>For date options as year, month, etc:</p>
+    <preformat># A tibble: 52 × 9
+# Groups:   Station.name [4]
+   Station.name  Year NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
+   &lt;chr&gt;        &lt;int&gt;   &lt;int&gt;  &lt;int&gt;   &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;
+ 1 Dalanzadgad   2008    4630   1543    1672   1463  1566  1566   4630
+ 2 Dalanzadgad   2009    8760    715     929    659   748   748   8760
+ 3 Dalanzadgad   2010    8784    921    1086    756   787   787   8784
+ 4 Dalanzadgad   2011    8760   2652    3309   1759  2394  2394   8760
+ 5 Dalanzadgad   2012    5088   1074    3016    693  1412  1412   5088
+ 6 Dalanzadgad   2013    6096   1766    1809   2479  1240  1240   6096
+ 7 Dalanzadgad   2014    7800    843     921   6068  1482  1482   7800
+ 8 Dalanzadgad   2015    8760   1539    1587   8115  2635  2635   8760
+ 9 Dalanzadgad   2016    6288   1654    1613   5995  3306  3306   6288
+10 Dalanzadgad   2017    3264     36      45   3264  3264  3264   3264
+# ℹ 42 more rows</preformat>
+    <p>For station</p>
+    <preformat># A tibble: 4 × 8
+  Station.name NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
+  &lt;chr&gt;          &lt;int&gt;  &lt;int&gt;   &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;
+1 Dalanzadgad    69454  13081   16327  32475 20058 20058  69454
+2 Sainshand     101230  27588   36117  28986 13768 13768 101230
+3 UB             95662   7895    8785   3775  4121  4121  62421
+4 Zamynuud       99742  32281   33597  22525  5373  5373  99742</preformat>
+    <p>By percentages</p>
+    <preformat># A tibble: 4 × 2
+# Groups:   Station.name [4]
+  Station.name   sdq
+  &lt;chr&gt;        &lt;dbl&gt;
+1 Dalanzadgad   10.7
+2 Sainshand     25.9
+3 UB            17.9
+4 Zamynuud      39.6</preformat>
+    <p>Note that the <monospace>echo = FALSE</monospace> parameter was
+    added to the code chunk to prevent printing of the R code that
+    generated the plot.</p>
+  </sec>
 </sec>
-<sec id="sec-discussion">
-  <title>4 Discussion</title>
+<sec id="remove-the-spikes-and-produce-an-extended-table">
+  <title>3. Remove the spikes, and produce an extended table</title>
+  <p>Remove the spikes in the datasets, and produce the table with NA,
+  with removed spikes; express it in a percentages.</p>
+  <sec id="remove-the-spikes-method-1.-mean-value---3-5sd">
+    <title>3.0.1 Remove the spikes Method 1. Mean value +-
+    (3-5)SD</title>
+    <p>Method 2. Seasonal variations, and trend-mean</p>
+  </sec>
+  <sec id="save-dataset-in-folder-01_data_raw">
+    <title>3.1 Save dataset in folder: 01_data_raw</title>
+  </sec>
 </sec>
-<sec id="sec-conclusions">
-  <title>5 Conclusions</title>
+<sec id="tidy-data">
+  <title>4. Tidy data</title>
+  <sec id="fill-the-missing-data">
+    <title>4.1 Fill the missing data</title>
+    <p>Method 1. Fill the gap Method 2. Relationship equation Method 3.
+    Look-up table</p>
+  </sec>
+  <sec id="save-dataset-in-folder-02_data_tidy">
+    <title>4.2 Save dataset in folder: 02_data_tidy</title>
+    <p>Read a clean version of data:</p>
+    <p>Create spatial plot:</p>
+    <fig id="fig-spatial-plot">
+      <caption><p>Figure 4: Locations of earthquakes on La Palma since
+      2017</p></caption>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/notebooks-01-earthquakes-fig-spatial-plot-output-1.png" />
+    </fig>
+    <p><xref alt="Figure 4" rid="fig-spatial-plot">Figure 4</xref> shows
+    the location of recent Earthquakes on La Palma.</p>
+  </sec>
+  <sec id="sec-data-methods">
+    <title>4.3 Data &amp; Methods</title>
+  </sec>
+  <sec id="sec-results">
+    <title>4.4 Results</title>
+  </sec>
+  <sec id="sec-discussion">
+    <title>4.5 Discussion</title>
+  </sec>
+  <sec id="sec-conclusions">
+    <title>4.6 Conclusions</title>
+  </sec>
+  <sec id="references">
+    <title>References</title>
+    <ref-list>
+      <ref id="ref-marrero2019">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name><surname>Marrero</surname><given-names>José</given-names></name>
+            <name><surname>García</surname><given-names>Alicia</given-names></name>
+            <name><surname>Berrocoso</surname><given-names>Manuel</given-names></name>
+            <name><surname>Llinares</surname><given-names>Ángeles</given-names></name>
+            <name><surname>Rodríguez-Losada</surname><given-names>Antonio</given-names></name>
+            <name><surname>Ortiz</surname><given-names>R.</given-names></name>
+          </person-group>
+          <article-title>Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands)</article-title>
+          <source>Journal of Applied Volcanology</source>
+          <year iso-8601-date="2019-07">2019</year><month>07</month>
+          <volume>8</volume>
+          <pub-id pub-id-type="doi">10.1186/s13617-019-0085-5</pub-id>
+          <fpage></fpage>
+          <lpage></lpage>
+        </element-citation>
+      </ref>
+    </ref-list>
+  </sec>
 </sec>
 </body>
 
 <back>
-<ref-list>
-  <title>References</title>
-  <ref id="ref-marrero2019">
-    <element-citation publication-type="article-journal">
-      <person-group person-group-type="author">
-        <name><surname>Marrero</surname><given-names>José</given-names></name>
-        <name><surname>García</surname><given-names>Alicia</given-names></name>
-        <name><surname>Berrocoso</surname><given-names>Manuel</given-names></name>
-        <name><surname>Llinares</surname><given-names>Ángeles</given-names></name>
-        <name><surname>Rodríguez-Losada</surname><given-names>Antonio</given-names></name>
-        <name><surname>Ortiz</surname><given-names>R.</given-names></name>
-      </person-group>
-      <article-title>Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands)</article-title>
-      <source>Journal of Applied Volcanology</source>
-      <year iso-8601-date="2019-07">2019</year><month>07</month>
-      <volume>8</volume>
-      <pub-id pub-id-type="doi">10.1186/s13617-019-0085-5</pub-id>
-      <fpage></fpage>
-      <lpage></lpage>
-    </element-citation>
-  </ref>
-</ref-list>
 </back>
 
-<sub-article article-type="notebook" id="nb-8-nb-article">
+<sub-article article-type="notebook" id="nb-16-nb-article">
 <front-stub>
 <title-group>
 <article-title>PM2 and PM10 concentrations</article-title>
@@ -376,7 +462,7 @@ Nacional (IGN). …</p>
 
 <body>
 <sec id="introduction-nb-article">
-  <title>1 Introduction</title>
+  <title>0.1 Introduction</title>
   <sec id="nb-code-cell-1-nb-article" specific-use="notebook-code">
   <code language="r script">eruptions &lt;- c(1492, 1585, 1646, 1677, 1712, 1949, 1971, 2021)
 n_eruptions &lt;- length(eruptions)</code>
@@ -411,7 +497,7 @@ avg_years_between_eruptions</code>
   <p>Eight eruptions have been recorded since the late 1400s
   (<xref alt="Figure 1" rid="fig-timeline-nb-article">Figure 1</xref>).</p>
   <p>Data and methods are discussed in
-  <xref alt="Section 2" rid="sec-data-methods-nb-article">Section 2</xref>.</p>
+  <xref alt="Section 4.3" rid="sec-data-methods-nb-article">Section 4.3</xref>.</p>
   <p>Let <inline-formula><alternatives>
   <tex-math><![CDATA[x]]></tex-math>
   <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>x</mml:mi></mml:math></alternatives></inline-formula>
@@ -507,53 +593,470 @@ avg_years_between_eruptions</code>
   </fig>
   </sec>
   </sec>
-  <p><xref alt="Figure 3" rid="fig-spatial-plot-nb-article">Figure 3</xref> shows
-  the location of recent Earthquakes on La Palma.</p>
+  <p>kk</p>
 </sec>
-<sec id="sec-data-methods-nb-article">
-  <title>2 Data &amp; Methods</title>
+<sec id="explore-earthquakes-nb-article">
+  <title>1. Explore Earthquakes</title>
+  <p>Munkhtsetseg</p>
+  <p>Library</p>
+  <sec id="f5588702-2418-4f41-af1e-583195af5703-nb-article" specific-use="notebook-code">
+  <code language="python">library(tidyverse)</code>
+  <sec id="f5588702-2418-4f41-af1e-583195af5703-output-0-nb-article" specific-use="notebook-output">
+  <preformat>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</preformat>
+  </sec>
+  </sec>
 </sec>
-<sec id="sec-results-nb-article">
-  <title>3 Results</title>
+<sec id="import-the-dataset-and-remove-the-duplicates-nb-article">
+  <title>2. Import the dataset and remove the duplicates</title>
+  <p>Import the dataset from the directory of: ~/Data
+  Input/Preprocessing data/Preprocessing data.csv, assign the dataset as
+  object of df:</p>
+  <sec id="cell-327e11ca-69b9-41c6-9b57-5bad4a607846-nb-article" specific-use="notebook-code">
+  <code language="python">df &lt;- read.csv(&quot;~/Data Input/Preprocessing data/Preprocessing data.csv&quot;)</code>
+  </sec>
+  <p>Remove the duplicates with the function of distinct(), assign the
+  dataset as df_01:</p>
+  <sec id="cell-21a7caac-89b4-4696-8c72-c4c9ea330a58-nb-article" specific-use="notebook-code">
+  <code language="python">df_01 &lt;- df %&gt;%
+  distinct()</code>
+  </sec>
+  <sec id="produce-a-table-with-missing-data-nb-article">
+    <title>2.1 Produce a table with missing data</title>
+    <p>For date options as year, month, etc:</p>
+    <sec id="cell-10cf91f7-d4d0-4ee3-bfcd-2e9421e4c98d-nb-article" specific-use="notebook-code">
+    <code language="python">Table_NA_by_Year &lt;- df_01 %&gt;%
+  rowwise %&gt;%
+  group_by(Station.name,Year) %&gt;% 
+  summarise(NA_date = sum(!is.na(Date)),
+            NA_PM2 = sum(is.na(PM2)),
+            NA_PM10 = sum(is.na(PM10)),
+            NA_Vis = sum(is.na(Visibility)),
+            NA_WD = sum(is.na(WD)),
+            NA_WS = sum(is.na(WS)),
+            NA_OPC = sum(is.na(OPC))
+            ) </code>
+    <sec id="cell-10cf91f7-d4d0-4ee3-bfcd-2e9421e4c98d-output-0-nb-article" specific-use="notebook-output">
+    <preformat>`summarise()` has grouped output by 'Station.name'. You can override using the
+`.groups` argument.</preformat>
+    </sec>
+    <sec id="cell-10cf91f7-d4d0-4ee3-bfcd-2e9421e4c98d-output-1-nb-article" specific-use="notebook-output">
+    <preformat># A tibble: 52 × 9
+# Groups:   Station.name [4]
+   Station.name  Year NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
+   &lt;chr&gt;        &lt;int&gt;   &lt;int&gt;  &lt;int&gt;   &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;
+ 1 Dalanzadgad   2008    4630   1543    1672   1463  1566  1566   4630
+ 2 Dalanzadgad   2009    8760    715     929    659   748   748   8760
+ 3 Dalanzadgad   2010    8784    921    1086    756   787   787   8784
+ 4 Dalanzadgad   2011    8760   2652    3309   1759  2394  2394   8760
+ 5 Dalanzadgad   2012    5088   1074    3016    693  1412  1412   5088
+ 6 Dalanzadgad   2013    6096   1766    1809   2479  1240  1240   6096
+ 7 Dalanzadgad   2014    7800    843     921   6068  1482  1482   7800
+ 8 Dalanzadgad   2015    8760   1539    1587   8115  2635  2635   8760
+ 9 Dalanzadgad   2016    6288   1654    1613   5995  3306  3306   6288
+10 Dalanzadgad   2017    3264     36      45   3264  3264  3264   3264
+# ℹ 42 more rows</preformat>
+    </sec>
+    </sec>
+    <p>For station</p>
+    <sec id="cell-34535933-1c52-4e7c-9119-2e846196b9d0-nb-article" specific-use="notebook-code">
+    <code language="python">Table_NA_by_Station &lt;- df_01 %&gt;%
+  rowwise %&gt;%
+  group_by(Station.name) %&gt;% 
+  summarise(NA_date = sum(!is.na(Date)),
+            NA_PM2 = sum(is.na(PM2)),
+            NA_PM10 = sum(is.na(PM10)),
+            NA_Vis = sum(is.na(Visibility)),
+            NA_WD = sum(is.na(WD)),
+            NA_WS = sum(is.na(WS)),
+            NA_OPC = sum(is.na(OPC))
+  ) 
+Table_NA_by_Station</code>
+    <sec id="cell-34535933-1c52-4e7c-9119-2e846196b9d0-output-0-nb-article" specific-use="notebook-output">
+    <preformat># A tibble: 4 × 8
+  Station.name NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
+  &lt;chr&gt;          &lt;int&gt;  &lt;int&gt;   &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;
+1 Dalanzadgad    69454  13081   16327  32475 20058 20058  69454
+2 Sainshand     101230  27588   36117  28986 13768 13768 101230
+3 UB             95662   7895    8785   3775  4121  4121  62421
+4 Zamynuud       99742  32281   33597  22525  5373  5373  99742</preformat>
+    </sec>
+    </sec>
+    <p>By percentages</p>
+    <sec id="d4756950-4dfa-4295-9182-a8f50b0fb40f-nb-article" specific-use="notebook-code">
+    <code language="python">Table_NA_by_Station_percentage &lt;- df_01 %&gt;%
+  rowwise %&gt;%
+  group_by(Station.name, Year) %&gt;% 
+  summarise(NA_date = sum(!is.na(Date)),
+            NA_PM2 = sum(is.na(PM2)),
+            NA_PM10 = sum(is.na(PM10)),
+            NA_Vis = sum(is.na(Visibility)),
+            NA_WD = sum(is.na(WD)),
+            NA_WS = sum(is.na(WS)),
+            NA_OPC = sum(is.na(OPC))
+  ) %&gt;% 
+  mutate(
+            NA_PM2p = if_else(NA_date != NA_PM2, NA_PM2/NA_date*100, 0)
+  ) %&gt;%
+  do({q &lt;- .$NA_PM2*100/.$NA_date; sdq &lt;- sd(q); attr(sdq, &quot;data.all&quot;) &lt;- q; data.frame(sdq)}) </code>
+    <sec id="d4756950-4dfa-4295-9182-a8f50b0fb40f-output-0-nb-article" specific-use="notebook-output">
+    <preformat>`summarise()` has grouped output by 'Station.name'. You can override using the
+`.groups` argument.</preformat>
+    </sec>
+    <sec id="d4756950-4dfa-4295-9182-a8f50b0fb40f-output-1-nb-article" specific-use="notebook-output">
+    <preformat># A tibble: 4 × 2
+# Groups:   Station.name [4]
+  Station.name   sdq
+  &lt;chr&gt;        &lt;dbl&gt;
+1 Dalanzadgad   10.7
+2 Sainshand     25.9
+3 UB            17.9
+4 Zamynuud      39.6</preformat>
+    </sec>
+    </sec>
+    <p>Note that the <monospace>echo = FALSE</monospace> parameter was
+    added to the code chunk to prevent printing of the R code that
+    generated the plot.</p>
+  </sec>
 </sec>
-<sec id="sec-discussion-nb-article">
-  <title>4 Discussion</title>
+<sec id="remove-the-spikes-and-produce-an-extended-table-nb-article">
+  <title>3. Remove the spikes, and produce an extended table</title>
+  <p>Remove the spikes in the datasets, and produce the table with NA,
+  with removed spikes; express it in a percentages.</p>
+  <sec id="remove-the-spikes-method-1.-mean-value---3-5sd-nb-article">
+    <title>3.0.1 Remove the spikes Method 1. Mean value +-
+    (3-5)SD</title>
+    <p>Method 2. Seasonal variations, and trend-mean</p>
+  </sec>
+  <sec id="save-dataset-in-folder-01_data_raw-nb-article">
+    <title>3.1 Save dataset in folder: 01_data_raw</title>
+  </sec>
 </sec>
-<sec id="sec-conclusions-nb-article">
-  <title>5 Conclusions</title>
+<sec id="tidy-data-nb-article">
+  <title>4. Tidy data</title>
+  <sec id="fill-the-missing-data-nb-article">
+    <title>4.1 Fill the missing data</title>
+    <p>Method 1. Fill the gap Method 2. Relationship equation Method 3.
+    Look-up table</p>
+  </sec>
+  <sec id="save-dataset-in-folder-02_data_tidy-nb-article">
+    <title>4.2 Save dataset in folder: 02_data_tidy</title>
+    <sec id="cell-4e7de72f-187c-4da2-9f3d-82d5229761a3-nb-article" specific-use="notebook-code">
+    <code language="python">library(tidyverse)</code>
+    </sec>
+    <p>Read a clean version of data:</p>
+    <sec id="cell-563626a1-29ed-4aba-9b02-086857b60737-nb-article" specific-use="notebook-code">
+    <code language="python">la_palma &lt;- read_csv(&quot;la-palma.csv&quot;)</code>
+    <sec id="cell-563626a1-29ed-4aba-9b02-086857b60737-output-0-nb-article" specific-use="notebook-output">
+    <preformat>Rows: 11347 Columns: 5
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: &quot;,&quot;
+dbl  (4): Longitude, Latitude, Depth(km), Magnitude
+dttm (1): DateTime
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</preformat>
+    </sec>
+    </sec>
+    <p>Create spatial plot:</p>
+    <sec id="cell-fig-spatial-plot-nb-article" specific-use="notebook-code">
+    <code language="python">la_palma |&gt; 
+  ggplot(aes(Longitude, Latitude)) +
+  geom_point(aes(color = Magnitude, size = 40-`Depth(km)`)) +
+  scale_color_viridis_c(direction = -1) + 
+  scale_size(range = c(0.5, 2), guide = &quot;none&quot;) +
+  theme_bw()</code>
+    <sec id="cell-fig-spatial-plot-output-0-nb-article" specific-use="notebook-output">
+    <fig id="fig-spatial-plot-nb-article">
+      <caption><p>Figure 4: Locations of earthquakes on La Palma since
+      2017</p></caption>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="index_files/figure-jats/notebooks-01-earthquakes-fig-spatial-plot-output-1.png" />
+    </fig>
+    </sec>
+    </sec>
+    <p><xref alt="Figure 4" rid="fig-spatial-plot-nb-article">Figure 4</xref> shows
+    the location of recent Earthquakes on La Palma.</p>
+  </sec>
+  <sec id="sec-data-methods-nb-article">
+    <title>4.3 Data &amp; Methods</title>
+  </sec>
+  <sec id="sec-results-nb-article">
+    <title>4.4 Results</title>
+  </sec>
+  <sec id="sec-discussion-nb-article">
+    <title>4.5 Discussion</title>
+  </sec>
+  <sec id="sec-conclusions-nb-article">
+    <title>4.6 Conclusions</title>
+  </sec>
+  <sec id="references-nb-article">
+    <title>References</title>
+    <ref-list>
+      <ref id="ref-marrero2019-nb-article">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name><surname>Marrero</surname><given-names>José</given-names></name>
+            <name><surname>García</surname><given-names>Alicia</given-names></name>
+            <name><surname>Berrocoso</surname><given-names>Manuel</given-names></name>
+            <name><surname>Llinares</surname><given-names>Ángeles</given-names></name>
+            <name><surname>Rodríguez-Losada</surname><given-names>Antonio</given-names></name>
+            <name><surname>Ortiz</surname><given-names>R.</given-names></name>
+          </person-group>
+          <article-title>Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands)</article-title>
+          <source>Journal of Applied Volcanology</source>
+          <year iso-8601-date="2019-07">2019</year><month>07</month>
+          <volume>8</volume>
+          <pub-id pub-id-type="doi">10.1186/s13617-019-0085-5</pub-id>
+          <fpage></fpage>
+          <lpage></lpage>
+        </element-citation>
+      </ref>
+    </ref-list>
+  </sec>
 </sec>
 </body>
 
 
 
 <back>
-<ref-list>
-  <title>References</title>
-  <ref id="ref-marrero2019-nb-article">
-    <element-citation publication-type="article-journal">
-      <person-group person-group-type="author">
-        <name><surname>Marrero</surname><given-names>José</given-names></name>
-        <name><surname>García</surname><given-names>Alicia</given-names></name>
-        <name><surname>Berrocoso</surname><given-names>Manuel</given-names></name>
-        <name><surname>Llinares</surname><given-names>Ángeles</given-names></name>
-        <name><surname>Rodríguez-Losada</surname><given-names>Antonio</given-names></name>
-        <name><surname>Ortiz</surname><given-names>R.</given-names></name>
-      </person-group>
-      <article-title>Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands)</article-title>
-      <source>Journal of Applied Volcanology</source>
-      <year iso-8601-date="2019-07">2019</year><month>07</month>
-      <volume>8</volume>
-      <pub-id pub-id-type="doi">10.1186/s13617-019-0085-5</pub-id>
-      <fpage></fpage>
-      <lpage></lpage>
-    </element-citation>
-  </ref>
-</ref-list>
 </back>
 
 
 </sub-article>
 <sub-article article-type="notebook" id="nb-4-nb-1">
+<front-stub>
+<title-group>
+<article-title>Explore Earthquakes</article-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author">
+<name>
+<surname>Munkhtsetseg</surname>
+<given-names></given-names>
+</name>
+<string-name>Munkhtsetseg</string-name>
+
+</contrib>
+</contrib-group>
+</front-stub>
+
+<body>
+<p>Library</p>
+<sec id="nb-code-cell-1-nb-1" specific-use="notebook-code">
+<code language="r script">library(tidyverse)
+</code>
+<code language="r script">library(ggplot2)
+</code>
+<sec id="nb-code-cell-1-output-0-nb-1" specific-use="notebook-output">
+<preformat>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</preformat>
+</sec>
+</sec>
+<sec id="import-the-dataset-and-remove-the-duplicates-nb-1">
+  <title>Import the dataset and remove the duplicates</title>
+  <p>Import the dataset from the directory of: ~/Data
+  Input/Preprocessing data/Preprocessing data.csv, assign the dataset as
+  object of df:</p>
+  <sec id="nb-code-cell-2-nb-1" specific-use="notebook-code">
+  <code language="r script">df &lt;- read.csv(&quot;~/Data Input/Preprocessing data/Preprocessing data.csv&quot;)
+  </code>
+  </sec>
+  <p>Remove the duplicates with the function of distinct(), assign the
+  dataset as df_01:</p>
+  <sec id="nb-code-cell-3-nb-1" specific-use="notebook-code">
+  <code language="r script">df_01 &lt;- df %&gt;%
+  distinct()
+  </code>
+  </sec>
+  <sec id="produce-a-table-with-missing-data-nb-1">
+    <title>Produce a table with missing data</title>
+    <p>For date options as year, month, etc:</p>
+    <sec id="nb-code-cell-4-nb-1" specific-use="notebook-code">
+    <code language="r script">Table_NA_by_Year &lt;- df_01 %&gt;%
+  rowwise %&gt;%
+  group_by(Station.name,Year) %&gt;% 
+  summarise(NA_date = sum(!is.na(Date)),
+            NA_PM2 = sum(is.na(PM2)),
+            NA_PM10 = sum(is.na(PM10)),
+            NA_Vis = sum(is.na(Visibility)),
+            NA_WD = sum(is.na(WD)),
+            NA_WS = sum(is.na(WS)),
+            NA_OPC = sum(is.na(OPC))
+            ) 
+    </code>
+    <code language="r script">Table_NA_by_Year
+    </code>
+    <sec id="nb-code-cell-4-output-0-nb-1" specific-use="notebook-output">
+    <preformat>`summarise()` has grouped output by 'Station.name'. You can override using the
+`.groups` argument.</preformat>
+    </sec>
+    <sec id="nb-code-cell-4-output-1-nb-1" specific-use="notebook-output">
+    <preformat># A tibble: 52 × 9
+# Groups:   Station.name [4]
+   Station.name  Year NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
+   &lt;chr&gt;        &lt;int&gt;   &lt;int&gt;  &lt;int&gt;   &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;
+ 1 Dalanzadgad   2008    4630   1543    1672   1463  1566  1566   4630
+ 2 Dalanzadgad   2009    8760    715     929    659   748   748   8760
+ 3 Dalanzadgad   2010    8784    921    1086    756   787   787   8784
+ 4 Dalanzadgad   2011    8760   2652    3309   1759  2394  2394   8760
+ 5 Dalanzadgad   2012    5088   1074    3016    693  1412  1412   5088
+ 6 Dalanzadgad   2013    6096   1766    1809   2479  1240  1240   6096
+ 7 Dalanzadgad   2014    7800    843     921   6068  1482  1482   7800
+ 8 Dalanzadgad   2015    8760   1539    1587   8115  2635  2635   8760
+ 9 Dalanzadgad   2016    6288   1654    1613   5995  3306  3306   6288
+10 Dalanzadgad   2017    3264     36      45   3264  3264  3264   3264
+# ℹ 42 more rows</preformat>
+    </sec>
+    </sec>
+    <p>For station</p>
+    <sec id="nb-code-cell-5-nb-1" specific-use="notebook-code">
+    <code language="r script">Table_NA_by_Station &lt;- df_01 %&gt;%
+  rowwise %&gt;%
+  group_by(Station.name) %&gt;% 
+  summarise(NA_date = sum(!is.na(Date)),
+            NA_PM2 = sum(is.na(PM2)),
+            NA_PM10 = sum(is.na(PM10)),
+            NA_Vis = sum(is.na(Visibility)),
+            NA_WD = sum(is.na(WD)),
+            NA_WS = sum(is.na(WS)),
+            NA_OPC = sum(is.na(OPC))
+  ) 
+Table_NA_by_Station
+    </code>
+    <sec id="nb-code-cell-5-output-0-nb-1" specific-use="notebook-output">
+    <preformat># A tibble: 4 × 8
+  Station.name NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
+  &lt;chr&gt;          &lt;int&gt;  &lt;int&gt;   &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;
+1 Dalanzadgad    69454  13081   16327  32475 20058 20058  69454
+2 Sainshand     101230  27588   36117  28986 13768 13768 101230
+3 UB             95662   7895    8785   3775  4121  4121  62421
+4 Zamynuud       99742  32281   33597  22525  5373  5373  99742</preformat>
+    </sec>
+    </sec>
+    <p>By percentages</p>
+    <sec id="nb-code-cell-6-nb-1" specific-use="notebook-code">
+    <code language="r script">Table_NA_by_Station_percentage &lt;- df_01 %&gt;%
+  rowwise %&gt;%
+  group_by(Station.name, Year) %&gt;% 
+  summarise(NA_date = sum(!is.na(Date)),
+            NA_PM2 = sum(is.na(PM2)),
+            NA_PM10 = sum(is.na(PM10)),
+            NA_Vis = sum(is.na(Visibility)),
+            NA_WD = sum(is.na(WD)),
+            NA_WS = sum(is.na(WS)),
+            NA_OPC = sum(is.na(OPC))
+  ) %&gt;% 
+  mutate(
+            NA_PM2p = if_else(NA_date != NA_PM2, NA_PM2/NA_date*100, 0)
+  ) %&gt;%
+  do({q &lt;- .$NA_PM2*100/.$NA_date; sdq &lt;- sd(q); attr(sdq, &quot;data.all&quot;) &lt;- q; data.frame(sdq)}) 
+    </code>
+    <code language="r script"> Table_NA_by_Station_percentage
+    </code>
+    <sec id="nb-code-cell-6-output-0-nb-1" specific-use="notebook-output">
+    <preformat>`summarise()` has grouped output by 'Station.name'. You can override using the
+`.groups` argument.</preformat>
+    </sec>
+    <sec id="nb-code-cell-6-output-1-nb-1" specific-use="notebook-output">
+    <preformat># A tibble: 4 × 2
+# Groups:   Station.name [4]
+  Station.name   sdq
+  &lt;chr&gt;        &lt;dbl&gt;
+1 Dalanzadgad   10.7
+2 Sainshand     25.9
+3 UB            17.9
+4 Zamynuud      39.6</preformat>
+    </sec>
+    </sec>
+    <p>Note that the <monospace>echo = FALSE</monospace> parameter was
+    added to the code chunk to prevent printing of the R code that
+    generated the plot.</p>
+  </sec>
+</sec>
+<sec id="remove-the-spikes-and-produce-an-extended-table-nb-1">
+  <title>Remove the spikes, and produce an extended table</title>
+  <p>Remove the spikes in the datasets, and produce the table with NA,
+  with removed spikes; express it in a percentages.</p>
+  <sec id="remove-the-spikes-method-1.-mean-value---3-5sd-nb-1">
+    <title>Remove the spikes Method 1. Mean value +- (3-5)SD</title>
+    <p>Method 2. Seasonal variations, and trend-mean</p>
+  </sec>
+  <sec id="save-dataset-in-folder-01_data_raw-nb-1">
+    <title>Save dataset in folder: 01_data_raw</title>
+  </sec>
+</sec>
+<sec id="tidy-data-nb-1">
+  <title>Tidy data</title>
+  <sec id="fill-the-missing-data-nb-1">
+    <title>Fill the missing data</title>
+    <p>Method 1. Fill the gap Method 2. Relationship equation Method 3.
+    Look-up table</p>
+  </sec>
+  <sec id="save-dataset-in-folder-02_data_tidy-nb-1">
+    <title>Save dataset in folder: 02_data_tidy</title>
+    <sec id="nb-code-cell-7-nb-1" specific-use="notebook-code">
+    <code language="r script">library(tidyverse)
+    </code>
+    </sec>
+    <p>Read a clean version of data:</p>
+    <sec id="nb-code-cell-8-nb-1" specific-use="notebook-code">
+    <code language="r script">la_palma &lt;- read_csv(&quot;la-palma.csv&quot;)
+    </code>
+    <sec id="nb-code-cell-8-output-0-nb-1" specific-use="notebook-output">
+    <preformat>Rows: 11347 Columns: 5
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: &quot;,&quot;
+dbl  (4): Longitude, Latitude, Depth(km), Magnitude
+dttm (1): DateTime
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</preformat>
+    </sec>
+    </sec>
+    <p>Create spatial plot:</p>
+    <sec id="cell-fig-spatial-plot-nb-1" specific-use="notebook-code">
+    <code language="r script">#|   against longitude.&quot;
+la_palma |&gt; 
+  ggplot(aes(Longitude, Latitude)) +
+  geom_point(aes(color = Magnitude, size = 40-`Depth(km)`)) +
+  scale_color_viridis_c(direction = -1) + 
+  scale_size(range = c(0.5, 2), guide = &quot;none&quot;) +
+  theme_bw()
+    </code>
+    <fig id="fig-spatial-plot-nb-1">
+      <caption><p>Locations of earthquakes on La Palma since
+      2017</p></caption>
+      <graphic mimetype="image" mime-subtype="png" xlink:href="01-earthquakes_files/figure-jats/fig-spatial-plot-1.png" />
+    </fig>
+    </sec>
+  </sec>
+</sec>
+</body>
+
+
+
+<back>
+</back>
+
+
+</sub-article>
+<sub-article article-type="notebook" id="nb-8-nb-2">
 <front-stub>
 <title-group>
 <article-title>Explore Earthquakes</article-title>
@@ -571,10 +1074,10 @@ avg_years_between_eruptions</code>
 </front-stub>
 
 <body>
-<sec id="nb-code-cell-1-nb-1" specific-use="notebook-code">
+<sec id="nb-code-cell-1-nb-2" specific-use="notebook-code">
 <code language="r script">library(tidyverse)
 </code>
-<sec id="nb-code-cell-1-output-0-nb-1" specific-use="notebook-output">
+<sec id="nb-code-cell-1-output-0-nb-2" specific-use="notebook-output">
 <preformat>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.3     ✔ readr     2.1.4
 ✔ forcats   1.0.0     ✔ stringr   1.5.0
@@ -588,10 +1091,10 @@ avg_years_between_eruptions</code>
 </sec>
 </sec>
 <p>Read a clean version of data:</p>
-<sec id="nb-code-cell-2-nb-1" specific-use="notebook-code">
+<sec id="nb-code-cell-2-nb-2" specific-use="notebook-code">
 <code language="r script">la_palma &lt;- read_csv(&quot;la-palma.csv&quot;)
 </code>
-<sec id="nb-code-cell-2-output-0-nb-1" specific-use="notebook-output">
+<sec id="nb-code-cell-2-output-0-nb-2" specific-use="notebook-output">
 <preformat>Rows: 11347 Columns: 5
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: &quot;,&quot;
@@ -603,7 +1106,7 @@ dttm (1): DateTime
 </sec>
 </sec>
 <p>Create spatial plot:</p>
-<sec id="cell-fig-spatial-plot-nb-1" specific-use="notebook-code">
+<sec id="cell-fig-spatial-plot-nb-2" specific-use="notebook-code">
 <code language="r script">#|   against longitude.&quot;
 la_palma |&gt; 
   ggplot(aes(Longitude, Latitude)) +
@@ -612,11 +1115,201 @@ la_palma |&gt;
   scale_size(range = c(0.5, 2), guide = &quot;none&quot;) +
   theme_bw()
 </code>
-<fig id="fig-spatial-plot-nb-1">
+<fig id="fig-spatial-plot-nb-2">
   <caption><p>Locations of earthquakes on La Palma since
   2017</p></caption>
   <graphic mimetype="image" mime-subtype="png" xlink:href="explore-earthquakes_files/figure-jats/fig-spatial-plot-1.png" />
 </fig>
+</sec>
+</body>
+
+
+
+<back>
+</back>
+
+
+</sub-article>
+<sub-article article-type="notebook" id="nb-12-nb-3">
+<front-stub>
+<title-group>
+<article-title>01_datawork</article-title>
+</title-group>
+<contrib-group>
+<contrib contrib-type="author">
+<name>
+<surname>Munkhtsetseg</surname>
+<given-names></given-names>
+</name>
+<string-name>Munkhtsetseg</string-name>
+
+</contrib>
+</contrib-group>
+</front-stub>
+
+<body>
+<p>Library</p>
+<sec id="nb-code-cell-1-nb-3" specific-use="notebook-code">
+<code language="r script">library(tidyverse)
+</code>
+<code language="r script">library(ggplot2)
+</code>
+<sec id="nb-code-cell-1-output-0-nb-3" specific-use="notebook-output">
+<preformat>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</preformat>
+</sec>
+</sec>
+<sec id="import-the-dataset-and-remove-the-duplicates-nb-3">
+  <title>Import the dataset and remove the duplicates</title>
+  <p>Import the dataset from the directory of: ~/Data
+  Input/Preprocessing data/Preprocessing data.csv, assign the dataset as
+  object of df:</p>
+  <sec id="nb-code-cell-2-nb-3" specific-use="notebook-code">
+  <code language="r script">df &lt;- read.csv(&quot;~/Data Input/Preprocessing data/Preprocessing data.csv&quot;)
+  </code>
+  </sec>
+  <p>Remove the duplicates with the function of distinct(), assign the
+  dataset as df_01:</p>
+  <sec id="nb-code-cell-3-nb-3" specific-use="notebook-code">
+  <code language="r script">df_01 &lt;- df %&gt;%
+  distinct()
+  </code>
+  </sec>
+  <sec id="produce-a-table-with-missing-data-nb-3">
+    <title>Produce a table with missing data</title>
+    <p>For date options as year, month, etc:</p>
+    <sec id="nb-code-cell-4-nb-3" specific-use="notebook-code">
+    <code language="r script">Table_NA_by_Year &lt;- df_01 %&gt;%
+  rowwise %&gt;%
+  group_by(Station.name,Year) %&gt;% 
+  summarise(NA_date = sum(!is.na(Date)),
+            NA_PM2 = sum(is.na(PM2)),
+            NA_PM10 = sum(is.na(PM10)),
+            NA_Vis = sum(is.na(Visibility)),
+            NA_WD = sum(is.na(WD)),
+            NA_WS = sum(is.na(WS)),
+            NA_OPC = sum(is.na(OPC))
+            ) 
+    </code>
+    <code language="r script">Table_NA_by_Year
+    </code>
+    <sec id="nb-code-cell-4-output-0-nb-3" specific-use="notebook-output">
+    <preformat>`summarise()` has grouped output by 'Station.name'. You can override using the
+`.groups` argument.</preformat>
+    </sec>
+    <sec id="nb-code-cell-4-output-1-nb-3" specific-use="notebook-output">
+    <preformat># A tibble: 52 × 9
+# Groups:   Station.name [4]
+   Station.name  Year NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
+   &lt;chr&gt;        &lt;int&gt;   &lt;int&gt;  &lt;int&gt;   &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;
+ 1 Dalanzadgad   2008    4630   1543    1672   1463  1566  1566   4630
+ 2 Dalanzadgad   2009    8760    715     929    659   748   748   8760
+ 3 Dalanzadgad   2010    8784    921    1086    756   787   787   8784
+ 4 Dalanzadgad   2011    8760   2652    3309   1759  2394  2394   8760
+ 5 Dalanzadgad   2012    5088   1074    3016    693  1412  1412   5088
+ 6 Dalanzadgad   2013    6096   1766    1809   2479  1240  1240   6096
+ 7 Dalanzadgad   2014    7800    843     921   6068  1482  1482   7800
+ 8 Dalanzadgad   2015    8760   1539    1587   8115  2635  2635   8760
+ 9 Dalanzadgad   2016    6288   1654    1613   5995  3306  3306   6288
+10 Dalanzadgad   2017    3264     36      45   3264  3264  3264   3264
+# ℹ 42 more rows</preformat>
+    </sec>
+    </sec>
+    <p>For station</p>
+    <sec id="nb-code-cell-5-nb-3" specific-use="notebook-code">
+    <code language="r script">Table_NA_by_Station &lt;- df_01 %&gt;%
+  rowwise %&gt;%
+  group_by(Station.name) %&gt;% 
+  summarise(NA_date = sum(!is.na(Date)),
+            NA_PM2 = sum(is.na(PM2)),
+            NA_PM10 = sum(is.na(PM10)),
+            NA_Vis = sum(is.na(Visibility)),
+            NA_WD = sum(is.na(WD)),
+            NA_WS = sum(is.na(WS)),
+            NA_OPC = sum(is.na(OPC))
+  ) 
+Table_NA_by_Station
+    </code>
+    <sec id="nb-code-cell-5-output-0-nb-3" specific-use="notebook-output">
+    <preformat># A tibble: 4 × 8
+  Station.name NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
+  &lt;chr&gt;          &lt;int&gt;  &lt;int&gt;   &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;
+1 Dalanzadgad    69454  13081   16327  32475 20058 20058  69454
+2 Sainshand     101230  27588   36117  28986 13768 13768 101230
+3 UB             95662   7895    8785   3775  4121  4121  62421
+4 Zamynuud       99742  32281   33597  22525  5373  5373  99742</preformat>
+    </sec>
+    </sec>
+    <p>By percentages</p>
+    <sec id="nb-code-cell-6-nb-3" specific-use="notebook-code">
+    <code language="r script">Table_NA_by_Station_percentage &lt;- df_01 %&gt;%
+  rowwise %&gt;%
+  group_by(Station.name, Year) %&gt;% 
+  summarise(NA_date = sum(!is.na(Date)),
+            NA_PM2 = sum(is.na(PM2)),
+            NA_PM10 = sum(is.na(PM10)),
+            NA_Vis = sum(is.na(Visibility)),
+            NA_WD = sum(is.na(WD)),
+            NA_WS = sum(is.na(WS)),
+            NA_OPC = sum(is.na(OPC))
+  ) %&gt;% 
+  mutate(
+            NA_PM2p = if_else(NA_date != NA_PM2, NA_PM2/NA_date*100, 0)
+  ) %&gt;%
+  do({q &lt;- .$NA_PM2*100/.$NA_date; sdq &lt;- sd(q); attr(sdq, &quot;data.all&quot;) &lt;- q; data.frame(sdq)}) 
+    </code>
+    <code language="r script"> Table_NA_by_Station_percentage
+    </code>
+    <sec id="nb-code-cell-6-output-0-nb-3" specific-use="notebook-output">
+    <preformat>`summarise()` has grouped output by 'Station.name'. You can override using the
+`.groups` argument.</preformat>
+    </sec>
+    <sec id="nb-code-cell-6-output-1-nb-3" specific-use="notebook-output">
+    <preformat># A tibble: 4 × 2
+# Groups:   Station.name [4]
+  Station.name   sdq
+  &lt;chr&gt;        &lt;dbl&gt;
+1 Dalanzadgad   10.7
+2 Sainshand     25.9
+3 UB            17.9
+4 Zamynuud      39.6</preformat>
+    </sec>
+    </sec>
+    <p>Note that the <monospace>echo = FALSE</monospace> parameter was
+    added to the code chunk to prevent printing of the R code that
+    generated the plot.</p>
+  </sec>
+</sec>
+<sec id="remove-the-spikes-and-produce-an-extended-table-nb-3">
+  <title>Remove the spikes, and produce an extended table</title>
+  <p>Remove the spikes in the datasets, and produce the table with NA,
+  with removed spikes; express it in a percentages.</p>
+  <sec id="remove-the-spikes-method-1.-mean-value---3-5sd-nb-3">
+    <title>Remove the spikes Method 1. Mean value +- (3-5)SD</title>
+    <p>Method 2. Seasonal variations, and trend-mean</p>
+  </sec>
+  <sec id="save-dataset-in-folder-01_data_raw-nb-3">
+    <title>Save dataset in folder: 01_data_raw</title>
+  </sec>
+</sec>
+<sec id="tidy-data-nb-3">
+  <title>Tidy data</title>
+  <sec id="fill-the-missing-data-nb-3">
+    <title>Fill the missing data</title>
+    <p>Method 1. Fill the gap Method 2. Relationship equation Method 3.
+    Look-up table</p>
+  </sec>
+  <sec id="save-dataset-in-folder-02_data_tidy-nb-3">
+    <title>Save dataset in folder: 02_data_tidy</title>
+  </sec>
 </sec>
 </body>
 
