@@ -211,9 +211,10 @@
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#import-the-dataset-and-remove-the-duplicates" id="toc-import-the-dataset-and-remove-the-duplicates" class="nav-link active" data-scroll-target="#import-the-dataset-and-remove-the-duplicates">Import the dataset and remove the duplicates</a>
+  <li><a href="#import-the-dataset-and-remove-the-duplicates" id="toc-import-the-dataset-and-remove-the-duplicates" class="nav-link active" data-scroll-target="#import-the-dataset-and-remove-the-duplicates">Import the dataset and remove the duplicates</a></li>
+  <li><a href="#produce-a-table-with-missing-data" id="toc-produce-a-table-with-missing-data" class="nav-link" data-scroll-target="#produce-a-table-with-missing-data">Produce a table with missing data</a>
   <ul class="collapse">
-  <li><a href="#produce-a-table-with-missing-data" id="toc-produce-a-table-with-missing-data" class="nav-link" data-scroll-target="#produce-a-table-with-missing-data">Produce a table with missing data</a></li>
+  <li><a href="#by-percentages" id="toc-by-percentages" class="nav-link" data-scroll-target="#by-percentages">By percentages</a></li>
   </ul></li>
   <li><a href="#note-that" id="toc-note-that" class="nav-link" data-scroll-target="#note-that">Note that:</a></li>
   <li><a href="#remove-the-spikes-and-produce-an-extended-table" id="toc-remove-the-spikes-and-produce-an-extended-table" class="nav-link" data-scroll-target="#remove-the-spikes-and-produce-an-extended-table">Remove the spikes, and produce an extended table</a>
@@ -249,8 +250,8 @@
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<section id="import-the-dataset-and-remove-the-duplicates" class="level1">
-<h1>Import the dataset and remove the duplicates</h1>
+<section id="import-the-dataset-and-remove-the-duplicates" class="level2">
+<h2 class="anchored" data-anchor-id="import-the-dataset-and-remove-the-duplicates">Import the dataset and remove the duplicates</h2>
 <p>Import the dataset from the directory of: ~/Data Input/Preprocessing data/Preprocessing data.csv, assign the dataset as object of df:</p>
 <div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"~/Data Input/Preprocessing data/Preprocessing data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -260,6 +261,7 @@
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_00 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
+</section>
 <section id="produce-a-table-with-missing-data" class="level2">
 <h2 class="anchored" data-anchor-id="produce-a-table-with-missing-data">Produce a table with missing data</h2>
 <div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div class="cell">
@@ -277,7 +279,8 @@
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>       (Year <span class="sc">&lt;</span> <span class="dv">2017</span> <span class="sc">&amp;</span> Station.name <span class="sc">==</span> <span class="st">"Dalanzadgad"</span>)</span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<p>For date options as year, month, etc:</p>
+<section id="for-date-options-as-year-month-etc" class="level4">
+<h4 class="anchored" data-anchor-id="for-date-options-as-year-month-etc">For date options as year, month, etc:</h4>
 <div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Year <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Station.name,Year) <span class="sc">|&gt;</span> </span>
@@ -312,7 +315,9 @@
 # ℹ 25 more rows</code></pre>
 </div>
 </div></div>
-<p>For station</p>
+</section>
+<section id="for-station" class="level4">
+<h4 class="anchored" data-anchor-id="for-station">For station</h4>
 <div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Station <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Station.name) <span class="sc">|&gt;</span> </span>
@@ -335,7 +340,9 @@
 4 Zamynuud       67392   8880   10075   3444  4960  4960  67392</code></pre>
 </div>
 </div></div>
-<p>By percentages</p>
+</section>
+<section id="by-percentages" class="level3">
+<h3 class="anchored" data-anchor-id="by-percentages">By percentages</h3>
 <div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Station_percentage <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Station.name, Year) <span class="sc">|&gt;</span> </span>
@@ -385,9 +392,10 @@
 </div></div>
 </section>
 </section>
-<section id="note-that" class="level1">
-<h1>Note that:</h1>
-<p>We use the data in the period of 2009-2018, which has been regarded as a monitoring work stabilized since 2008 when is the beginning of the monitoring. According to NIES, site maintenance was consistent up to 2018. - Sainshand site, data 2009-2015 get used; - Dalanzad site: 2009-2016. - UB: 2009-2018 - Zamyn uud: 2009-2018</p>
+<section id="note-that" class="level2">
+<h2 class="anchored" data-anchor-id="note-that">Note that:</h2>
+<p>We use the data in the period of 2009-2018, which has been regarded as a monitoring work stabilized since 2008 when is the beginning of the monitoring. According to NIES, site maintenance was consistent up to 2018.</p>
+<p>+Sainshand site, data 2009-2015 get used; + Dalanzad site: 2009-2016. + UB: 2009-2018 + Zamyn uud: 2009-2018</p>
 </section>
 <section id="remove-the-spikes-and-produce-an-extended-table" class="level1">
 <h1>Remove the spikes, and produce an extended table</h1>

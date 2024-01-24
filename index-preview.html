@@ -287,10 +287,10 @@
    
   <ul>
   <li><a href="#sec-data-methods" id="toc-sec-data-methods" class="nav-link active" data-scroll-target="#sec-data-methods"><span class="header-section-number">0.1</span> Data &amp; Methods</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">5.3</span> Introduction</a></li>
-  <li><a href="#sec-results" id="toc-sec-results" class="nav-link" data-scroll-target="#sec-results"><span class="header-section-number">9.3</span> Results</a></li>
-  <li><a href="#sec-discussion" id="toc-sec-discussion" class="nav-link" data-scroll-target="#sec-discussion"><span class="header-section-number">9.4</span> Discussion</a></li>
-  <li><a href="#sec-conclusions" id="toc-sec-conclusions" class="nav-link" data-scroll-target="#sec-conclusions"><span class="header-section-number">9.5</span> Conclusions</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">3.3</span> Introduction</a></li>
+  <li><a href="#sec-results" id="toc-sec-results" class="nav-link" data-scroll-target="#sec-results"><span class="header-section-number">7.3</span> Results</a></li>
+  <li><a href="#sec-discussion" id="toc-sec-discussion" class="nav-link" data-scroll-target="#sec-discussion"><span class="header-section-number">7.4</span> Discussion</a></li>
+  <li><a href="#sec-conclusions" id="toc-sec-conclusions" class="nav-link" data-scroll-target="#sec-conclusions"><span class="header-section-number">7.5</span> Conclusions</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -302,12 +302,12 @@
        <section id="sec-data-methods" class="level2" data-number="0.1">
 <h2 data-number="0.1" class="anchored" data-anchor-id="sec-data-methods"><span class="header-section-number">0.1</span> Data &amp; Methods</h2>
 </section>
-<div class="quarto-embed-nb-cell" data-notebook="/home/runner/work/my-awesome-manuscripts/my-awesome-manuscripts/notebooks/01_datawork.qmd" data-notebook-title="01_datawork" data-notebook-cellid="f35a84c0-423e-4e48-bb71-ee0c707df98c">
+<div class="quarto-embed-nb-cell" data-notebook="/home/runner/work/my-awesome-manuscripts/my-awesome-manuscripts/notebooks/01_datawork.qmd" data-notebook-title="01_datawork" data-notebook-cellid="5fdcfffa-f2a7-4d02-8ea6-db89fdfaaa29">
 <section id="datawork" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> 01_datawork</h1>
 <p>Munkhtsetseg</p>
 <p>Library</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="ff6beceb-26d9-4e4a-8cbc-769993cfd746" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="05ac78ad-ba36-4b11-b704-65591d2e6b53" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>library(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
@@ -322,21 +322,21 @@
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
 </div></div>
-</section>
-<section id="import-the-dataset-and-remove-the-duplicates" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Import the dataset and remove the duplicates</h1>
+<section id="import-the-dataset-and-remove-the-duplicates" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="import-the-dataset-and-remove-the-duplicates"><span class="header-section-number">1.1</span> Import the dataset and remove the duplicates</h2>
 <p>Import the dataset from the directory of: ~/Data Input/Preprocessing data/Preprocessing data.csv, assign the dataset as object of df:</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="f3a47da8-abdd-4315-b4ba-1a1775cc914d" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="c2b58c3e-c0ab-4565-99b2-b5a7707bf3a4" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">&lt;-</span> read.csv(<span class="st">"~/Data Input/Preprocessing data/Preprocessing data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <p>Remove the duplicates with the function of distinct(), assign the dataset as df_01:</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="c37d56b5-a6a5-4d0e-9fc1-cd51d164e413" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="f5b84f17-1aff-48ab-a58e-a49ca3d5668e" class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_00 <span class="op">&lt;-</span> df <span class="op">|&gt;</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  distinct()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<section id="produce-a-table-with-missing-data" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="produce-a-table-with-missing-data"><span class="header-section-number">2.1</span> Produce a table with missing data</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="8cc7f193-9648-4d46-ae9d-b68ea6651f46" class="cell">
+</section>
+<section id="produce-a-table-with-missing-data" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="produce-a-table-with-missing-data"><span class="header-section-number">1.2</span> Produce a table with missing data</h2>
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="c47d162a-d8a6-4480-bed7-407646b6c4ff" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_000 <span class="op">&lt;-</span> df_00 <span class="op">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>   <span class="bu">filter</span>(Year<span class="op">&lt;</span><span class="dv">2019</span> <span class="op">&amp;</span> Year <span class="op">&gt;</span><span class="dv">2008</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -351,8 +351,9 @@
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>       (Year <span class="op">&lt;</span> <span class="dv">2017</span> <span class="op">&amp;</span> Station.name <span class="op">==</span> <span class="st">"Dalanzadgad"</span>)</span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<p>For date options as year, month, etc:</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="ed3796fc-da30-401e-9801-ca9e5280faed" class="cell">
+<section id="for-date-options-as-year-month-etc" class="level4" data-number="1.2.0.1">
+<h4 data-number="1.2.0.1" class="anchored" data-anchor-id="for-date-options-as-year-month-etc"><span class="header-section-number">1.2.0.1</span> For date options as year, month, etc:</h4>
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="036baae5-46d6-4593-ba46-bf097d78ce93" class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Year <span class="op">&lt;-</span> df_01 <span class="op">|&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  group_by(Station.name,Year) <span class="op">|&gt;</span> </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  summarise(NA_date <span class="op">=</span> <span class="bu">sum</span>(<span class="op">!</span><span class="kw">is</span>.na(Date)),</span>
@@ -385,8 +386,10 @@
 # ℹ 25 more rows</code></pre>
 </div>
 </div></div>
-<p>For station</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="27611194-f3ed-49cc-8e90-1aff8e42199a" class="cell">
+</section>
+<section id="for-station" class="level4" data-number="1.2.0.2">
+<h4 data-number="1.2.0.2" class="anchored" data-anchor-id="for-station"><span class="header-section-number">1.2.0.2</span> For station</h4>
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="8d900208-eb0d-4038-9a94-edbf35bbbc1b" class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Station <span class="op">&lt;-</span> df_01 <span class="op">|&gt;</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  group_by(Station.name) <span class="op">|&gt;</span> </span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  summarise(NA_date <span class="op">=</span> <span class="bu">sum</span>(<span class="op">!</span><span class="kw">is</span>.na(Date)),</span>
@@ -408,8 +411,10 @@
 4 Zamynuud       67392   8880   10075   3444  4960  4960  67392</code></pre>
 </div>
 </div></div>
-<p>By percentages</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="ed2e9bcd-1b73-41fd-9c8f-6d4259846cdc" class="cell">
+</section>
+<section id="by-percentages" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="by-percentages"><span class="header-section-number">1.2.1</span> By percentages</h3>
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="db87019e-f720-4395-95b1-f7d171609c9c" class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Station_percentage <span class="op">&lt;-</span> df_01 <span class="op">|&gt;</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  group_by(Station.name, Year) <span class="op">|&gt;</span> </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  summarise(NA_date <span class="op">=</span> <span class="bu">sum</span>(<span class="op">!</span><span class="kw">is</span>.na(Date)),</span>
@@ -457,14 +462,16 @@
 </div></div>
 </section>
 </section>
-<section id="note-that" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Note that:</h1>
-<p>We use the data in the period of 2009-2018, which has been regarded as a monitoring work stabilized since 2008 when is the beginning of the monitoring. According to NIES, site maintenance was consistent up to 2018. - Sainshand site, data 2009-2015 get used; - Dalanzad site: 2009-2016. - UB: 2009-2018 - Zamyn uud: 2009-2018</p>
+<section id="note-that" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="note-that"><span class="header-section-number">1.3</span> Note that:</h2>
+<p>We use the data in the period of 2009-2018, which has been regarded as a monitoring work stabilized since 2008 when is the beginning of the monitoring. According to NIES, site maintenance was consistent up to 2018.</p>
+<p>+Sainshand site, data 2009-2015 get used; + Dalanzad site: 2009-2016. + UB: 2009-2018 + Zamyn uud: 2009-2018</p>
 </section>
-<section id="remove-the-spikes-and-produce-an-extended-table" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Remove the spikes, and produce an extended table</h1>
+</section>
+<section id="remove-the-spikes-and-produce-an-extended-table" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Remove the spikes, and produce an extended table</h1>
 <p>Remove the spikes in the datasets, and produce the table with NA, with removed spikes; express it in a percentages. ### Remove the spikes Method 1. Mean value +- (3-5)SD - Find Monthly mean</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="fd99a90e-b35f-444e-9266-0647e467854f" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="ebeb52cd-fd9c-405a-b49e-fc244a774242" class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_02 <span class="op">&lt;-</span> df_01 <span class="op">|&gt;</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">filter</span>(Station.name<span class="op">==</span><span class="st">"UB"</span> ) <span class="op">|&gt;</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  drop_na(PM2, PM10) <span class="op">|&gt;</span></span>
@@ -490,7 +497,7 @@
 # ℹ 1 more variable: Date &lt;chr&gt;</code></pre>
 </div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="760da2a9-67df-46da-a182-a8b7eca76aac" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="79734ea6-d1cd-4ca8-8f43-0ede2bfd83c7" class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df_02 <span class="op">&lt;-</span> df_01 <span class="op">|&gt;</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  drop_na(PM2, PM10) <span class="op">|&gt;</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    dplyr::mutate_at(<span class="bu">vars</span>(PM2, PM10), </span>
@@ -515,23 +522,23 @@
 # ℹ 1 more variable: Date &lt;chr&gt;</code></pre>
 </div>
 </div></div>
-<section id="save-dataset-in-folder-01_data_raw" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="save-dataset-in-folder-01_data_raw"><span class="header-section-number">4.1</span> Save dataset in folder: 01_data_raw</h2>
+<section id="save-dataset-in-folder-01_data_raw" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="save-dataset-in-folder-01_data_raw"><span class="header-section-number">2.1</span> Save dataset in folder: 01_data_raw</h2>
 </section>
 </section>
-<section id="tidy-data" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Tidy data</h1>
-<section id="fill-the-missing-data" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="fill-the-missing-data"><span class="header-section-number">5.1</span> Fill the missing data</h2>
+<section id="tidy-data" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Tidy data</h1>
+<section id="fill-the-missing-data" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="fill-the-missing-data"><span class="header-section-number">3.1</span> Fill the missing data</h2>
 <p>Method 1. Fill the gap Method 2. Relationship equation Method 3. Look-up table</p>
 </section>
-<section id="save-dataset-in-folder-02_data_tidy" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="save-dataset-in-folder-02_data_tidy"><span class="header-section-number">5.2</span> Save dataset in folder: 02_data_tidy</h2>
+<section id="save-dataset-in-folder-02_data_tidy" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="save-dataset-in-folder-02_data_tidy"><span class="header-section-number">3.2</span> Save dataset in folder: 02_data_tidy</h2>
 </section>
 </section>
 </div>
-<section id="introduction" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="introduction"><span class="header-section-number">5.3</span> Introduction</h2>
+<section id="introduction" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="introduction"><span class="header-section-number">3.3</span> Introduction</h2>
 <div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>eruptions <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1492</span>, <span class="dv">1585</span>, <span class="dv">1646</span>, <span class="dv">1677</span>, <span class="dv">1712</span>, <span class="dv">1949</span>, <span class="dv">1971</span>, <span class="dv">2021</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>n_eruptions <span class="ot">&lt;-</span> <span class="fu">length</span>(eruptions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -546,7 +553,7 @@
 <div id="fig-timeline" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An event plot of the years of the last 8 eruptions on La Palma.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-timeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="">
-<a href="index_files/figure-html/fig-timeline-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1"><img src="index_files/figure-html/fig-timeline-1.png" class="img-fluid figure-img" alt="An event plot of the years of the last 8 eruptions on La Palma." width="576"></a>
+<a href="index_files/figure-html/fig-timeline-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="index_files/figure-html/fig-timeline-1.png" class="img-fluid figure-img" alt="An event plot of the years of the last 8 eruptions on La Palma." width="576"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-timeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Timeline of recent earthquakes on La Palma
@@ -626,7 +633,7 @@ Table&nbsp;1: Recent historic eruptions on La Palma
 <div id="fig-map" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/la-palma-map.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2"><img src="images/la-palma-map.png" class="img-fluid figure-img"></a>
+<a href="images/la-palma-map.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2"><img src="images/la-palma-map.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Map of La Palma
@@ -646,7 +653,7 @@ Figure&nbsp;2: Map of La Palma
 <div id="fig-spatial-plot" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A scatterplot of earthquake locations plotting latitude against longitude.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-spatial-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="">
-<a href="index_files/figure-html/notebooks-explore-earthquakes-fig-spatial-plot-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3"><img src="index_files/figure-html/notebooks-explore-earthquakes-fig-spatial-plot-output-1.png" class="img-fluid figure-img" alt="A scatterplot of earthquake locations plotting latitude against longitude."></a>
+<a href="index_files/figure-html/notebooks-explore-earthquakes-fig-spatial-plot-output-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3"><img src="index_files/figure-html/notebooks-explore-earthquakes-fig-spatial-plot-output-1.png" class="img-fluid figure-img" alt="A scatterplot of earthquake locations plotting latitude against longitude."></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Locations of earthquakes on La Palma since 2017
@@ -658,12 +665,12 @@ Figure&nbsp;3: Locations of earthquakes on La Palma since 2017
 </div>
 <p>kk</p>
 </section>
-<div class="quarto-embed-nb-cell" data-notebook="/home/runner/work/my-awesome-manuscripts/my-awesome-manuscripts/notebooks/01-earthquakes.qmd" data-notebook-title="Explore Earthquakes" data-notebook-cellid="2671a8ae-4095-42b2-baed-da627795de37">
-<section id="explore-earthquakes" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Explore Earthquakes</h1>
+<div class="quarto-embed-nb-cell" data-notebook="/home/runner/work/my-awesome-manuscripts/my-awesome-manuscripts/notebooks/01-earthquakes.qmd" data-notebook-title="Explore Earthquakes" data-notebook-cellid="c75b4191-f2f7-47d9-bf00-6d67a24e380f">
+<section id="explore-earthquakes" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Explore Earthquakes</h1>
 <p>Munkhtsetseg</p>
 <p>Library</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="1f1608a3-4bf3-4c27-8614-6d1a767c434f" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="b055a0c3-51e3-4b63-aaf4-5f448e7412f0" class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>library(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
@@ -679,21 +686,21 @@ Figure&nbsp;3: Locations of earthquakes on La Palma since 2017
 </div>
 </div></div>
 </section>
-<section id="import-the-dataset-and-remove-the-duplicates-1" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Import the dataset and remove the duplicates</h1>
+<section id="import-the-dataset-and-remove-the-duplicates-1" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Import the dataset and remove the duplicates</h1>
 <p>Import the dataset from the directory of: ~/Data Input/Preprocessing data/Preprocessing data.csv, assign the dataset as object of df:</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [15]:</pre></div><div id="c8cec5fd-eb64-4eb1-8fd5-a6865d705034" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [15]:</pre></div><div id="6b3779e7-94a7-4bec-b55f-9733228a021a" class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">&lt;-</span> read.csv(<span class="st">"~/Data Input/Preprocessing data/Preprocessing data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <p>Remove the duplicates with the function of distinct(), assign the dataset as df_01:</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [16]:</pre></div><div id="df0d7204-1cb9-42c7-86c6-0dd6ed97843f" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [16]:</pre></div><div id="32ee57e5-5433-475e-a7a7-410520299b66" class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df_01 <span class="op">&lt;-</span> df <span class="op">%&gt;%</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  distinct()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<section id="produce-a-table-with-missing-data-1" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="produce-a-table-with-missing-data-1"><span class="header-section-number">7.1</span> Produce a table with missing data</h2>
+<section id="produce-a-table-with-missing-data-1" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="produce-a-table-with-missing-data-1"><span class="header-section-number">5.1</span> Produce a table with missing data</h2>
 <p>For date options as year, month, etc:</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [17]:</pre></div><div id="2615e4b9-cda8-4732-b724-b78211bffec6" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [17]:</pre></div><div id="244460a2-4a33-42c0-a4d3-50388c684380" class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Year <span class="op">&lt;-</span> df_01 <span class="op">%&gt;%</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  rowwise <span class="op">%&gt;%</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  group_by(Station.name,Year) <span class="op">%&gt;%</span> </span>
@@ -728,7 +735,7 @@ Figure&nbsp;3: Locations of earthquakes on La Palma since 2017
 </div>
 </div></div>
 <p>For station</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [18]:</pre></div><div id="6c50b2ca-74ca-4cf2-8296-5036d057272d" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [18]:</pre></div><div id="9f9983f3-616c-4834-b713-16934dd1b931" class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Station <span class="op">&lt;-</span> df_01 <span class="op">%&gt;%</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  rowwise <span class="op">%&gt;%</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  group_by(Station.name) <span class="op">%&gt;%</span> </span>
@@ -752,7 +759,7 @@ Figure&nbsp;3: Locations of earthquakes on La Palma since 2017
 </div>
 </div></div>
 <p>By percentages</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [19]:</pre></div><div id="f8f5c95f-b42e-4b66-9f9f-067721a41c18" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [19]:</pre></div><div id="7943c730-4e8a-4a34-9d87-f74c9fd9a5de" class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Station_percentage <span class="op">&lt;-</span> df_01 <span class="op">%&gt;%</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  rowwise <span class="op">%&gt;%</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  group_by(Station.name, Year) <span class="op">%&gt;%</span> </span>
@@ -786,30 +793,30 @@ Figure&nbsp;3: Locations of earthquakes on La Palma since 2017
 <p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
 </section>
 </section>
-<section id="remove-the-spikes-and-produce-an-extended-table-1" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Remove the spikes, and produce an extended table</h1>
+<section id="remove-the-spikes-and-produce-an-extended-table-1" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Remove the spikes, and produce an extended table</h1>
 <p>Remove the spikes in the datasets, and produce the table with NA, with removed spikes; express it in a percentages.</p>
-<section id="remove-the-spikes-method-1.-mean-value---3-5sd" class="level3" data-number="8.0.1">
-<h3 data-number="8.0.1" class="anchored" data-anchor-id="remove-the-spikes-method-1.-mean-value---3-5sd"><span class="header-section-number">8.0.1</span> Remove the spikes Method 1. Mean value +- (3-5)SD</h3>
+<section id="remove-the-spikes-method-1.-mean-value---3-5sd" class="level3" data-number="6.0.1">
+<h3 data-number="6.0.1" class="anchored" data-anchor-id="remove-the-spikes-method-1.-mean-value---3-5sd"><span class="header-section-number">6.0.1</span> Remove the spikes Method 1. Mean value +- (3-5)SD</h3>
 <p>Method 2. Seasonal variations, and trend-mean</p>
 </section>
-<section id="save-dataset-in-folder-01_data_raw-1" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="save-dataset-in-folder-01_data_raw-1"><span class="header-section-number">8.1</span> Save dataset in folder: 01_data_raw</h2>
+<section id="save-dataset-in-folder-01_data_raw-1" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="save-dataset-in-folder-01_data_raw-1"><span class="header-section-number">6.1</span> Save dataset in folder: 01_data_raw</h2>
 </section>
 </section>
-<section id="tidy-data-1" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Tidy data</h1>
-<section id="fill-the-missing-data-1" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="fill-the-missing-data-1"><span class="header-section-number">9.1</span> Fill the missing data</h2>
+<section id="tidy-data-1" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Tidy data</h1>
+<section id="fill-the-missing-data-1" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="fill-the-missing-data-1"><span class="header-section-number">7.1</span> Fill the missing data</h2>
 <p>Method 1. Fill the gap Method 2. Relationship equation Method 3. Look-up table</p>
 </section>
-<section id="save-dataset-in-folder-02_data_tidy-1" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="save-dataset-in-folder-02_data_tidy-1"><span class="header-section-number">9.2</span> Save dataset in folder: 02_data_tidy</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [20]:</pre></div><div id="a5e17f62-f862-4752-b8a5-614fed058ccc" class="cell">
+<section id="save-dataset-in-folder-02_data_tidy-1" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="save-dataset-in-folder-02_data_tidy-1"><span class="header-section-number">7.2</span> Save dataset in folder: 02_data_tidy</h2>
+<div class="cell-container"><div class="cell-decorator"><pre>In [20]:</pre></div><div id="2583127e-eaeb-4ce2-8049-6a3ea89b6650" class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>library(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <p>Read a clean version of data:</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [21]:</pre></div><div id="1e66349d-bf96-473a-8704-7885d3409910" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [21]:</pre></div><div id="bce9a447-f03e-4f8a-942f-1281d6992f1e" class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>la_palma <span class="op">&lt;-</span> read_csv(<span class="st">"la-palma.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 11347 Columns: 5
@@ -834,7 +841,7 @@ dttm (1): DateTime
 <div id="fig-spatial-plot" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A scatterplot of earthquake locations plotting latitude against longitude.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-spatial-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="">
-<a href="index_files/figure-html/notebooks-01-earthquakes-fig-spatial-plot-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-glightbox="description: .lightbox-desc-4"><img src="index_files/figure-html/notebooks-01-earthquakes-fig-spatial-plot-output-1.png" class="img-fluid figure-img" alt="A scatterplot of earthquake locations plotting latitude against longitude."></a>
+<a href="index_files/figure-html/notebooks-01-earthquakes-fig-spatial-plot-output-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="quarto-lightbox-gallery-4"><img src="index_files/figure-html/notebooks-01-earthquakes-fig-spatial-plot-output-1.png" class="img-fluid figure-img" alt="A scatterplot of earthquake locations plotting latitude against longitude."></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Locations of earthquakes on La Palma since 2017
@@ -847,14 +854,14 @@ Figure&nbsp;4: Locations of earthquakes on La Palma since 2017
 </section>
 </div>
 <p><a href="#fig-spatial-plot" class="quarto-xref">Figure&nbsp;4</a> shows the location of recent Earthquakes on La Palma.</p>
-<section id="sec-results" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="sec-results"><span class="header-section-number">9.3</span> Results</h2>
+<section id="sec-results" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="sec-results"><span class="header-section-number">7.3</span> Results</h2>
 </section>
-<section id="sec-discussion" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="sec-discussion"><span class="header-section-number">9.4</span> Discussion</h2>
+<section id="sec-discussion" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="sec-discussion"><span class="header-section-number">7.4</span> Discussion</h2>
 </section>
-<section id="sec-conclusions" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="sec-conclusions"><span class="header-section-number">9.5</span> Conclusions</h2>
+<section id="sec-conclusions" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="sec-conclusions"><span class="header-section-number">7.5</span> Conclusions</h2>
 </section>
 <section id="references" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
@@ -1257,7 +1264,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox"});
+</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
