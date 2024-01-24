@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.4.548">
+    <meta name="generator" content="quarto-1.4.549">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -215,9 +215,9 @@
   <ul class="collapse">
   <li><a href="#produce-a-table-with-missing-data" id="toc-produce-a-table-with-missing-data" class="nav-link" data-scroll-target="#produce-a-table-with-missing-data">Produce a table with missing data</a></li>
   </ul></li>
+  <li><a href="#note-that" id="toc-note-that" class="nav-link" data-scroll-target="#note-that">Note that:</a></li>
   <li><a href="#remove-the-spikes-and-produce-an-extended-table" id="toc-remove-the-spikes-and-produce-an-extended-table" class="nav-link" data-scroll-target="#remove-the-spikes-and-produce-an-extended-table">Remove the spikes, and produce an extended table</a>
   <ul class="collapse">
-  <li><a href="#remove-the-spikes-method-1.-mean-value---3-5sd" id="toc-remove-the-spikes-method-1.-mean-value---3-5sd" class="nav-link" data-scroll-target="#remove-the-spikes-method-1.-mean-value---3-5sd">Remove the spikes Method 1. Mean value +- (3-5)SD</a></li>
   <li><a href="#save-dataset-in-folder-01_data_raw" id="toc-save-dataset-in-folder-01_data_raw" class="nav-link" data-scroll-target="#save-dataset-in-folder-01_data_raw">Save dataset in folder: 01_data_raw</a></li>
   </ul></li>
   <li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data">Tidy data</a>
@@ -257,114 +257,192 @@
 </div></div>
 <p>Remove the duplicates with the function of distinct(), assign the dataset as df_01:</p>
 <div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_01 <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_00 <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <section id="produce-a-table-with-missing-data" class="level2">
 <h2 class="anchored" data-anchor-id="produce-a-table-with-missing-data">Produce a table with missing data</h2>
-<p>For date options as year, month, etc:</p>
 <div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Year <span class="ot">&lt;-</span> df_01 <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  rowwise <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Station.name,Year) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">NA_date =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(Date)),</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM2 =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(PM2)),</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM10 =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(PM10)),</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_Vis =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Visibility)),</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_WD =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(WD)),</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_WS =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(WS)),</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_OPC =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(OPC))</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>            ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_000 <span class="ot">&lt;-</span> df_00 <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(Year<span class="sc">&lt;</span><span class="dv">2019</span> <span class="sc">&amp;</span> Year <span class="sc">&gt;</span><span class="dv">2008</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>df_01 <span class="ot">&lt;-</span> df_000 <span class="sc">|&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(Year, Month, Day, Hour, PM2, PM10, Visibility, WD, WS,   OPC, Station.name, Date) <span class="sc">|&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>((Year <span class="sc">!=</span> <span class="dv">2019</span> <span class="sc">&amp;</span> Station.name <span class="sc">==</span> <span class="st">"Zamynuud"</span>) <span class="sc">|</span> </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>       (Year <span class="sc">&lt;</span> <span class="dv">2016</span> <span class="sc">&amp;</span> Station.name <span class="sc">==</span> <span class="st">"Sainshand"</span>) <span class="sc">|</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>       (Year <span class="sc">&lt;</span> <span class="dv">2021</span> <span class="sc">&amp;</span> Station.name <span class="sc">==</span> <span class="st">"UB"</span>) <span class="sc">|</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>       (Year <span class="sc">&lt;</span> <span class="dv">2017</span> <span class="sc">&amp;</span> Station.name <span class="sc">==</span> <span class="st">"Dalanzadgad"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<p>For date options as year, month, etc:</p>
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Year <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Station.name,Year) <span class="sc">|&gt;</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">NA_date =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(Date)),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM2 =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(PM2)),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM10 =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(PM10)),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_Vis =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Visibility)),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_WD =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(WD)),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_WS =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(WS)),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_OPC =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(OPC))</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>            ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'Station.name'. You can override using the
 `.groups` argument.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 52 × 9
+<pre><code># A tibble: 35 × 9
 # Groups:   Station.name [4]
    Station.name  Year NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
    &lt;chr&gt;        &lt;int&gt;   &lt;int&gt;  &lt;int&gt;   &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;
- 1 Dalanzadgad   2008    4630   1543    1672   1463  1566  1566   4630
- 2 Dalanzadgad   2009    8760    715     929    659   748   748   8760
- 3 Dalanzadgad   2010    8784    921    1086    756   787   787   8784
- 4 Dalanzadgad   2011    8760   2652    3309   1759  2394  2394   8760
- 5 Dalanzadgad   2012    5088   1074    3016    693  1412  1412   5088
- 6 Dalanzadgad   2013    6096   1766    1809   2479  1240  1240   6096
- 7 Dalanzadgad   2014    7800    843     921   6068  1482  1482   7800
- 8 Dalanzadgad   2015    8760   1539    1587   8115  2635  2635   8760
- 9 Dalanzadgad   2016    6288   1654    1613   5995  3306  3306   6288
-10 Dalanzadgad   2017    3264     36      45   3264  3264  3264   3264
-# ℹ 42 more rows</code></pre>
+ 1 Dalanzadgad   2009    8760    715     929    659   748   748   8760
+ 2 Dalanzadgad   2010    8784    921    1086    756   787   787   8784
+ 3 Dalanzadgad   2011    8760   2652    3309   1759  2394  2394   8760
+ 4 Dalanzadgad   2012    5088   1074    3016    693  1412  1412   5088
+ 5 Dalanzadgad   2013    6096   1766    1809   2479  1240  1240   6096
+ 6 Dalanzadgad   2014    7800    843     921   6068  1482  1482   7800
+ 7 Dalanzadgad   2015    8760   1539    1587   8115  2635  2635   8760
+ 8 Dalanzadgad   2016    6288   1654    1613   5995  3306  3306   6288
+ 9 Sainshand     2009    8688    376     424    423   587   587   8688
+10 Sainshand     2010    8784   2557    2577   1113  1210  1210   8784
+# ℹ 25 more rows</code></pre>
 </div>
 </div></div>
 <p>For station</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Station <span class="ot">&lt;-</span> df_01 <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  rowwise <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Station.name) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">NA_date =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(Date)),</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM2 =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(PM2)),</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM10 =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(PM10)),</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_Vis =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Visibility)),</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_WD =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(WD)),</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_WS =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(WS)),</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_OPC =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(OPC))</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  ) </span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Station</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Station <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Station.name) <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">NA_date =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(Date)),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM2 =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(PM2)),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM10 =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(PM10)),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_Vis =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Visibility)),</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_WD =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(WD)),</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_WS =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(WS)),</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_OPC =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(OPC))</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Station</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 8
   Station.name NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
   &lt;chr&gt;          &lt;int&gt;  &lt;int&gt;   &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;
-1 Dalanzadgad    69454  13081   16327  32475 20058 20058  69454
-2 Sainshand     101230  27588   36117  28986 13768 13768 101230
-3 UB             95662   7895    8785   3775  4121  4121  62421
-4 Zamynuud       99742  32281   33597  22525  5373  5373  99742</code></pre>
+1 Dalanzadgad    60336  11164   14270  26524 14004 14004  60336
+2 Sainshand      59040  11727   11929   9320  8527  8527  59040
+3 UB             76656   7879    8716   3770  4053  4053  43415
+4 Zamynuud       67392   8880   10075   3444  4960  4960  67392</code></pre>
 </div>
 </div></div>
 <p>By percentages</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Station_percentage <span class="ot">&lt;-</span> df_01 <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  rowwise <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Station.name, Year) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">NA_date =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(Date)),</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM2 =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(PM2)),</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM10 =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(PM10)),</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_Vis =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Visibility)),</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_WD =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(WD)),</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_WS =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(WS)),</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_OPC =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(OPC))</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM2p =</span> <span class="fu">if_else</span>(NA_date <span class="sc">!=</span> NA_PM2, NA_PM2<span class="sc">/</span>NA_date<span class="sc">*</span><span class="dv">100</span>, <span class="dv">0</span>)</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do</span>({q <span class="ot">&lt;-</span> .<span class="sc">$</span>NA_PM2<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>.<span class="sc">$</span>NA_date; sdq <span class="ot">&lt;-</span> <span class="fu">sd</span>(q); <span class="fu">attr</span>(sdq, <span class="st">"data.all"</span>) <span class="ot">&lt;-</span> q; <span class="fu">data.frame</span>(sdq)}) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Station_percentage <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Station.name, Year) <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">NA_date =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(Date)),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM2 =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(PM2)),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM10 =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(PM10)),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_Vis =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Visibility)),</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_WD =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(WD)),</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_WS =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(WS)),</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_OPC =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(OPC))</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM2p =</span> <span class="fu">if_else</span>(NA_date <span class="sc">!=</span> NA_PM2, NA_PM2<span class="sc">/</span>NA_date<span class="sc">*</span><span class="dv">100</span>, <span class="dv">0</span>)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do</span>({</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    PM10_perc <span class="ot">&lt;-</span> .<span class="sc">$</span>NA_PM2<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>.<span class="sc">$</span>NA_date; </span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>      missing_PM10 <span class="ot">&lt;-</span><span class="fu">mean</span>(PM10_perc); </span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">attr</span>(missing_PM10, <span class="st">"data.all"</span>) <span class="ot">&lt;-</span> PM10_perc; </span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    PM2_perc <span class="ot">&lt;-</span> .<span class="sc">$</span>NA_PM10<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>.<span class="sc">$</span>NA_date; </span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>      missing_PM2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(PM2_perc); </span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">attr</span>(missing_PM2, <span class="st">"data.all"</span>) <span class="ot">&lt;-</span> PM2_perc;</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    Vis_perc <span class="ot">&lt;-</span> .<span class="sc">$</span>NA_Vis<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>.<span class="sc">$</span>NA_date; </span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>      missing_Vis <span class="ot">&lt;-</span> <span class="fu">mean</span>(Vis_perc); </span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">attr</span>(missing_Vis, <span class="st">"data.all"</span>) <span class="ot">&lt;-</span> Vis_perc; </span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    WS_perc <span class="ot">&lt;-</span> .<span class="sc">$</span>NA_WS<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>.<span class="sc">$</span>NA_date; </span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>      missing_WS <span class="ot">&lt;-</span> <span class="fu">mean</span>(WS_perc); </span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">attr</span>(missing_WS, <span class="st">"data.all"</span>) <span class="ot">&lt;-</span> WS_perc; </span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    WD_perc <span class="ot">&lt;-</span> .<span class="sc">$</span>NA_WD<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>.<span class="sc">$</span>NA_date; </span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>      missing_WD <span class="ot">&lt;-</span> <span class="fu">mean</span>(WD_perc); </span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>      <span class="fu">attr</span>(missing_WD, <span class="st">"data.all"</span>) <span class="ot">&lt;-</span> WD_perc; </span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(missing_PM2, missing_PM10, missing_Vis, missing_WS, missing_WD)}) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'Station.name'. You can override using the
 `.groups` argument.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a> Table_NA_by_Station_percentage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a> Table_NA_by_Station_percentage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 2
+<pre><code># A tibble: 4 × 6
 # Groups:   Station.name [4]
-  Station.name   sdq
-  &lt;chr&gt;        &lt;dbl&gt;
-1 Dalanzadgad   10.7
-2 Sainshand     25.9
-3 UB            17.9
-4 Zamynuud      39.6</code></pre>
+  Station.name missing_PM2 missing_PM10 missing_Vis missing_WS missing_WD
+  &lt;chr&gt;              &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
+1 Dalanzadgad         25.7         19.2       44.5       24.3       24.3 
+2 Sainshand           20.0         19.7       15.7       14.6       14.6 
+3 UB                  11.9         11.0        4.53       4.85       4.85
+4 Zamynuud            14.4         12.7        5.49       7.44       7.44</code></pre>
 </div>
 </div></div>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
 </section>
+</section>
+<section id="note-that" class="level1">
+<h1>Note that:</h1>
+<p>We use the data in the period of 2009-2018, which has been regarded as a monitoring work stabilized since 2008 when is the beginning of the monitoring. According to NIES, site maintenance was consistent up to 2018. - Sainshand site, data 2009-2015 get used; - Dalanzad site: 2009-2016. - UB: 2009-2018 - Zamyn uud: 2009-2018</p>
 </section>
 <section id="remove-the-spikes-and-produce-an-extended-table" class="level1">
 <h1>Remove the spikes, and produce an extended table</h1>
-<p>Remove the spikes in the datasets, and produce the table with NA, with removed spikes; express it in a percentages.</p>
-<section id="remove-the-spikes-method-1.-mean-value---3-5sd" class="level3">
-<h3 class="anchored" data-anchor-id="remove-the-spikes-method-1.-mean-value---3-5sd">Remove the spikes Method 1. Mean value +- (3-5)SD</h3>
-<p>Method 2. Seasonal variations, and trend-mean</p>
-</section>
+<p>Remove the spikes in the datasets, and produce the table with NA, with removed spikes; express it in a percentages. ### Remove the spikes Method 1. Mean value +- (3-5)SD - Find Monthly mean</p>
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_02 <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Station.name<span class="sc">==</span><span class="st">"UB"</span> ) <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(PM2, PM10) <span class="sc">|&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_at</span>(<span class="fu">vars</span>(PM2, PM10), </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                   <span class="sc">~</span> <span class="fu">ifelse</span>(<span class="fu">near</span>(., <span class="fu">mean</span>(.), <span class="fu">sd</span>(.) <span class="sc">*</span> <span class="dv">3</span>), ., <span class="st">"Outlier"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter_if</span>(is.character, <span class="fu">any_vars</span>(. <span class="sc">==</span> <span class="st">"Outlier"</span>))</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>df_02</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,798 × 12
+    Year Month   Day  Hour PM2   PM10  Visibility    WD    WS   OPC Station.name
+   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;       
+ 1  2009     1     2    17 Outl… 0.29        3622   141 0.524    NA UB          
+ 2  2009     1     3    12 Outl… 0.446       2399   109 0.117    NA UB          
+ 3  2009     1     3    13 Outl… 0.288       1347    17 0.492    NA UB          
+ 4  2009     1     3    14 Outl… 0.504       1241    12 0.829    NA UB          
+ 5  2009     1     3    15 Outl… 0.478       1341    11 0.39     NA UB          
+ 6  2009     1     3    16 Outl… 0.449       2945   136 0.123    NA UB          
+ 7  2009     1     3    18 Outl… 0.341       1436    13 0.742    NA UB          
+ 8  2009     1     3    19 Outl… 0.397       1847    13 0.453    NA UB          
+ 9  2009     1     3    20 Outl… 0.297       3359    22 0.462    NA UB          
+10  2009     1     4     2 Outl… 0.311       3167    96 0.759    NA UB          
+# ℹ 1,788 more rows
+# ℹ 1 more variable: Date &lt;chr&gt;</code></pre>
+</div>
+</div></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_02 <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(PM2, PM10) <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_at</span>(<span class="fu">vars</span>(PM2, PM10), </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                   <span class="sc">~</span> <span class="fu">ifelse</span>(<span class="fu">near</span>(., <span class="fu">mean</span>(., <span class="at">.by =</span> <span class="fu">c</span>(Station.name, Month)), <span class="fu">sd</span>(.) <span class="sc">*</span> <span class="dv">3</span>), ., <span class="st">"Outlier"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter_if</span>(is.character, <span class="fu">any_vars</span>(. <span class="sc">==</span> <span class="st">"Outlier"</span>))</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>df_02</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4,014 × 12
+    Year Month   Day  Hour PM2   PM10  Visibility    WD    WS   OPC Station.name
+   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;       
+ 1  2009     1     3    15 Outl… 0.292       3444   119 0.856    NA Dalanzadgad 
+ 2  2009     1     5    13 Outl… 0.419       1383   260 1.7      NA Dalanzadgad 
+ 3  2009     1     5    14 Outl… 0.415       1072   266 1.84     NA Dalanzadgad 
+ 4  2009     1     5    15 Outl… 0.466       1099   261 0.83     NA Dalanzadgad 
+ 5  2009     1     5    16 Outl… 0.509       1814   260 0.788    NA Dalanzadgad 
+ 6  2009     1     6     0 Outl… 0.547        744   248 1.23     NA Dalanzadgad 
+ 7  2009     1     6     1 Outl… 0.728       1093   277 0.738    NA Dalanzadgad 
+ 8  2009     1     6     2 Outl… 0.597       1723     0 1.62     NA Dalanzadgad 
+ 9  2009     1     6     3 Outl… 0.33        8186    95 1.1      NA Dalanzadgad 
+10  2009     1     6    11 Outl… 0.39        1150   258 1.48     NA Dalanzadgad 
+# ℹ 4,004 more rows
+# ℹ 1 more variable: Date &lt;chr&gt;</code></pre>
+</div>
+</div></div>
 <section id="save-dataset-in-folder-01_data_raw" class="level2">
 <h2 class="anchored" data-anchor-id="save-dataset-in-folder-01_data_raw">Save dataset in folder: 01_data_raw</h2>
 </section>

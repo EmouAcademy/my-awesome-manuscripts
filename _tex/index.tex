@@ -163,7 +163,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={PM2 and PM10 concentrations},
+  pdftitle={Temporal and spatial variations of PM2 and PM10 concentrations in Mongolia},
   pdfauthor={Erdenebayar Munkhtsetseg; Atsushi Shimizu},
   pdfkeywords={particulate matters, concentrations of PM10 and PM2.5},
   colorlinks=true,
@@ -178,7 +178,8 @@
 \draftfalse
 
 \begin{document}
-\title{PM2 and PM10 concentrations}
+\title{Temporal and spatial variations of PM2 and PM10 concentrations in
+Mongolia}
 
 \authors{Erdenebayar Munkhtsetseg\affil{1,2}, Atsushi Shimizu\affil{3}}
 \affiliation{1}{National University of Mongolia (NUM),
@@ -189,18 +190,148 @@ Japan, }\affiliation{3}{National Institute for Environmental Studies
 
 
 \begin{abstract}
-In September 2021, a significant jump in seismic activity on the island
-of La Palma (Canary Islands, Spain) signaled the start of a volcanic
-crisis that still continues at the time of writing. Earthquake data is
-continually collected and published by the Instituto Geográphico
-Nacional (IGN). \ldots{}
+PM2.5 and PM10 data for the 4 distinct sites of Mongolia from 2008 to
+2020 is found \ldots. \ldots{}
 \end{abstract}
 
 \section*{Plain Language Summary}
-Earthquake data for the island of La Palma from the September 2021
-eruption is found \ldots{}
+PM2.5 and PM10 data for the 4 distinct sites of Mongolia from 2008 to
+2020 is found \ldots{}
 
 
+
+\subsection{Data \& Methods}\label{sec-data-methods}
+
+\section{01\_datawork}\label{datawork}
+
+Munkhtsetseg
+
+Library
+
+\section{Import the dataset and remove the
+duplicates}\label{import-the-dataset-and-remove-the-duplicates}
+
+Import the dataset from the directory of: \textasciitilde/Data
+Input/Preprocessing data/Preprocessing data.csv, assign the dataset as
+object of df:
+
+Remove the duplicates with the function of distinct(), assign the
+dataset as df\_01:
+
+\subsection{Produce a table with missing
+data}\label{produce-a-table-with-missing-data}
+
+For date options as year, month, etc:
+
+\begin{verbatim}
+# A tibble: 35 × 9
+# Groups:   Station.name [4]
+   Station.name  Year NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
+   <chr>        <int>   <int>  <int>   <int>  <int> <int> <int>  <int>
+ 1 Dalanzadgad   2009    8760    715     929    659   748   748   8760
+ 2 Dalanzadgad   2010    8784    921    1086    756   787   787   8784
+ 3 Dalanzadgad   2011    8760   2652    3309   1759  2394  2394   8760
+ 4 Dalanzadgad   2012    5088   1074    3016    693  1412  1412   5088
+ 5 Dalanzadgad   2013    6096   1766    1809   2479  1240  1240   6096
+ 6 Dalanzadgad   2014    7800    843     921   6068  1482  1482   7800
+ 7 Dalanzadgad   2015    8760   1539    1587   8115  2635  2635   8760
+ 8 Dalanzadgad   2016    6288   1654    1613   5995  3306  3306   6288
+ 9 Sainshand     2009    8688    376     424    423   587   587   8688
+10 Sainshand     2010    8784   2557    2577   1113  1210  1210   8784
+# ℹ 25 more rows
+\end{verbatim}
+
+For station
+
+\begin{verbatim}
+# A tibble: 4 × 8
+  Station.name NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
+  <chr>          <int>  <int>   <int>  <int> <int> <int>  <int>
+1 Dalanzadgad    60336  11164   14270  26524 14004 14004  60336
+2 Sainshand      59040  11727   11929   9320  8527  8527  59040
+3 UB             76656   7879    8716   3770  4053  4053  43415
+4 Zamynuud       67392   8880   10075   3444  4960  4960  67392
+\end{verbatim}
+
+By percentages
+
+\begin{verbatim}
+# A tibble: 4 × 6
+# Groups:   Station.name [4]
+  Station.name missing_PM2 missing_PM10 missing_Vis missing_WS missing_WD
+  <chr>              <dbl>        <dbl>       <dbl>      <dbl>      <dbl>
+1 Dalanzadgad         25.7         19.2       44.5       24.3       24.3 
+2 Sainshand           20.0         19.7       15.7       14.6       14.6 
+3 UB                  11.9         11.0        4.53       4.85       4.85
+4 Zamynuud            14.4         12.7        5.49       7.44       7.44
+\end{verbatim}
+
+\section{Note that:}\label{note-that}
+
+We use the data in the period of 2009-2018, which has been regarded as a
+monitoring work stabilized since 2008 when is the beginning of the
+monitoring. According to NIES, site maintenance was consistent up to
+2018. - Sainshand site, data 2009-2015 get used; - Dalanzad site:
+2009-2016. - UB: 2009-2018 - Zamyn uud: 2009-2018
+
+\section{Remove the spikes, and produce an extended
+table}\label{remove-the-spikes-and-produce-an-extended-table}
+
+Remove the spikes in the datasets, and produce the table with NA, with
+removed spikes; express it in a percentages. \#\#\# Remove the spikes
+Method 1. Mean value +- (3-5)SD - Find Monthly mean
+
+\begin{verbatim}
+# A tibble: 1,798 × 12
+    Year Month   Day  Hour PM2   PM10  Visibility    WD    WS   OPC Station.name
+   <int> <int> <int> <int> <chr> <chr>      <int> <int> <dbl> <int> <chr>       
+ 1  2009     1     2    17 Outl… 0.29        3622   141 0.524    NA UB          
+ 2  2009     1     3    12 Outl… 0.446       2399   109 0.117    NA UB          
+ 3  2009     1     3    13 Outl… 0.288       1347    17 0.492    NA UB          
+ 4  2009     1     3    14 Outl… 0.504       1241    12 0.829    NA UB          
+ 5  2009     1     3    15 Outl… 0.478       1341    11 0.39     NA UB          
+ 6  2009     1     3    16 Outl… 0.449       2945   136 0.123    NA UB          
+ 7  2009     1     3    18 Outl… 0.341       1436    13 0.742    NA UB          
+ 8  2009     1     3    19 Outl… 0.397       1847    13 0.453    NA UB          
+ 9  2009     1     3    20 Outl… 0.297       3359    22 0.462    NA UB          
+10  2009     1     4     2 Outl… 0.311       3167    96 0.759    NA UB          
+# ℹ 1,788 more rows
+# ℹ 1 more variable: Date <chr>
+\end{verbatim}
+
+\begin{verbatim}
+# A tibble: 4,014 × 12
+    Year Month   Day  Hour PM2   PM10  Visibility    WD    WS   OPC Station.name
+   <int> <int> <int> <int> <chr> <chr>      <int> <int> <dbl> <int> <chr>       
+ 1  2009     1     3    15 Outl… 0.292       3444   119 0.856    NA Dalanzadgad 
+ 2  2009     1     5    13 Outl… 0.419       1383   260 1.7      NA Dalanzadgad 
+ 3  2009     1     5    14 Outl… 0.415       1072   266 1.84     NA Dalanzadgad 
+ 4  2009     1     5    15 Outl… 0.466       1099   261 0.83     NA Dalanzadgad 
+ 5  2009     1     5    16 Outl… 0.509       1814   260 0.788    NA Dalanzadgad 
+ 6  2009     1     6     0 Outl… 0.547        744   248 1.23     NA Dalanzadgad 
+ 7  2009     1     6     1 Outl… 0.728       1093   277 0.738    NA Dalanzadgad 
+ 8  2009     1     6     2 Outl… 0.597       1723     0 1.62     NA Dalanzadgad 
+ 9  2009     1     6     3 Outl… 0.33        8186    95 1.1      NA Dalanzadgad 
+10  2009     1     6    11 Outl… 0.39        1150   258 1.48     NA Dalanzadgad 
+# ℹ 4,004 more rows
+# ℹ 1 more variable: Date <chr>
+\end{verbatim}
+
+\subsection{Save dataset in folder:
+01\_data\_raw}\label{save-dataset-in-folder-01_data_raw}
+
+\section{Tidy data}\label{tidy-data}
+
+\subsection{Fill the missing data}\label{fill-the-missing-data}
+
+Method 1. Fill the gap Method 2. Relationship equation Method 3. Look-up
+table
+
+\subsection{Save dataset in folder:
+02\_data\_tidy}\label{save-dataset-in-folder-02_data_tidy}
+
+\textsubscript{Source:
+\href{https://EmouAcademy.github.io/my-awesome-manuscripts/notebooks/01_datawork-preview.html\#f35a84c0-423e-4e48-bb71-ee0c707df98c}{01\_datawork}}
 
 \subsection{Introduction}\label{introduction}
 
@@ -320,7 +451,7 @@ Munkhtsetseg
 Library
 
 \section{Import the dataset and remove the
-duplicates}\label{import-the-dataset-and-remove-the-duplicates}
+duplicates}\label{import-the-dataset-and-remove-the-duplicates-1}
 
 Import the dataset from the directory of: \textasciitilde/Data
 Input/Preprocessing data/Preprocessing data.csv, assign the dataset as
@@ -330,7 +461,7 @@ Remove the duplicates with the function of distinct(), assign the
 dataset as df\_01:
 
 \subsection{Produce a table with missing
-data}\label{produce-a-table-with-missing-data}
+data}\label{produce-a-table-with-missing-data-1}
 
 For date options as year, month, etc:
 
@@ -381,7 +512,7 @@ Note that the \texttt{echo\ =\ FALSE} parameter was added to the code
 chunk to prevent printing of the R code that generated the plot.
 
 \section{Remove the spikes, and produce an extended
-table}\label{remove-the-spikes-and-produce-an-extended-table}
+table}\label{remove-the-spikes-and-produce-an-extended-table-1}
 
 Remove the spikes in the datasets, and produce the table with NA, with
 removed spikes; express it in a percentages.
@@ -392,17 +523,17 @@ removed spikes; express it in a percentages.
 Method 2. Seasonal variations, and trend-mean
 
 \subsection{Save dataset in folder:
-01\_data\_raw}\label{save-dataset-in-folder-01_data_raw}
+01\_data\_raw}\label{save-dataset-in-folder-01_data_raw-1}
 
-\section{Tidy data}\label{tidy-data}
+\section{Tidy data}\label{tidy-data-1}
 
-\subsection{Fill the missing data}\label{fill-the-missing-data}
+\subsection{Fill the missing data}\label{fill-the-missing-data-1}
 
 Method 1. Fill the gap Method 2. Relationship equation Method 3. Look-up
 table
 
 \subsection{Save dataset in folder:
-02\_data\_tidy}\label{save-dataset-in-folder-02_data_tidy}
+02\_data\_tidy}\label{save-dataset-in-folder-02_data_tidy-1}
 
 Read a clean version of data:
 
@@ -422,13 +553,11 @@ since 2017}
 \end{figure}%
 
 \textsubscript{Source:
-\href{https://EmouAcademy.github.io/my-awesome-manuscripts/notebooks/01-earthquakes-preview.html\#00f7f955-6d2f-4f9e-9800-046271588514}{Explore
+\href{https://EmouAcademy.github.io/my-awesome-manuscripts/notebooks/01-earthquakes-preview.html\#2671a8ae-4095-42b2-baed-da627795de37}{Explore
 Earthquakes}}
 
 Figure~\ref{fig-spatial-plot} shows the location of recent Earthquakes
 on La Palma.
-
-\subsection{Data \& Methods}\label{sec-data-methods}
 
 \subsection{Results}\label{sec-results}
 
