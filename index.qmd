@@ -39,6 +39,9 @@ citation:
 number-sections: true
 ---
 
+## Data & Methods {#sec-data-methods}
+{{< embed notebooks/01_datawork.qmd >}}
+
 ## Introduction
 
 ```{r}
@@ -65,13 +68,12 @@ avg_years_between_eruptions <- mean(diff(eruptions[-n_eruptions]))
 avg_years_between_eruptions
 ```
 
-<!--
+
 Based on data up to and including 1971, eruptions on La Palma happen every `r round(avg_years_between_eruptions, 1)` years on average.
 
 Studies of the magma systems feeding the volcano, such as @marrero2019, have proposed that there are two main magma reservoirs feeding the Cumbre Vieja volcano; one in the mantle (30-40km depth) which charges and in turn feeds a shallower crustal reservoir (10-20km depth).
 
--->
-@marrero2019
+
 Eight eruptions have been recorded since the late 1400s (@fig-timeline).
 
 Data and methods are discussed in @sec-data-methods.
@@ -110,8 +112,6 @@ kk
 
 @fig-spatial-plot shows the location of recent Earthquakes on La Palma.
 
-## Data & Methods {#sec-data-methods}
-{{< embed notebooks/01_datawork.qmd >}}
 
 ## Results {#sec-results}
 
