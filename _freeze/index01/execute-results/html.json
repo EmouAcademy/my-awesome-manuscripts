@@ -1,0 +1,15 @@
+{
+  "hash": "9ab27d05120ba9dc7991a7c0ae406da2",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: PM2 and PM10 concentrations\nauthor:\n  - name: Erdenebayar Munkhtsetseg \n    orcid: 0000-0001-9775-1924\n    corresponding: false\n    email: e.munkhtsetseg@yahoo.com\n    roles:\n      - Investigation\n      - Project administration\n      - Software\n      - Visualization\n    affiliations:\n      - National University of Mongolia (NUM), Mongolia\n      - Kanazawa University, Japan\n  - name: Atsushi Shimizu\n    orcid: 0000-0000-0000-0000\n    corresponding: true\n    email: shimizua@nies.go.jp\n    roles: \n      - Editing\n      - Revising\n    affiliations:\n      - National Institute for Environmental Studies (NIES), Japan\nkeywords:\n  - particulate matters\n  - concentrations of PM10 and PM2.5\nabstract: |\n  . ...\nplain-language-summary: |\n  PM2.5 and PM10 data for the 4 distinct sites of Mongolia from 2008 to 2020 is found ...\nkey-points:\n  - ...\n  - ....\ndate: last-modified\nbibliography: references.bib\ncitation:\n  container-title: Earth and Space Science\nnumber-sections: true\n---\n\n\n## Introduction\n\n\n::: {.cell}\n\n```{.r .cell-code .hidden}\nsites <- c(\"UB\", \"Dalanzadgad\", \"Sainshand\", \"Zamynuud\")\nn_sites <- length(sites)\n```\n:::\n\n\n## Data & Methods {#sec-data-methods}\n\n{{< embed notebooks/01_datawork.qmd >}}\n\n\n\n## Results {#sec-results}\n\n## Discussion {#sec-discussion}\n\n## Conclusions {#sec-conclusions}\n\n## References {.unnumbered}\n\n::: {#refs}\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
