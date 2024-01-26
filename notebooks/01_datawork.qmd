@@ -3,7 +3,6 @@ title: "01_datawork"
 author: "Munkhtsetseg"
 ---
 
-
 Library
 
 ```{r echo=FALSE}
@@ -13,7 +12,7 @@ library(ggplot2)
 
 ## Import the dataset and remove the duplicates
 
-Import the dataset from the directory of: ~/Data Input/Preprocessing data/Preprocessing data.csv, assign the dataset as object of df:
+Import the dataset from the directory of: \~/Data Input/Preprocessing data/Preprocessing data.csv, assign the dataset as object of df:
 
 ```{r}
 df <- read.csv("~/Data Input/Preprocessing data/Preprocessing data.csv")
@@ -23,7 +22,9 @@ Remove the duplicates with the function of distinct(), assign the dataset as df_
 
 ```{r}
 df_00 <- df |>
-  distinct()
+  distinct() |>
+  rename(correct_PM10 = PM2, correct_PM2 = PM10) |>
+  mutate(PM10=correct_PM10, PM2=correct_PM2, PM10_rel=PM10, PM2_rel=PM2, ratio = PM2/PM10)
 ```
 
 ## Produce a table with missing data
@@ -35,14 +36,13 @@ df_000 <- df_00 |>
 
 
 df_01 <- df_000 |>
-   select(Year, Month, Day, Hour, PM2, PM10, Visibility, WD, WS,   OPC, Station.name, Date) |>
   rowwise() |>
 filter((Year != 2019 & Station.name == "Zamynuud") | 
        (Year < 2016 & Station.name == "Sainshand") |
        (Year < 2021 & Station.name == "UB") |
        (Year < 2017 & Station.name == "Dalanzadgad")
        )
-
+head(df_01)
 ```
 
 #### For date options as year, month, etc:
@@ -63,6 +63,7 @@ Table_NA_by_Year
 ```
 
 #### For station
+
 ```{r}
 Table_NA_by_Station <- df_01 |>
   group_by(Station.name) |> 
@@ -78,6 +79,7 @@ Table_NA_by_Station
 ```
 
 ### By percentages
+
 ```{r df_01, echo=FALSE}
 Table_NA_by_Station_percentage <- df_01 |>
   group_by(Station.name, Year) |> 
@@ -113,52 +115,123 @@ Table_NA_by_Station_percentage <- df_01 |>
 ```
 
 ## Note that:
-We use the data in the period of 2009-2018, which has been regarded as a monitoring work stabilized since 2008 when is the beginning of the monitoring. According to NIES, site maintenance was consistent up to 2018. 
 
+We use the data in the period of 2009-2018, which has been regarded as a monitoring work stabilized since 2008 when is the beginning of the monitoring. According to NIES, site maintenance was consistent up to 2018.
 
-+Sainshand site, data 2009-2015 get used; 
-+ Dalanzad site: 2009-2016.
-+ UB: 2009-2018
-+ Zamyn uud: 2009-2018
-
++Sainshand site, data 2009-2015 get used; + Dalanzad site: 2009-2016. + UB: 2009-2018 + Zamyn uud: 2009-2018
 
 # Remove the spikes, and produce an extended table
-Remove the spikes in the datasets, and produce the table with NA, with removed spikes; express it in a percentages.
-### Remove the spikes
-Method 1. Mean value +- (3-5)SD
-- Find Monthly mean
+
+Remove the spikes in the datasets, and produce the table with NA, with removed spikes; express it in a percentages. #\| Comments\*kedjkdjk \### Remove the spikes Method 1. Mean value +- (3-5)SD - Find Monthly mean
+#| flow: 1st - Remove spikes PMs >10 mgm/hour is unreasonable.
+#|           - Exclude 0 values in PMs.
+
+
 ```{r}
-df_02 <- df_01 |>
-  filter(Station.name=="UB" ) |>
-  drop_na(PM2, PM10) |>
-    dplyr::mutate_at(vars(PM2, PM10), 
-                   ~ ifelse(near(., mean(.), sd(.) * 3), ., "Outlier")) |>
-  dplyr::filter_if(is.character, any_vars(. == "Outlier"))
-df_02
+df_10 <- df_01 |>
+  filter(PM10 < 0.003 | PM2 < 0.003) 
+head(df_10)
+ggplot(df_01)+
+  geom_line(aes(x = Date,  y = PM2 ))+
+  geom_col(aes(x = Date, y =PM10 )) +
+  facet_wrap(~Station.name)
+
+```
+#| flow: 2nd - ratio check. PM10 >= PM2.5
+```{r}
+df_01 |>
+  filter(ratio >1) |>
+  ggplot(aes(x=PM2, y=PM10, size=WS)) +
+  geom_point() +
+  facet_wrap(~Station.name)
+```
+
+#| flow: 2nd - ratio check. remove data of ratio>1
+```{r}
+df_01 <- df_01 |>
+  filter(PM2<10 & PM10<10 & PM10 != 0 & PM2 != 0 & ratio < 1) 
+head(df_01)
+    df_01 |>
+  ggplot(aes(x=PM2, y=PM10, size=WS)) +
+  geom_point() +
+  facet_wrap(~Station.name)
 ```
 
 
+
+#| flow: 2nd - Method 1. Mean value +- (3-5)SD - Monthly mean at stations
+#| output: false
+
+
+Option 1:
 ```{r}
-df_02 <- df_01 |>
+df_02a <- df_01 |>
+  group_by(Station.name, Month) |>
+  drop_na(PM2, PM10) |>
+  filter(PM2<10 & PM10<10) |>
+    dplyr::mutate_at(vars(PM2, PM10), 
+                   ~ ifelse(near(., mean(.), sd(.) * 3), ., "Outlier")) |>
+  dplyr::filter_if(is.character, any_vars(. == "Outlier"))
+df_02a
+
+  ggplot(df_02a, aes(x=Date, y=PM10_rel, color = Visibility, size=WS)) +
+  geom_point() +
+  facet_wrap(~Station.name)
+  
+    ggplot(df_02a, aes(x=Date, y=PM2_rel, color = Visibility, size=WS)) +
+  geom_point() +
+  facet_wrap(~Station.name)
+    
+      ggplot(df_02a, aes(x=Date, y=ratio, color = Visibility, size=WS)) +
+  geom_point() +
+  facet_wrap(~Station.name)
+```
+
+Option 2:
+```{r}
+df_02a1 <- df_01 |>
+  group_by(Station.name, Month) |>
+  drop_na(PM2, PM10) |>
+    drop_na(PM2, PM10) |>
+    dplyr::mutate_at(vars(PM2, PM10), 
+                   ~ ifelse(near(., mean(.), sd(.) * 3), ., mean(.)))
+df_02a1
+```
+
+```{r}
+df_02b <- df_01 |>
   drop_na(PM2, PM10) |>
     dplyr::mutate_at(vars(PM2, PM10), 
                    ~ ifelse(near(., mean(., .by = c(Station.name, Month)), sd(.) * 3), ., "Outlier")) |>
   dplyr::filter_if(is.character, any_vars(. == "Outlier"))
-df_02
+df_02b
+
+
+```
+
+```{r}
+df_02b1 <- df_01 |>
+  drop_na(PM2, PM10) |>
+    dplyr::mutate_at(vars(PM2, PM10), 
+                   ~ ifelse(near(., mean(., .by = c(Station.name, Month)), sd(.) * 3), ., mean(., .by =c(Station.name, Month)))) |>
+dplyr::filter_if(is.numeric, any_vars(. == mean(.)))
+df_02b1
 ```
 
 ## Save dataset in folder: 01_data_raw
+
 ```{r}
 
 ```
 
 # Tidy data
+
 ## Fill the missing data
-Method 1. Fill the gap
-Method 2. Relationship equation
-Method 3. Look-up table
+
+Method 1. Fill the gap Method 2. Relationship equation Method 3. Look-up table
 
 ## Save dataset in folder: 02_data_tidy
+
 ```{r}
 
 ```

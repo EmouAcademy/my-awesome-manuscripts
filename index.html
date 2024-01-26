@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.5.4">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Erdenebayar Munkhtsetseg">
 <meta name="author" content="Atsushi Shimizu">
-<meta name="dcterms.date" content="2024-01-24">
+<meta name="dcterms.date" content="2024-01-26">
 <meta name="keywords" content="particulate matters, concentrations of PM10 and PM2.5">
 
 <title>Temporal and spatial variations of PM2 and PM10 concentrations in Mongolia</title>
@@ -103,10 +103,10 @@ window.Quarto = {
 <meta name="citation_keywords" content="particulate matters,concentrations of PM10 and PM2.5">
 <meta name="citation_author" content="Erdenebayar Munkhtsetseg">
 <meta name="citation_author" content="Atsushi Shimizu">
-<meta name="citation_publication_date" content="2024-01-24">
-<meta name="citation_cover_date" content="2024-01-24">
+<meta name="citation_publication_date" content="2024-01-26">
+<meta name="citation_cover_date" content="2024-01-26">
 <meta name="citation_year" content="2024">
-<meta name="citation_online_date" content="2024-01-24">
+<meta name="citation_online_date" content="2024-01-26">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Earth and Space Science">
 <meta name="citation_reference" content="citation_title=Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands);,citation_author=José Marrero;,citation_author=Alicia García;,citation_author=Manuel Berrocoso;,citation_author=Ángeles Llinares;,citation_author=Antonio Rodríguez-Losada;,citation_author=R. Ortiz;,citation_publication_date=2019-07;,citation_cover_date=2019-07;,citation_year=2019;,citation_doi=10.1186/s13617-019-0085-5;,citation_volume=8;,citation_journal_title=Journal of Applied Volcanology;">
@@ -154,7 +154,7 @@ window.Quarto = {
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">January 24, 2024</p>
+              <p class="date">January 26, 2024</p>
             </div>
           </div>
           
@@ -194,9 +194,9 @@ window.Quarto = {
   <li><a href="#sec-conclusions" id="toc-sec-conclusions" class="nav-link" data-scroll-target="#sec-conclusions"><span class="header-section-number">7.5</span> Conclusions</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="index-preview.html"><i class="bi bi-journal-code"></i>Article Notebook</a></li><li><a href="notebooks/01-earthquakes-preview.html"><i class="bi bi-journal-code"></i>Explore Earthquakes</a></li><li><a href="notebooks/explore-earthquakes-preview.html"><i class="bi bi-journal-code"></i>Explore Earthquakes</a></li><li><a href="notebooks/01_datawork-preview.html"><i class="bi bi-journal-code"></i>01_datawork</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks/01_datawork-preview.html"><i class="bi bi-journal-code"></i>01_datawork</a></li><li><a href="index-preview.html"><i class="bi bi-journal-code"></i>Article Notebook</a></li><li><a href="notebooks/01-earthquakes-preview.html"><i class="bi bi-journal-code"></i>Explore Earthquakes</a></li><li><a href="notebooks/explore-earthquakes-preview.html"><i class="bi bi-journal-code"></i>Explore Earthquakes</a></li></ul></div></nav>
 </div>
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -220,56 +220,72 @@ window.Quarto = {
 </section>
 <section id="produce-a-table-with-missing-data" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="produce-a-table-with-missing-data"><span class="header-section-number">1.2</span> Produce a table with missing data</h2>
+<div id="99234277-33a9-4b3b-8a31-f74bb6fa939b" class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 19
+# Rowwise: 
+   Year Month   Day  Hour correct_PM10 correct_PM2 Visibility    WD    WS   WS.u
+  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;      &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;
+1  2009     1     1     0        0.087       0.073       3366   252 1.08   1.02 
+2  2009     1     1     1        0.2         0.175       1999   317 0.546  0.374
+3  2009     1     1     2        0.309       0.266       6756    87 1.03  -1.03 
+4  2009     1     1     3        0.105       0.089       9559   121 1.03  -0.885
+5  2009     1     1     4        0.063       0.052      17664   121 0.46  -0.393
+6  2009     1     1     5        0.027       0.021      11348    92 2.05  -2.05 
+# ℹ 9 more variables: WS.v &lt;dbl&gt;, OPC &lt;int&gt;, Station.name &lt;chr&gt;, Date &lt;chr&gt;,
+#   PM10 &lt;dbl&gt;, PM2 &lt;dbl&gt;, PM10_rel &lt;dbl&gt;, PM2_rel &lt;dbl&gt;, ratio &lt;dbl&gt;</code></pre>
+</div>
+<a class="quarto-notebook-link" id="nblink-1" href="index-preview.html#99234277-33a9-4b3b-8a31-f74bb6fa939b">Source: Article Notebook</a></div>
 <section id="for-date-options-as-year-month-etc" class="level4" data-number="1.2.0.1">
 <h4 data-number="1.2.0.1" class="anchored" data-anchor-id="for-date-options-as-year-month-etc"><span class="header-section-number">1.2.0.1</span> For date options as year, month, etc:</h4>
-<div id="036baae5-46d6-4593-ba46-bf097d78ce93" class="cell">
+<div id="1506be60-c6ce-48dc-8dc2-7f05ed74c010" class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 35 × 9
 # Groups:   Station.name [4]
    Station.name  Year NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
    &lt;chr&gt;        &lt;int&gt;   &lt;int&gt;  &lt;int&gt;   &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;
- 1 Dalanzadgad   2009    8760    715     929    659   748   748   8760
- 2 Dalanzadgad   2010    8784    921    1086    756   787   787   8784
- 3 Dalanzadgad   2011    8760   2652    3309   1759  2394  2394   8760
- 4 Dalanzadgad   2012    5088   1074    3016    693  1412  1412   5088
- 5 Dalanzadgad   2013    6096   1766    1809   2479  1240  1240   6096
- 6 Dalanzadgad   2014    7800    843     921   6068  1482  1482   7800
- 7 Dalanzadgad   2015    8760   1539    1587   8115  2635  2635   8760
- 8 Dalanzadgad   2016    6288   1654    1613   5995  3306  3306   6288
- 9 Sainshand     2009    8688    376     424    423   587   587   8688
-10 Sainshand     2010    8784   2557    2577   1113  1210  1210   8784
+ 1 Dalanzadgad   2009    8760    929     715    659   748   748   8760
+ 2 Dalanzadgad   2010    8784   1086     921    756   787   787   8784
+ 3 Dalanzadgad   2011    8760   3309    2652   1759  2394  2394   8760
+ 4 Dalanzadgad   2012    5088   3016    1074    693  1412  1412   5088
+ 5 Dalanzadgad   2013    6096   1809    1766   2479  1240  1240   6096
+ 6 Dalanzadgad   2014    7800    921     843   6068  1482  1482   7800
+ 7 Dalanzadgad   2015    8760   1587    1539   8115  2635  2635   8760
+ 8 Dalanzadgad   2016    6288   1613    1654   5995  3306  3306   6288
+ 9 Sainshand     2009    8688    424     376    423   587   587   8688
+10 Sainshand     2010    8784   2577    2557   1113  1210  1210   8784
 # ℹ 25 more rows</code></pre>
 </div>
-<a class="quarto-notebook-link" id="nblink-1" href="index-preview.html#036baae5-46d6-4593-ba46-bf097d78ce93">Source: Article Notebook</a></div>
+</div>
 </section>
 <section id="for-station" class="level4" data-number="1.2.0.2">
 <h4 data-number="1.2.0.2" class="anchored" data-anchor-id="for-station"><span class="header-section-number">1.2.0.2</span> For station</h4>
-<div id="8d900208-eb0d-4038-9a94-edbf35bbbc1b" class="cell">
+<div id="64fcdbac-6a20-4048-bd43-6d88dc8e5e1f" class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 8
   Station.name NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
   &lt;chr&gt;          &lt;int&gt;  &lt;int&gt;   &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;
-1 Dalanzadgad    60336  11164   14270  26524 14004 14004  60336
-2 Sainshand      59040  11727   11929   9320  8527  8527  59040
-3 UB             76656   7879    8716   3770  4053  4053  43415
-4 Zamynuud       67392   8880   10075   3444  4960  4960  67392</code></pre>
+1 Dalanzadgad    60336  14270   11164  26524 14004 14004  60336
+2 Sainshand      59040  11929   11727   9320  8527  8527  59040
+3 UB             76656   8716    7879   3770  4053  4053  43415
+4 Zamynuud       67392  10075    8880   3444  4960  4960  67392</code></pre>
 </div>
-<a class="quarto-notebook-link" id="nblink-2" href="index-preview.html#8d900208-eb0d-4038-9a94-edbf35bbbc1b">Source: Article Notebook</a></div>
+</div>
 </section>
 <section id="by-percentages" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="by-percentages"><span class="header-section-number">1.2.1</span> By percentages</h3>
-<div id="db87019e-f720-4395-95b1-f7d171609c9c" class="cell">
+<div id="3f725bb7-058a-4f3b-9266-3fd8524d63f4" class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 6
 # Groups:   Station.name [4]
   Station.name missing_PM2 missing_PM10 missing_Vis missing_WS missing_WD
   &lt;chr&gt;              &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
-1 Dalanzadgad         25.7         19.2       44.5       24.3       24.3 
-2 Sainshand           20.0         19.7       15.7       14.6       14.6 
-3 UB                  11.9         11.0        4.53       4.85       4.85
-4 Zamynuud            14.4         12.7        5.49       7.44       7.44</code></pre>
+1 Dalanzadgad         19.2         25.7       44.5       24.3       24.3 
+2 Sainshand           19.7         20.0       15.7       14.6       14.6 
+3 UB                  11.0         11.9        4.53       4.85       4.85
+4 Zamynuud            12.7         14.4        5.49       7.44       7.44</code></pre>
 </div>
-<a class="quarto-notebook-link" id="nblink-3" href="index-preview.html#db87019e-f720-4395-95b1-f7d171609c9c">Source: Article Notebook</a></div>
+</div>
 </section>
 </section>
 <section id="note-that" class="level2" data-number="1.3">
@@ -280,45 +296,163 @@ window.Quarto = {
 </section>
 <section id="remove-the-spikes-and-produce-an-extended-table" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Remove the spikes, and produce an extended table</h1>
-<p>Remove the spikes in the datasets, and produce the table with NA, with removed spikes; express it in a percentages. ### Remove the spikes Method 1. Mean value +- (3-5)SD - Find Monthly mean</p>
-<div id="ebeb52cd-fd9c-405a-b49e-fc244a774242" class="cell">
+<p>Remove the spikes in the datasets, and produce the table with NA, with removed spikes; express it in a percentages. #| Comments*kedjkdjk ### Remove the spikes Method 1. Mean value +- (3-5)SD - Find Monthly mean #| flow: 1st - Remove spikes PMs &gt;10 mgm/hour is unreasonable. #| - Exclude 0 values in PMs.</p>
+<div id="6f0a3ce5-6081-4748-9df8-235824ea5ab8" class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,798 × 12
-    Year Month   Day  Hour PM2   PM10  Visibility    WD    WS   OPC Station.name
-   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;       
- 1  2009     1     2    17 Outl… 0.29        3622   141 0.524    NA UB          
- 2  2009     1     3    12 Outl… 0.446       2399   109 0.117    NA UB          
- 3  2009     1     3    13 Outl… 0.288       1347    17 0.492    NA UB          
- 4  2009     1     3    14 Outl… 0.504       1241    12 0.829    NA UB          
- 5  2009     1     3    15 Outl… 0.478       1341    11 0.39     NA UB          
- 6  2009     1     3    16 Outl… 0.449       2945   136 0.123    NA UB          
- 7  2009     1     3    18 Outl… 0.341       1436    13 0.742    NA UB          
- 8  2009     1     3    19 Outl… 0.397       1847    13 0.453    NA UB          
- 9  2009     1     3    20 Outl… 0.297       3359    22 0.462    NA UB          
-10  2009     1     4     2 Outl… 0.311       3167    96 0.759    NA UB          
-# ℹ 1,788 more rows
-# ℹ 1 more variable: Date &lt;chr&gt;</code></pre>
+<pre><code># A tibble: 6 × 19
+# Rowwise: 
+   Year Month   Day  Hour correct_PM10 correct_PM2 Visibility    WD    WS  WS.u
+  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;      &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+1  2009     1     9    21        0.003       0.002      20000    NA NA    NA   
+2  2009     1    16    19        0.006       0.001      20000   278  7.14  7.08
+3  2009     1    16    20        0.005       0.001      20000   276  6.42  6.38
+4  2009     1    16    22        0.008       0.002      20000   276  7.74  7.71
+5  2009     1    16    23        0.007       0.002      20000   286  5.55  5.33
+6  2009     2     5    19        0.006       0.001      20000   274  3.49  3.49
+# ℹ 9 more variables: WS.v &lt;dbl&gt;, OPC &lt;int&gt;, Station.name &lt;chr&gt;, Date &lt;chr&gt;,
+#   PM10 &lt;dbl&gt;, PM2 &lt;dbl&gt;, PM10_rel &lt;dbl&gt;, PM2_rel &lt;dbl&gt;, ratio &lt;dbl&gt;</code></pre>
 </div>
-<a class="quarto-notebook-link" id="nblink-4" href="index-preview.html#ebeb52cd-fd9c-405a-b49e-fc244a774242">Source: Article Notebook</a></div>
-<div id="79734ea6-d1cd-4ca8-8f43-0ede2bfd83c7" class="cell">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/notebooks-01_datawork-cell-9-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="index_files/figure-html/notebooks-01_datawork-cell-9-output-3.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>#| flow: 2nd - ratio check. PM10 &gt;= PM2.5</p>
+<div id="6241b780-e25f-4d2c-8fc2-07c154036f93" class="cell">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/notebooks-01_datawork-cell-10-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="index_files/figure-html/notebooks-01_datawork-cell-10-output-2.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>#| flow: 2nd - ratio check. remove data of ratio&gt;1</p>
+<div id="5ae83202-85a4-4325-81fa-a6f2f0b0d39f" class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4,014 × 12
-    Year Month   Day  Hour PM2   PM10  Visibility    WD    WS   OPC Station.name
-   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;       
- 1  2009     1     3    15 Outl… 0.292       3444   119 0.856    NA Dalanzadgad 
- 2  2009     1     5    13 Outl… 0.419       1383   260 1.7      NA Dalanzadgad 
- 3  2009     1     5    14 Outl… 0.415       1072   266 1.84     NA Dalanzadgad 
- 4  2009     1     5    15 Outl… 0.466       1099   261 0.83     NA Dalanzadgad 
- 5  2009     1     5    16 Outl… 0.509       1814   260 0.788    NA Dalanzadgad 
- 6  2009     1     6     0 Outl… 0.547        744   248 1.23     NA Dalanzadgad 
- 7  2009     1     6     1 Outl… 0.728       1093   277 0.738    NA Dalanzadgad 
- 8  2009     1     6     2 Outl… 0.597       1723     0 1.62     NA Dalanzadgad 
- 9  2009     1     6     3 Outl… 0.33        8186    95 1.1      NA Dalanzadgad 
-10  2009     1     6    11 Outl… 0.39        1150   258 1.48     NA Dalanzadgad 
-# ℹ 4,004 more rows
-# ℹ 1 more variable: Date &lt;chr&gt;</code></pre>
+<pre><code># A tibble: 6 × 19
+# Rowwise: 
+   Year Month   Day  Hour correct_PM10 correct_PM2 Visibility    WD    WS   WS.u
+  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;      &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;
+1  2009     1     1     0        0.087       0.073       3366   252 1.08   1.02 
+2  2009     1     1     1        0.2         0.175       1999   317 0.546  0.374
+3  2009     1     1     2        0.309       0.266       6756    87 1.03  -1.03 
+4  2009     1     1     3        0.105       0.089       9559   121 1.03  -0.885
+5  2009     1     1     4        0.063       0.052      17664   121 0.46  -0.393
+6  2009     1     1     5        0.027       0.021      11348    92 2.05  -2.05 
+# ℹ 9 more variables: WS.v &lt;dbl&gt;, OPC &lt;int&gt;, Station.name &lt;chr&gt;, Date &lt;chr&gt;,
+#   PM10 &lt;dbl&gt;, PM2 &lt;dbl&gt;, PM10_rel &lt;dbl&gt;, PM2_rel &lt;dbl&gt;, ratio &lt;dbl&gt;</code></pre>
 </div>
-<a class="quarto-notebook-link" id="nblink-5" href="index-preview.html#79734ea6-d1cd-4ca8-8f43-0ede2bfd83c7">Source: Article Notebook</a></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/notebooks-01_datawork-cell-11-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="index_files/figure-html/notebooks-01_datawork-cell-11-output-3.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>#| flow: 2nd - Method 1. Mean value +- (3-5)SD - Monthly mean at stations #| output: false</p>
+<p>Option 1:</p>
+<div id="35063d80-39e9-4361-be3e-9377053d8108" class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2,637 × 19
+# Groups:   Station.name, Month [48]
+    Year Month   Day  Hour correct_PM10 correct_PM2 Visibility    WD    WS
+   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;      &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
+ 1  2009     1     5    16        0.594       0.509       1814   260 0.788
+ 2  2009     1     6     0        0.641       0.547        744   248 1.23 
+ 3  2009     1     6     1        0.867       0.728       1093   277 0.738
+ 4  2009     1     6     2        0.705       0.597       1723     0 1.62 
+ 5  2009     1     9     1        0.756       0.656        992   292 0.429
+ 6  2009     1     9     2        0.709       0.612       2098    55 1    
+ 7  2009     1    15    12        0.818       0.718       5941   147 0.633
+ 8  2009     1    16     1        0.742       0.556       2125   120 0.274
+ 9  2009     1    30     1        0.915       0.797       1315     9 0.366
+10  2009     1    30     2        0.601       0.507       2485   309 0.713
+# ℹ 2,627 more rows
+# ℹ 10 more variables: WS.u &lt;dbl&gt;, WS.v &lt;dbl&gt;, OPC &lt;int&gt;, Station.name &lt;chr&gt;,
+#   Date &lt;chr&gt;, PM10 &lt;chr&gt;, PM2 &lt;chr&gt;, PM10_rel &lt;dbl&gt;, PM2_rel &lt;dbl&gt;,
+#   ratio &lt;dbl&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/notebooks-01_datawork-cell-12-output-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="index_files/figure-html/notebooks-01_datawork-cell-12-output-3.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/notebooks-01_datawork-cell-12-output-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="index_files/figure-html/notebooks-01_datawork-cell-12-output-4.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/notebooks-01_datawork-cell-12-output-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="index_files/figure-html/notebooks-01_datawork-cell-12-output-5.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Option 2:</p>
+<div id="e9482c3d-a98f-47a1-a9f3-1fe3baddf7e4" class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 118,482 × 19
+# Groups:   Station.name, Month [48]
+    Year Month   Day  Hour correct_PM10 correct_PM2 Visibility    WD    WS
+   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;      &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
+ 1  2009     1     1     0        0.087       0.073       3366   252 1.08 
+ 2  2009     1     1     1        0.2         0.175       1999   317 0.546
+ 3  2009     1     1     2        0.309       0.266       6756    87 1.03 
+ 4  2009     1     1     3        0.105       0.089       9559   121 1.03 
+ 5  2009     1     1     4        0.063       0.052      17664   121 0.46 
+ 6  2009     1     1     5        0.027       0.021      11348    92 2.05 
+ 7  2009     1     1     6        0.065       0.055      15397     0 1.6  
+ 8  2009     1     1     7        0.03        0.023      20000   300 1.74 
+ 9  2009     1     1     8        0.013       0.01       17384   305 1.29 
+10  2009     1     1     9        0.029       0.023       9322   324 2.96 
+# ℹ 118,472 more rows
+# ℹ 10 more variables: WS.u &lt;dbl&gt;, WS.v &lt;dbl&gt;, OPC &lt;int&gt;, Station.name &lt;chr&gt;,
+#   Date &lt;chr&gt;, PM10 &lt;dbl&gt;, PM2 &lt;dbl&gt;, PM10_rel &lt;dbl&gt;, PM2_rel &lt;dbl&gt;,
+#   ratio &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div id="99a92a01-a33d-4ae4-93b3-64520ef97bd7" class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,267 × 19
+    Year Month   Day  Hour correct_PM10 correct_PM2 Visibility    WD    WS
+   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;      &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
+ 1  2009     1     1     2        0.309       0.266       6756    87 1.03 
+ 2  2009     1     3    15        0.351       0.292       3444   119 0.856
+ 3  2009     1     5     1        0.313       0.271       3392   275 2.56 
+ 4  2009     1     5    13        0.482       0.419       1383   260 1.7  
+ 5  2009     1     5    14        0.482       0.415       1072   266 1.84 
+ 6  2009     1     5    15        0.549       0.466       1099   261 0.83 
+ 7  2009     1     5    16        0.594       0.509       1814   260 0.788
+ 8  2009     1     6     0        0.641       0.547        744   248 1.23 
+ 9  2009     1     6     1        0.867       0.728       1093   277 0.738
+10  2009     1     6     2        0.705       0.597       1723     0 1.62 
+# ℹ 3,257 more rows
+# ℹ 10 more variables: WS.u &lt;dbl&gt;, WS.v &lt;dbl&gt;, OPC &lt;int&gt;, Station.name &lt;chr&gt;,
+#   Date &lt;chr&gt;, PM10 &lt;chr&gt;, PM2 &lt;chr&gt;, PM10_rel &lt;dbl&gt;, PM2_rel &lt;dbl&gt;,
+#   ratio &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div id="43d1222b-d72c-4fe7-ab4b-3877ee242f85" class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 0 × 19
+# ℹ 19 variables: Year &lt;int&gt;, Month &lt;int&gt;, Day &lt;int&gt;, Hour &lt;int&gt;,
+#   correct_PM10 &lt;dbl&gt;, correct_PM2 &lt;dbl&gt;, Visibility &lt;int&gt;, WD &lt;int&gt;,
+#   WS &lt;dbl&gt;, WS.u &lt;dbl&gt;, WS.v &lt;dbl&gt;, OPC &lt;int&gt;, Station.name &lt;chr&gt;,
+#   Date &lt;chr&gt;, PM10 &lt;dbl&gt;, PM2 &lt;dbl&gt;, PM10_rel &lt;dbl&gt;, PM2_rel &lt;dbl&gt;,
+#   ratio &lt;dbl&gt;</code></pre>
+</div>
+</div>
 <section id="save-dataset-in-folder-01_data_raw" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="save-dataset-in-folder-01_data_raw"><span class="header-section-number">2.1</span> Save dataset in folder: 01_data_raw</h2>
 </section>
@@ -333,7 +467,7 @@ window.Quarto = {
 <h2 data-number="3.2" class="anchored" data-anchor-id="save-dataset-in-folder-02_data_tidy"><span class="header-section-number">3.2</span> Save dataset in folder: 02_data_tidy</h2>
 </section>
 </section>
-<a class="quarto-notebook-link" id="nblink-11" href="notebooks/01_datawork-preview.html#5fdcfffa-f2a7-4d02-8ea6-db89fdfaaa29">Source: 01_datawork</a></div>
+</div>
 <section id="introduction" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="introduction"><span class="header-section-number">3.3</span> Introduction</h2>
 <div id="cell-fig-timeline" class="cell">
@@ -341,7 +475,7 @@ window.Quarto = {
 <div id="fig-timeline" class="quarto-figure quarto-figure-center quarto-float anchored" alt="An event plot of the years of the last 8 eruptions on La Palma.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-timeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="index_files/figure-html/fig-timeline-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="index_files/figure-html/fig-timeline-1.png" class="img-fluid figure-img" alt="An event plot of the years of the last 8 eruptions on La Palma." width="576"></a>
+<a href="index_files/figure-html/fig-timeline-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-7" data-gallery="quarto-lightbox-gallery-7"><img src="index_files/figure-html/fig-timeline-1.png" class="img-fluid figure-img" alt="An event plot of the years of the last 8 eruptions on La Palma." width="576"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-timeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Timeline of recent earthquakes on La Palma
@@ -349,7 +483,7 @@ Figure&nbsp;1: Timeline of recent earthquakes on La Palma
 </figure>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-6" href="index-preview.html#cell-fig-timeline">Source: Article Notebook</a></div>
+</div>
 <p>Based on data up to and including 1971, eruptions on La Palma happen every 79.8 years on average.</p>
 <p>Studies of the magma systems feeding the volcano, such as <span class="citation" data-cites="marrero2019">Marrero et al. (<a href="#ref-marrero2019" role="doc-biblioref">2019</a>)</span>, have proposed that there are two main magma reservoirs feeding the Cumbre Vieja volcano; one in the mantle (30-40km depth) which charges and in turn feeds a shallower crustal reservoir (10-20km depth).</p>
 <p>Eight eruptions have been recorded since the late 1400s (<a href="#fig-timeline" class="quarto-xref">Figure&nbsp;1</a>).</p>
@@ -414,7 +548,7 @@ Table&nbsp;1: Recent historic eruptions on La Palma
 <div id="fig-map" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/la-palma-map.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2"><img src="images/la-palma-map.png" class="img-fluid figure-img"></a>
+<a href="images/la-palma-map.png" class="lightbox" data-glightbox="description: .lightbox-desc-8" data-gallery="quarto-lightbox-gallery-8"><img src="images/la-palma-map.png" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-map-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Map of La Palma
@@ -428,7 +562,7 @@ Figure&nbsp;2: Map of La Palma
 <div id="fig-spatial-plot" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A scatterplot of earthquake locations plotting latitude against longitude.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-spatial-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="index_files/figure-html/notebooks-explore-earthquakes-fig-spatial-plot-output-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3"><img src="index_files/figure-html/notebooks-explore-earthquakes-fig-spatial-plot-output-1.png" class="img-fluid figure-img" alt="A scatterplot of earthquake locations plotting latitude against longitude."></a>
+<a href="index_files/figure-html/notebooks-explore-earthquakes-fig-spatial-plot-output-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-9" data-gallery="quarto-lightbox-gallery-9"><img src="index_files/figure-html/notebooks-explore-earthquakes-fig-spatial-plot-output-1.png" class="img-fluid figure-img" alt="A scatterplot of earthquake locations plotting latitude against longitude."></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Locations of earthquakes on La Palma since 2017
@@ -437,7 +571,7 @@ Figure&nbsp;3: Locations of earthquakes on La Palma since 2017
 </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-12" href="notebooks/explore-earthquakes-preview.html#cell-fig-spatial-plot">Source: Explore Earthquakes</a></div>
+</div>
 <p>kk</p>
 </section>
 <div class="quarto-embed-nb-cell">
@@ -453,7 +587,7 @@ Figure&nbsp;3: Locations of earthquakes on La Palma since 2017
 <section id="produce-a-table-with-missing-data-1" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="produce-a-table-with-missing-data-1"><span class="header-section-number">5.1</span> Produce a table with missing data</h2>
 <p>For date options as year, month, etc:</p>
-<div id="244460a2-4a33-42c0-a4d3-50388c684380" class="cell">
+<div id="f5473472-0d57-4c3c-9b45-f5367ea4ba8d" class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 52 × 9
 # Groups:   Station.name [4]
@@ -471,9 +605,9 @@ Figure&nbsp;3: Locations of earthquakes on La Palma since 2017
 10 Dalanzadgad   2017    3264     36      45   3264  3264  3264   3264
 # ℹ 42 more rows</code></pre>
 </div>
-<a class="quarto-notebook-link" id="nblink-7" href="index-preview.html#244460a2-4a33-42c0-a4d3-50388c684380">Source: Article Notebook</a></div>
+</div>
 <p>For station</p>
-<div id="9f9983f3-616c-4834-b713-16934dd1b931" class="cell">
+<div id="a64ae24c-9a84-42a6-97bb-b3c2d2668a70" class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 8
   Station.name NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
@@ -483,9 +617,9 @@ Figure&nbsp;3: Locations of earthquakes on La Palma since 2017
 3 UB             95662   7895    8785   3775  4121  4121  62421
 4 Zamynuud       99742  32281   33597  22525  5373  5373  99742</code></pre>
 </div>
-<a class="quarto-notebook-link" id="nblink-8" href="index-preview.html#9f9983f3-616c-4834-b713-16934dd1b931">Source: Article Notebook</a></div>
+</div>
 <p>By percentages</p>
-<div id="7943c730-4e8a-4a34-9d87-f74c9fd9a5de" class="cell">
+<div id="99201f5f-348f-4a9f-bf41-518f787ad35b" class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 2
 # Groups:   Station.name [4]
@@ -496,7 +630,7 @@ Figure&nbsp;3: Locations of earthquakes on La Palma since 2017
 3 UB            17.9
 4 Zamynuud      39.6</code></pre>
 </div>
-<a class="quarto-notebook-link" id="nblink-9" href="index-preview.html#7943c730-4e8a-4a34-9d87-f74c9fd9a5de">Source: Article Notebook</a></div>
+</div>
 <p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
 </section>
 </section>
@@ -526,7 +660,7 @@ Figure&nbsp;3: Locations of earthquakes on La Palma since 2017
 <div id="fig-spatial-plot" class="quarto-figure quarto-figure-center quarto-float anchored" alt="A scatterplot of earthquake locations plotting latitude against longitude.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-spatial-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="index_files/figure-html/notebooks-01-earthquakes-fig-spatial-plot-output-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="quarto-lightbox-gallery-4"><img src="index_files/figure-html/notebooks-01-earthquakes-fig-spatial-plot-output-1.png" class="img-fluid figure-img" alt="A scatterplot of earthquake locations plotting latitude against longitude."></a>
+<a href="index_files/figure-html/notebooks-01-earthquakes-fig-spatial-plot-output-1.png" class="lightbox" data-glightbox="description: .lightbox-desc-10" data-gallery="quarto-lightbox-gallery-10"><img src="index_files/figure-html/notebooks-01-earthquakes-fig-spatial-plot-output-1.png" class="img-fluid figure-img" alt="A scatterplot of earthquake locations plotting latitude against longitude."></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Locations of earthquakes on La Palma since 2017
@@ -534,10 +668,10 @@ Figure&nbsp;4: Locations of earthquakes on La Palma since 2017
 </figure>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-10" href="index-preview.html#cell-fig-spatial-plot">Source: Article Notebook</a></div>
+</div>
 </section>
 </section>
-<a class="quarto-notebook-link" id="nblink-13" href="notebooks/01-earthquakes-preview.html#c75b4191-f2f7-47d9-bf00-6d67a24e380f">Source: Explore Earthquakes</a></div>
+</div>
 <p><a href="#fig-spatial-plot" class="quarto-xref">Figure&nbsp;4</a> shows the location of recent Earthquakes on La Palma.</p>
 <section id="sec-results" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="sec-results"><span class="header-section-number">7.3</span> Results</h2>
@@ -556,10 +690,10 @@ Marrero, José, Alicia García, Manuel Berrocoso, Ángeles Llinares, Antonio Rod
 </div>
 </div>
 <div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-1">Figure&nbsp;1: Timeline of recent earthquakes on La Palma</span>
-<span class="glightbox-desc lightbox-desc-2">Figure&nbsp;2: Map of La Palma</span>
-<span class="glightbox-desc lightbox-desc-3">Figure&nbsp;3: Locations of earthquakes on La Palma since 2017</span>
-<span class="glightbox-desc lightbox-desc-4">Figure&nbsp;4: Locations of earthquakes on La Palma since 2017</span>
+<span class="glightbox-desc lightbox-desc-7">Figure&nbsp;1: Timeline of recent earthquakes on La Palma</span>
+<span class="glightbox-desc lightbox-desc-8">Figure&nbsp;2: Map of La Palma</span>
+<span class="glightbox-desc lightbox-desc-9">Figure&nbsp;3: Locations of earthquakes on La Palma since 2017</span>
+<span class="glightbox-desc lightbox-desc-10">Figure&nbsp;4: Locations of earthquakes on La Palma since 2017</span>
 </div>
 </section>
 
@@ -567,7 +701,7 @@ Marrero, José, Alicia García, Manuel Berrocoso, Ángeles Llinares, Antonio Rod
   author = {Munkhtsetseg, Erdenebayar and Shimizu, Atsushi},
   title = {Temporal and Spatial Variations of {PM2} and {PM10}
     Concentrations in {Mongolia}},
-  date = {2024-01-24},
+  date = {2024-01-26},
   langid = {en},
   abstract = {PM2.5 and PM10 data for the 4 distinct sites of Mongolia
     from 2008 to 2020 is found .... ...}
@@ -575,7 +709,7 @@ Marrero, José, Alicia García, Manuel Berrocoso, Ángeles Llinares, Antonio Rod
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-munkhtsetseg2024" class="csl-entry quarto-appendix-citeas" role="listitem">
 Munkhtsetseg, Erdenebayar, and Atsushi Shimizu. 2024. <span>“Temporal
 and Spatial Variations of PM2 and PM10 Concentrations in
-Mongolia.”</span> Earth and Space Science. January 24, 2024.
+Mongolia.”</span> Earth and Space Science. January 26, 2024.
 </div></div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -966,7 +1100,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom","selector":".lightbox"});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","loop":false,"descPosition":"bottom","selector":".lightbox"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
