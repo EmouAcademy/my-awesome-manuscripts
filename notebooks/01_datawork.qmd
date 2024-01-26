@@ -42,7 +42,7 @@ filter((Year != 2019 & Station.name == "Zamynuud") |
        (Year < 2021 & Station.name == "UB") |
        (Year < 2017 & Station.name == "Dalanzadgad")
        )
-
+head(df_01)
 ```
 
 #### For date options as year, month, etc:
@@ -130,7 +130,7 @@ Remove the spikes in the datasets, and produce the table with NA, with removed s
 ```{r}
 df_10 <- df_01 |>
   filter(PM10 < 0.003 | PM2 < 0.003) 
-
+head(df_10)
 ggplot(df_01)+
   geom_line(aes(x = Date,  y = PM2 ))+
   geom_col(aes(x = Date, y =PM10 )) +
@@ -150,7 +150,7 @@ df_01 |>
 ```{r}
 df_01 <- df_01 |>
   filter(PM2<10 & PM10<10 & PM10 != 0 & PM2 != 0 & ratio < 1) 
-
+head(df_01)
     df_01 |>
   ggplot(aes(x=PM2, y=PM10, size=WS)) +
   geom_point() +
