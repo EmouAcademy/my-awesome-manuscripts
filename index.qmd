@@ -37,6 +37,8 @@ bibliography: references.bib
 citation:
   container-title: Earth and Space Science
 number-sections: true
+crossref:
+  chapters: true
 ---
 
 
@@ -46,15 +48,30 @@ number-sections: true
 ## Data & Methods {#sec-data-methods}
 ### Study area descriptions
 
-![Study sites](../Data/03_figures/sites_of_NIES.png){#fig-site_map}
+See @fig-elephant djjd 
+
+
+![Study sites](../Data/03_figures/sites_of_NIES.png){#fig-elephant}
+
+
+
+![Study sites](../Data/03_figures/sites_of_NIES.png){#fig-site}
 The map demonstrates that llll
 
 
+![Data](../Data/03_tables/table_data_NIES.png){#tbl-letters}
+
+
+
+@tbl-letters djjdjdjjdj
+
+
 ### Study data and data analysis
+WHy siiisidjadis
 
-![Measured data summary](~/WORK/Research/Data/03_tables/table_data_NIES.png){#tbl-data_sum}
+sallalad;lasd
 
-@tbl-data_sum summarises the data.
+a summarises the data.
 cleaned the data and 
 filled the missing data using mtsdi
 
@@ -65,8 +82,9 @@ filled the missing data using mtsdi
 ## Discussion {#sec-discussion}
 
 ## Conclusions {#sec-conclusions}
-
+@marrero2019
 ## References {.unnumbered}
 
-::: {#refs}
-:::
+ {#refs}
+
+

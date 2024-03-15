@@ -13,4 +13,6 @@ format:
   pdf: default
   elsevier-pdf:
     keep-tex: true
-
+    pdf-engine: latexmk
+    pdf-engine-opt: -xelatex
+    
