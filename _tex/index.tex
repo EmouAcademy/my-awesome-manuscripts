@@ -4,7 +4,9 @@
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
-]{agujournal2019}
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
 
 \usepackage{amsmath,amssymb}
 \usepackage{iftex}
@@ -109,11 +111,7 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
-\usepackage{url} %this package should fix any errors with URLs in refs.
-\usepackage{lineno}
-\usepackage[inline]{trackchanges} %for better track changes. finalnew option will compile document with changes incorporated.
-\usepackage{soul}
-\linenumbers
+\KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -163,7 +161,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={Temporal and spatial variations of PM2 and PM10 concentrations in Mongolia},
+  pdftitle={Temporal and spatial variations of PM2.5 and PM10 concentrations in Mongolia},
   pdfauthor={Erdenebayar Munkhtsetseg; Atsushi Shimizu},
   pdfkeywords={particulate matters, concentrations of PM10 and PM2.5},
   colorlinks=true,
@@ -173,520 +171,120 @@
   urlcolor={Blue},
   pdfcreator={LaTeX via pandoc}}
 
-\journalname{Earth and Space Science}
-
-\draftfalse
+\title{Temporal and spatial variations of PM2.5 and PM10 concentrations
+in Mongolia}
+\author{Erdenebayar Munkhtsetseg \and Atsushi Shimizu}
+\date{2024-03-16}
 
 \begin{document}
-\title{Temporal and spatial variations of PM2 and PM10 concentrations in
-Mongolia}
-
-\authors{Erdenebayar Munkhtsetseg\affil{1,2}, Atsushi Shimizu\affil{3}}
-\affiliation{1}{National University of Mongolia (NUM),
-Mongolia, }\affiliation{2}{Kanazawa University,
-Japan, }\affiliation{3}{National Institute for Environmental Studies
-(NIES), Japan, }
-\correspondingauthor{Atsushi Shimizu}{shimizua@nies.go.jp}
-
-
+\maketitle
 \begin{abstract}
 PM2.5 and PM10 data for the 4 distinct sites of Mongolia from 2008 to
 2020 is found \ldots. \ldots{}
 \end{abstract}
 
-\section*{Plain Language Summary}
-PM2.5 and PM10 data for the 4 distinct sites of Mongolia from 2008 to
-2020 is found \ldots{}
-
-
-
-\subsection{Data \& Methods}\label{sec-data-methods}
-
-\section{01\_datawork}\label{datawork}
-
-Munkhtsetseg
-
-Library
-
-\subsection{Import the dataset and remove the
-duplicates}\label{import-the-dataset-and-remove-the-duplicates}
-
-Import the dataset from the directory of: \textasciitilde/Data
-Input/Preprocessing data/Preprocessing data.csv, assign the dataset as
-object of df:
-
-Remove the duplicates with the function of distinct(), assign the
-dataset as df\_01:
-
-\subsection{Produce a table with missing
-data}\label{produce-a-table-with-missing-data}
-
-\begin{verbatim}
-# A tibble: 6 × 19
-# Rowwise: 
-   Year Month   Day  Hour correct_PM10 correct_PM2 Visibility    WD    WS   WS.u
-  <int> <int> <int> <int>        <dbl>       <dbl>      <int> <int> <dbl>  <dbl>
-1  2009     1     1     0        0.087       0.073       3366   252 1.08   1.02 
-2  2009     1     1     1        0.2         0.175       1999   317 0.546  0.374
-3  2009     1     1     2        0.309       0.266       6756    87 1.03  -1.03 
-4  2009     1     1     3        0.105       0.089       9559   121 1.03  -0.885
-5  2009     1     1     4        0.063       0.052      17664   121 0.46  -0.393
-6  2009     1     1     5        0.027       0.021      11348    92 2.05  -2.05 
-# ℹ 9 more variables: WS.v <dbl>, OPC <int>, Station.name <chr>, Date <chr>,
-#   PM10 <dbl>, PM2 <dbl>, PM10_rel <dbl>, PM2_rel <dbl>, ratio <dbl>
-\end{verbatim}
-
-\paragraph{For date options as year, month,
-etc:}\label{for-date-options-as-year-month-etc}
-
-\begin{verbatim}
-# A tibble: 35 × 9
-# Groups:   Station.name [4]
-   Station.name  Year NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
-   <chr>        <int>   <int>  <int>   <int>  <int> <int> <int>  <int>
- 1 Dalanzadgad   2009    8760    929     715    659   748   748   8760
- 2 Dalanzadgad   2010    8784   1086     921    756   787   787   8784
- 3 Dalanzadgad   2011    8760   3309    2652   1759  2394  2394   8760
- 4 Dalanzadgad   2012    5088   3016    1074    693  1412  1412   5088
- 5 Dalanzadgad   2013    6096   1809    1766   2479  1240  1240   6096
- 6 Dalanzadgad   2014    7800    921     843   6068  1482  1482   7800
- 7 Dalanzadgad   2015    8760   1587    1539   8115  2635  2635   8760
- 8 Dalanzadgad   2016    6288   1613    1654   5995  3306  3306   6288
- 9 Sainshand     2009    8688    424     376    423   587   587   8688
-10 Sainshand     2010    8784   2577    2557   1113  1210  1210   8784
-# ℹ 25 more rows
-\end{verbatim}
-
-\paragraph{For station}\label{for-station}
-
-\begin{verbatim}
-# A tibble: 4 × 8
-  Station.name NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
-  <chr>          <int>  <int>   <int>  <int> <int> <int>  <int>
-1 Dalanzadgad    60336  14270   11164  26524 14004 14004  60336
-2 Sainshand      59040  11929   11727   9320  8527  8527  59040
-3 UB             76656   8716    7879   3770  4053  4053  43415
-4 Zamynuud       67392  10075    8880   3444  4960  4960  67392
-\end{verbatim}
-
-\subsubsection{By percentages}\label{by-percentages}
-
-\begin{verbatim}
-# A tibble: 4 × 6
-# Groups:   Station.name [4]
-  Station.name missing_PM2 missing_PM10 missing_Vis missing_WS missing_WD
-  <chr>              <dbl>        <dbl>       <dbl>      <dbl>      <dbl>
-1 Dalanzadgad         19.2         25.7       44.5       24.3       24.3 
-2 Sainshand           19.7         20.0       15.7       14.6       14.6 
-3 UB                  11.0         11.9        4.53       4.85       4.85
-4 Zamynuud            12.7         14.4        5.49       7.44       7.44
-\end{verbatim}
-
-\subsection{Note that:}\label{note-that}
-
-We use the data in the period of 2009-2018, which has been regarded as a
-monitoring work stabilized since 2008 when is the beginning of the
-monitoring. According to NIES, site maintenance was consistent up to
-2018.
-
-+Sainshand site, data 2009-2015 get used; + Dalanzad site: 2009-2016. +
-UB: 2009-2018 + Zamyn uud: 2009-2018
-
-\section{Remove the spikes, and produce an extended
-table}\label{remove-the-spikes-and-produce-an-extended-table}
-
-Remove the spikes in the datasets, and produce the table with NA, with
-removed spikes; express it in a percentages. \#\textbar{}
-Comments*kedjkdjk \#\#\# Remove the spikes Method 1. Mean value +-
-(3-5)SD - Find Monthly mean \#\textbar{} flow: 1st - Remove spikes PMs
-\textgreater10 mgm/hour is unreasonable. \#\textbar{} - Exclude 0 values
-in PMs.
-
-\begin{verbatim}
-# A tibble: 6 × 19
-# Rowwise: 
-   Year Month   Day  Hour correct_PM10 correct_PM2 Visibility    WD    WS  WS.u
-  <int> <int> <int> <int>        <dbl>       <dbl>      <int> <int> <dbl> <dbl>
-1  2009     1     9    21        0.003       0.002      20000    NA NA    NA   
-2  2009     1    16    19        0.006       0.001      20000   278  7.14  7.08
-3  2009     1    16    20        0.005       0.001      20000   276  6.42  6.38
-4  2009     1    16    22        0.008       0.002      20000   276  7.74  7.71
-5  2009     1    16    23        0.007       0.002      20000   286  5.55  5.33
-6  2009     2     5    19        0.006       0.001      20000   274  3.49  3.49
-# ℹ 9 more variables: WS.v <dbl>, OPC <int>, Station.name <chr>, Date <chr>,
-#   PM10 <dbl>, PM2 <dbl>, PM10_rel <dbl>, PM2_rel <dbl>, ratio <dbl>
-\end{verbatim}
-
-\includegraphics{index_files/figure-latex/notebooks-01_datawork-cell-9-output-3.png}
-
-\#\textbar{} flow: 2nd - ratio check. PM10 \textgreater= PM2.5
-
-\includegraphics{index_files/figure-latex/notebooks-01_datawork-cell-10-output-2.png}
-
-\#\textbar{} flow: 2nd - ratio check. remove data of ratio\textgreater1
-
-\begin{verbatim}
-# A tibble: 6 × 19
-# Rowwise: 
-   Year Month   Day  Hour correct_PM10 correct_PM2 Visibility    WD    WS   WS.u
-  <int> <int> <int> <int>        <dbl>       <dbl>      <int> <int> <dbl>  <dbl>
-1  2009     1     1     0        0.087       0.073       3366   252 1.08   1.02 
-2  2009     1     1     1        0.2         0.175       1999   317 0.546  0.374
-3  2009     1     1     2        0.309       0.266       6756    87 1.03  -1.03 
-4  2009     1     1     3        0.105       0.089       9559   121 1.03  -0.885
-5  2009     1     1     4        0.063       0.052      17664   121 0.46  -0.393
-6  2009     1     1     5        0.027       0.021      11348    92 2.05  -2.05 
-# ℹ 9 more variables: WS.v <dbl>, OPC <int>, Station.name <chr>, Date <chr>,
-#   PM10 <dbl>, PM2 <dbl>, PM10_rel <dbl>, PM2_rel <dbl>, ratio <dbl>
-\end{verbatim}
-
-\includegraphics{index_files/figure-latex/notebooks-01_datawork-cell-11-output-3.png}
-
-\#\textbar{} flow: 2nd - Method 1. Mean value +- (3-5)SD - Monthly mean
-at stations \#\textbar{} output: false
-
-Option 1:
-
-\begin{verbatim}
-# A tibble: 2,637 × 19
-# Groups:   Station.name, Month [48]
-    Year Month   Day  Hour correct_PM10 correct_PM2 Visibility    WD    WS
-   <int> <int> <int> <int>        <dbl>       <dbl>      <int> <int> <dbl>
- 1  2009     1     5    16        0.594       0.509       1814   260 0.788
- 2  2009     1     6     0        0.641       0.547        744   248 1.23 
- 3  2009     1     6     1        0.867       0.728       1093   277 0.738
- 4  2009     1     6     2        0.705       0.597       1723     0 1.62 
- 5  2009     1     9     1        0.756       0.656        992   292 0.429
- 6  2009     1     9     2        0.709       0.612       2098    55 1    
- 7  2009     1    15    12        0.818       0.718       5941   147 0.633
- 8  2009     1    16     1        0.742       0.556       2125   120 0.274
- 9  2009     1    30     1        0.915       0.797       1315     9 0.366
-10  2009     1    30     2        0.601       0.507       2485   309 0.713
-# ℹ 2,627 more rows
-# ℹ 10 more variables: WS.u <dbl>, WS.v <dbl>, OPC <int>, Station.name <chr>,
-#   Date <chr>, PM10 <chr>, PM2 <chr>, PM10_rel <dbl>, PM2_rel <dbl>,
-#   ratio <dbl>
-\end{verbatim}
-
-\includegraphics{index_files/figure-latex/notebooks-01_datawork-cell-12-output-3.png}
-
-\includegraphics{index_files/figure-latex/notebooks-01_datawork-cell-12-output-4.png}
-
-\includegraphics{index_files/figure-latex/notebooks-01_datawork-cell-12-output-5.png}
-
-Option 2:
-
-\begin{verbatim}
-# A tibble: 118,482 × 19
-# Groups:   Station.name, Month [48]
-    Year Month   Day  Hour correct_PM10 correct_PM2 Visibility    WD    WS
-   <int> <int> <int> <int>        <dbl>       <dbl>      <int> <int> <dbl>
- 1  2009     1     1     0        0.087       0.073       3366   252 1.08 
- 2  2009     1     1     1        0.2         0.175       1999   317 0.546
- 3  2009     1     1     2        0.309       0.266       6756    87 1.03 
- 4  2009     1     1     3        0.105       0.089       9559   121 1.03 
- 5  2009     1     1     4        0.063       0.052      17664   121 0.46 
- 6  2009     1     1     5        0.027       0.021      11348    92 2.05 
- 7  2009     1     1     6        0.065       0.055      15397     0 1.6  
- 8  2009     1     1     7        0.03        0.023      20000   300 1.74 
- 9  2009     1     1     8        0.013       0.01       17384   305 1.29 
-10  2009     1     1     9        0.029       0.023       9322   324 2.96 
-# ℹ 118,472 more rows
-# ℹ 10 more variables: WS.u <dbl>, WS.v <dbl>, OPC <int>, Station.name <chr>,
-#   Date <chr>, PM10 <dbl>, PM2 <dbl>, PM10_rel <dbl>, PM2_rel <dbl>,
-#   ratio <dbl>
-\end{verbatim}
-
-\begin{verbatim}
-# A tibble: 3,267 × 19
-    Year Month   Day  Hour correct_PM10 correct_PM2 Visibility    WD    WS
-   <int> <int> <int> <int>        <dbl>       <dbl>      <int> <int> <dbl>
- 1  2009     1     1     2        0.309       0.266       6756    87 1.03 
- 2  2009     1     3    15        0.351       0.292       3444   119 0.856
- 3  2009     1     5     1        0.313       0.271       3392   275 2.56 
- 4  2009     1     5    13        0.482       0.419       1383   260 1.7  
- 5  2009     1     5    14        0.482       0.415       1072   266 1.84 
- 6  2009     1     5    15        0.549       0.466       1099   261 0.83 
- 7  2009     1     5    16        0.594       0.509       1814   260 0.788
- 8  2009     1     6     0        0.641       0.547        744   248 1.23 
- 9  2009     1     6     1        0.867       0.728       1093   277 0.738
-10  2009     1     6     2        0.705       0.597       1723     0 1.62 
-# ℹ 3,257 more rows
-# ℹ 10 more variables: WS.u <dbl>, WS.v <dbl>, OPC <int>, Station.name <chr>,
-#   Date <chr>, PM10 <chr>, PM2 <chr>, PM10_rel <dbl>, PM2_rel <dbl>,
-#   ratio <dbl>
-\end{verbatim}
-
-\begin{verbatim}
-# A tibble: 0 × 19
-# ℹ 19 variables: Year <int>, Month <int>, Day <int>, Hour <int>,
-#   correct_PM10 <dbl>, correct_PM2 <dbl>, Visibility <int>, WD <int>,
-#   WS <dbl>, WS.u <dbl>, WS.v <dbl>, OPC <int>, Station.name <chr>,
-#   Date <chr>, PM10 <dbl>, PM2 <dbl>, PM10_rel <dbl>, PM2_rel <dbl>,
-#   ratio <dbl>
-\end{verbatim}
-
-\subsection{Save dataset in folder:
-01\_data\_raw}\label{save-dataset-in-folder-01_data_raw}
-
-\section{Tidy data}\label{tidy-data}
-
-\subsection{Fill the missing data}\label{fill-the-missing-data}
-
-Method 1. Fill the gap Method 2. Relationship equation Method 3. Look-up
-table
-
-\subsection{Save dataset in folder:
-02\_data\_tidy}\label{save-dataset-in-folder-02_data_tidy}
-
-\textsubscript{Source:
-\href{https://EmouAcademy.github.io/my-awesome-manuscripts/notebooks/01_datawork-preview.html\#c335df36-7197-45eb-a1d9-0a90e5099ce8}{01\_datawork}}
-
-\subsection{Introduction}\label{introduction}
-
-\textsubscript{Source:
-\href{https://EmouAcademy.github.io/my-awesome-manuscripts/index.qmd.html}{Article
-Notebook}}
-
-\phantomsection\label{cell-fig-timeline}
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics{index_files/figure-pdf/fig-timeline-1.pdf}
-
-}
-
-\caption{\label{fig-timeline}Timeline of recent earthquakes on La Palma}
-
-\end{figure}%
-
-\textsubscript{Source:
-\href{https://EmouAcademy.github.io/my-awesome-manuscripts/index.qmd.html}{Article
-Notebook}}
-
-\textsubscript{Source:
-\href{https://EmouAcademy.github.io/my-awesome-manuscripts/index.qmd.html}{Article
-Notebook}}
-
-Based on data up to and including 1971, eruptions on La Palma happen
-every 79.8 years on average.
-
-Studies of the magma systems feeding the volcano, such as Marrero et al.
-(2019), have proposed that there are two main magma reservoirs feeding
-the Cumbre Vieja volcano; one in the mantle (30-40km depth) which
-charges and in turn feeds a shallower crustal reservoir (10-20km depth).
-
-Eight eruptions have been recorded since the late 1400s
-(Figure~\ref{fig-timeline}).
-
-Data and methods are discussed in Section~\ref{sec-data-methods}.
-
-Let \(x\) denote the number of eruptions in a year. Then, \(x\) can be
-modeled by a Poisson distribution
-
-\begin{equation}\phantomsection\label{eq-poisson}{
-p(x) = \frac{e^{-\lambda} \lambda^{x}}{x !}
-}\end{equation}
-
-where \(\lambda\) is the rate of eruptions per year. Using
-Equation~\ref{eq-poisson}, the probability of an eruption in the next
-\(t\) years can be calculated.
-
-\begin{longtable}[]{@{}ll@{}}
-\caption{Recent historic eruptions on La
-Palma}\label{tbl-history}\tabularnewline
-\toprule\noalign{}
-Name & Year \\
-\midrule\noalign{}
-\endfirsthead
-\toprule\noalign{}
-Name & Year \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Current & 2021 \\
-Teneguía & 1971 \\
-Nambroque & 1949 \\
-El Charco & 1712 \\
-Volcán San Antonio & 1677 \\
-Volcán San Martin & 1646 \\
-Tajuya near El Paso & 1585 \\
-Montaña Quemada & 1492 \\
-\end{longtable}
-
-Table~\ref{tbl-history} summarises the eruptions recorded since the
-colonization of the islands by Europeans in the late 1400s.
+\section{Introduction}\label{introduction}
+
+\section{Data \& Methods}\label{sec-data-methods}
+
+\subsection{Study area descriptions}\label{study-area-descriptions}
+
+Dust monitoring sites were located at Dalanzadgad (43.57°N, 104.42°E),
+Sainshand (44.87°N, 110.12°E), Erdene (44.27°N, 111.05°E) and Zamyn-Uud
+(43.72°N, 111.90°E) in the Gobi Desert, and at Bayan Unjuul (47.02°N,
+105.56°E) in a steppe zone of Mon- golia (Fig. 1). Particulate matter
+with aerodynamic diameters less than 2.5 lm (PM2.5) and 10 lm (PM10)
+were measured at these sites using an instrument that measures light
+scattering by air- borne particulates. Meteorological parameters,
+including air tem- perature, precipitation, wind and visibility were
+determined by automatic instruments and are detailed in previous
+articles (Jugder et al., 2011, 2012; Kimura and Shinoda, 2010; Park et
+al., 2010; Shinoda et al., 2010). The instruments for measuring
+particulate matters were placed 2.0 m above the ground level (AGL) at
+Dalanzadgad, Sainshand and Zamyn-Uud, at 3.0 m AGL at Erdene, and at 1.9
+m AGL at Bayan Unjuul (Tables 1a--c). Wind sensors were installed at
+3--4 m AGL at the four Gobi sites, and visibility (meteorological
+optical range-MOR) sensors with a maximum measurement range of 20 km
+were installed at a height of 3 m AGL at three of the sites, excluding
+Erdene. At the Bayan Unjuul site, the wind sensor height used was 1.54 m
+AGL, and a visibility sensor with a maximum measurement range of 2 km
+was placed at 1.8 m AGL. Datasets were obtained from measurements at
+Dalanzadgad, Sainshand, Erdene, and Zamyn-Uud from January 2009 to May
+2013, and at Bayan Unjuul from the end of April to May 2008. The data
+used in the study are based on hourly means derived from 1 and 10 min
+averages. Additionally, the WMO defines dust storms and sandstorms (dust
+events) as ``An ensemble of particles of dust and sand energetically
+lifted to great heights by a strong and turbulent wind'' (WMO-No.~407)
+and reducing visibility to less than 1000 m (WMO-No.~306). Therefore,
+data of wind speed, visibility, and dust concentration were used in
+combination with synoptic weather observations. Data sets comprise
+selected data collections from periods of dust events, during which wind
+speeds and PM10 (PM2.5) concentration rose dramatically and visibility
+dropped down considerably. Quantitative criterion of wind speeds and
+dust con- centrations of PM10 for dust events were explained in Section
+2.2. Scalar mean wind speed and gust winds were calculated from 1-s
+observations for the study (EPA-454/R-99-005, 2000). The shorter
+averaging period wind is regarded as the ``gust'' (Harper et al., 2010).
+The 3-s averages of wind speed that are considered as gust wind speed
+(Harper et al., 2010), were used in this study. Time series of number of
+days with dust events obtained from synoptic weather observations at
+Dalanzadgad, Sainshand and Zamyn-Uud during 1960--2012 were used.
+
+See Figure~\ref{fig-1} djjd
 
 \begin{figure}
 
 \centering{
 
-\includegraphics{images/la-palma-map.png}
+\includegraphics{../Data/03_figures/fig-1_sites_of_NIES.png}
 
 }
 
-\caption{\label{fig-map}Map of La Palma}
+\caption{\label{fig-1}Study sites}
 
 \end{figure}%
 
-La Palma is one of the west most islands in the Volcanic Archipelago of
-the Canary Islands (Figure~\ref{fig-map}).
+The map demonstrates that llll
 
-\begin{figure}[H]
+\subsection{Study data and data
+analysis}\label{study-data-and-data-analysis}
+
+\begin{table}
+
+\caption{\label{tbl-1}Data}
 
 \centering{
 
-\includegraphics{index_files/figure-latex/notebooks-explore-earthquakes-fig-spatial-plot-output-1.png}
+\includegraphics{../Data/03_tables/table-1_data_NIES.png}
 
 }
 
-\caption{\label{fig-spatial-plot}Locations of earthquakes on La Palma
-since 2017}
+\end{table}%
 
-\end{figure}%
+Table~\ref{tbl-1} djjdjdjjdj
 
-\textsubscript{Source:
-\href{https://EmouAcademy.github.io/my-awesome-manuscripts/notebooks/explore-earthquakes-preview.html\#cell-fig-spatial-plot}{Explore
-Earthquakes}}
+a summarises the data. cleaned the data and filled the missing data
+using mtsdi
 
-kk
+\section{Results}\label{sec-results}
 
-\section{Explore Earthquakes}\label{explore-earthquakes}
+\section{Discussion}\label{sec-discussion}
 
-Munkhtsetseg
+\section{Conclusions}\label{sec-conclusions}
 
-Library
+Marrero et al. (2019) \# References \{.unnumbered\}
 
-\section{Import the dataset and remove the
-duplicates}\label{import-the-dataset-and-remove-the-duplicates-1}
-
-Import the dataset from the directory of: \textasciitilde/Data
-Input/Preprocessing data/Preprocessing data.csv, assign the dataset as
-object of df:
-
-Remove the duplicates with the function of distinct(), assign the
-dataset as df\_01:
-
-\subsection{Produce a table with missing
-data}\label{produce-a-table-with-missing-data-1}
-
-For date options as year, month, etc:
-
-\begin{verbatim}
-# A tibble: 52 × 9
-# Groups:   Station.name [4]
-   Station.name  Year NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
-   <chr>        <int>   <int>  <int>   <int>  <int> <int> <int>  <int>
- 1 Dalanzadgad   2008    4630   1543    1672   1463  1566  1566   4630
- 2 Dalanzadgad   2009    8760    715     929    659   748   748   8760
- 3 Dalanzadgad   2010    8784    921    1086    756   787   787   8784
- 4 Dalanzadgad   2011    8760   2652    3309   1759  2394  2394   8760
- 5 Dalanzadgad   2012    5088   1074    3016    693  1412  1412   5088
- 6 Dalanzadgad   2013    6096   1766    1809   2479  1240  1240   6096
- 7 Dalanzadgad   2014    7800    843     921   6068  1482  1482   7800
- 8 Dalanzadgad   2015    8760   1539    1587   8115  2635  2635   8760
- 9 Dalanzadgad   2016    6288   1654    1613   5995  3306  3306   6288
-10 Dalanzadgad   2017    3264     36      45   3264  3264  3264   3264
-# ℹ 42 more rows
-\end{verbatim}
-
-For station
-
-\begin{verbatim}
-# A tibble: 4 × 8
-  Station.name NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
-  <chr>          <int>  <int>   <int>  <int> <int> <int>  <int>
-1 Dalanzadgad    69454  13081   16327  32475 20058 20058  69454
-2 Sainshand     101230  27588   36117  28986 13768 13768 101230
-3 UB             95662   7895    8785   3775  4121  4121  62421
-4 Zamynuud       99742  32281   33597  22525  5373  5373  99742
-\end{verbatim}
-
-By percentages
-
-\begin{verbatim}
-# A tibble: 4 × 2
-# Groups:   Station.name [4]
-  Station.name   sdq
-  <chr>        <dbl>
-1 Dalanzadgad   10.7
-2 Sainshand     25.9
-3 UB            17.9
-4 Zamynuud      39.6
-\end{verbatim}
-
-Note that the \texttt{echo\ =\ FALSE} parameter was added to the code
-chunk to prevent printing of the R code that generated the plot.
-
-\section{Remove the spikes, and produce an extended
-table}\label{remove-the-spikes-and-produce-an-extended-table-1}
-
-Remove the spikes in the datasets, and produce the table with NA, with
-removed spikes; express it in a percentages.
-
-\subsubsection{Remove the spikes Method 1. Mean value +-
-(3-5)SD}\label{remove-the-spikes-method-1.-mean-value---3-5sd}
-
-Method 2. Seasonal variations, and trend-mean
-
-\subsection{Save dataset in folder:
-01\_data\_raw}\label{save-dataset-in-folder-01_data_raw-1}
-
-\section{Tidy data}\label{tidy-data-1}
-
-\subsection{Fill the missing data}\label{fill-the-missing-data-1}
-
-Method 1. Fill the gap Method 2. Relationship equation Method 3. Look-up
-table
-
-\subsection{Save dataset in folder:
-02\_data\_tidy}\label{save-dataset-in-folder-02_data_tidy-1}
-
-Read a clean version of data:
-
-Create spatial plot:
-
-\begin{figure}[H]
-
-\centering{
-
-\includegraphics{index_files/figure-latex/notebooks-01-earthquakes-fig-spatial-plot-output-1.png}
-
-}
-
-\caption{\label{fig-spatial-plot}Locations of earthquakes on La Palma
-since 2017}
-
-\end{figure}%
-
-\textsubscript{Source:
-\href{https://EmouAcademy.github.io/my-awesome-manuscripts/notebooks/01-earthquakes-preview.html\#041ca1bf-04ed-4a8f-986d-dcdf65a9ec4d}{Explore
-Earthquakes}}
-
-Figure~\ref{fig-spatial-plot} shows the location of recent Earthquakes
-on La Palma.
-
-\subsection{Results}\label{sec-results}
-
-\subsection{Discussion}\label{sec-discussion}
-
-\subsection{Conclusions}\label{sec-conclusions}
-
-\subsection*{References}\label{references}
-\addcontentsline{toc}{subsection}{References}
+\{\#refs\}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
-\vspace{1em}
-
 \bibitem[\citeproctext]{ref-marrero2019}
-Marrero, J., García, A., Berrocoso, M., Llinares, Á., Rodríguez-Losada,
-A., \& Ortiz, R. (2019). Strategies for the development of volcanic
-hazard maps in monogenetic volcanic fields: The example of {La} {Palma}
-({Canary} {Islands}). \emph{Journal of Applied Volcanology}, \emph{8}.
-\url{https://doi.org/10.1186/s13617-019-0085-5}
+Marrero, José, Alicia García, Manuel Berrocoso, Ángeles Llinares,
+Antonio Rodríguez-Losada, and R. Ortiz. 2019. {``Strategies for the
+Development of Volcanic Hazard Maps in Monogenetic Volcanic Fields: The
+Example of {La} {Palma} ({Canary} {Islands}).''} \emph{Journal of
+Applied Volcanology} 8 (July).
+\url{https://doi.org/10.1186/s13617-019-0085-5}.
 
 \end{CSLReferences}
 
