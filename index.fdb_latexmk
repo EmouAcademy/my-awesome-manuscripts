@@ -1,20 +1,21 @@
 # Fdb version 4
-["bibtex index"] 1710573251.46593 "index.aux" "index.bbl" "index" 1710573251.48642 2
+["bibtex index"] 1710915676.78448 "index.aux" "index.bbl" "index" 1710915683.68752 0
   "./elsarticle-num.bst" 1710131279.729 29462 43db4fe246825ec69ed81b2463c17f04 ""
-  "./references.bib" 1705905214.98037 473 3f7a1e9381740b95d526e50963ba0475 ""
-  "index.aux" 1710573251.46363 32 3985256e7290058c681f74d7a3565a19 "xelatex"
+  "./references.bib" 1710658563.5559 2620 45c3859993ca5a9ed3d76beaec61333e ""
+  "index.aux" 1710915678.05198 5802 2104172f8604ed735a86ec16c2421ef7 "xelatex"
   (generated)
   "index.bbl"
   "index.blg"
   (rewritten before read)
-["xdvipdfmx"] 1710481996.65823 "index.xdv" "index.pdf" "index" 1710481999.26117 0
-  "index.xdv" 1710483463.85941 15388 857ff69667ab60c8432f6006136e1926 "xelatex"
+["xdvipdfmx"] 1710915681.03088 "index.xdv" "index.pdf" "index" 1710915683.68962 0
+  "index.xdv" 1710915678.05321 162296 443f2571507affa9bc9c8f2123e62a52 "xelatex"
   (generated)
   "index.pdf"
   (rewritten before read)
-["xelatex"] 1710483462.63716 "index.tex" "index.xdv" "index" 1710483463.96102 2
-  "../Data/03_figures/sites_of_NIES.png" 1709298632.31415 1325134 e48d01d6ba229f59f684d62593bd6189 ""
-  "../Data/03_tables/table_data_NIES.png" 1710433975.07298 152327 0ef5258588d6bbfb2be9ab466ccf1586 ""
+["xelatex"] 1710915676.80817 "index.tex" "index.xdv" "index" 1710915683.68765 0
+  "../Data/03_figures/fig-1_sites_of_NIES.png" 1709298632.31415 1325134 e48d01d6ba229f59f684d62593bd6189 ""
+  "../Data/03_figures/fig-2_datasets_filled_by_mtdsi_NIES.png" 1709215885.9079 83585 d00116256aa0750937266e58a2b84b2d ""
+  "../Data/03_tables/table-1_data_NIES.png" 1710433975.07298 152327 0ef5258588d6bbfb2be9ab466ccf1586 ""
   "/Users/munkhtsetseg/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1705335723.64777 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/Users/munkhtsetseg/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1705335724.25718 916 f87d7c45f9c908e672703b83b72241a3 ""
   "/Users/munkhtsetseg/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm" 1705335724.25807 924 9904cf1d39e9767e7a3622f2a125a565 ""
@@ -122,10 +123,10 @@
   "/Users/munkhtsetseg/Library/TinyTeX/texmf-var/web2c/xetex/xelatex.fmt" 1710136364 9068942 37a3cfd9861edb079aed87556005115a ""
   "/Users/munkhtsetseg/Library/TinyTeX/texmf.cnf" 1705335722.04042 637 edd806fb06a89761a6034e1968af9017 ""
   "elsarticle.cls" 1710131279.731 44541 9d3456c17502e6602b2ecf2b8f0736e0 ""
-  "index.aux" 1710573251.46363 32 3985256e7290058c681f74d7a3565a19 "xelatex"
-  "index.bbl" 1710573251.48553 0 d41d8cd98f00b204e9800998ecf8427e "bibtex index"
-  "index.spl" 1710483462.87114 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
-  "index.tex" 1710483462.34915 6294 d326a89ae6dfb8318b3d79d12e01a456 ""
+  "index.aux" 1710915678.05198 5802 2104172f8604ed735a86ec16c2421ef7 "xelatex"
+  "index.bbl" 1710915680.90645 2024 332f720d4a3f50ebadafbb6cea5a132f "bibtex index"
+  "index.spl" 1710915677.01802 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
+  "index.tex" 1710915673.72492 20045 7be7566dbb75f4000a032dc6d37e6ffe ""
   (generated)
   "index.aux"
   "index.log"

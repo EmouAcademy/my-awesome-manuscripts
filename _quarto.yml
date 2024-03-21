@@ -11,8 +11,4 @@ format:
       hypothesis: true
   docx: default
   pdf: default
-  elsevier-pdf:
-    keep-tex: true
-    pdf-engine: latexmk
-    pdf-engine-opt: -xelatex
     
