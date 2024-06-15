@@ -5,10 +5,8 @@ execute:
   freeze: auto
 
 format:
-  html:
+  html: 
     toc: true
     comments:
       hypothesis: true
-  docx: default
-  pdf: default
     
