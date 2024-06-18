@@ -4,7 +4,8 @@ project:
 execute:
   freeze: auto
 
-format: docx-pdf: default
+format: 
+  docx-pdf: default
   html: 
     toc: true
     comments:
