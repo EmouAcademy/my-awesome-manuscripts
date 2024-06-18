@@ -43,7 +43,7 @@ crossref:
 
 **Abstract:**
 
-Air pollution, particularly particulate matter (PM), poses significant health risks and environmental challenges globally. Mongolia, a country characterized by diverse geographical features and climatic conditions, experiences notable variations in PM2.5 and PM10 concentrations. This manuscript explores the spatial and temporal patterns of PM2.5 and PM10 across Mongolia, identifying/delineating two distinct variations. Utilizing extensive datasets and advanced analytical methods, this study provides comprehensive insights into the dynamics of air quality in Mongolia, which is crucial for formulating effective mitigation strategies and policies.
+Air particulate matter (PM), poses significant health risks and environmental challenges globally. Mongolia, a country characterized by diverse geographical features and climatic conditions, experiences notable variations in PM2.5 and PM10 concentrations. This manuscript explores the spatial and temporal patterns of PM2.5 and PM10 across Mongolia, identifying/delineating two distinct variations. Utilizing extensive datasets and advanced analytical methods, this study provides comprehensive insights into the dynamics of air quality in Mongolia, which is crucial for formulating effective mitigation strategies and policies.
 
 **Keywords:** Air pollution, particulate matter, PM2.5, PM10, spatial variation, temporal variation, Mongolia, urban pollution, rural pollution, meteorological factors.
 
