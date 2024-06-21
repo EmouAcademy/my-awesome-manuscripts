@@ -58,10 +58,8 @@ df_00 <- df |>
 library(tidyverse) 
 library(ggplot2)
 
-df <- read.csv("~/Data Input/Preprocessing data/Preprocessing data.csv")
+df <- read.csv("../Data/Preprocessing data.csv")
 
-Data$Station.name <- as.factor(Data$Station.name) 
-view(Data)
 ```
 
 ## And remove duplicates
