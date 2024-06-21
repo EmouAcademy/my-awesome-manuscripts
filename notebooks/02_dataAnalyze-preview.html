@@ -215,19 +215,7 @@
   <ul class="collapse">
   <li><a href="#import-the-dataset-and-remove-the-duplicates" id="toc-import-the-dataset-and-remove-the-duplicates" class="nav-link" data-scroll-target="#import-the-dataset-and-remove-the-duplicates">Import the dataset and remove the duplicates</a></li>
   </ul></li>
-  <li><a href="#part-2-bad-and-missing-data" id="toc-part-2-bad-and-missing-data" class="nav-link" data-scroll-target="#part-2-bad-and-missing-data">Part 2: Bad and missing data</a></li>
-  <li><a href="#i.-mining-bad-data" id="toc-i.-mining-bad-data" class="nav-link" data-scroll-target="#i.-mining-bad-data">I. Mining bad data</a></li>
-  <li><a href="#a-explore-the-spikes" id="toc-a-explore-the-spikes" class="nav-link" data-scroll-target="#a-explore-the-spikes">a) explore the spikes</a></li>
-  <li><a href="#b-check-the-spikes-against-the-other-data-whether-to-keep-it-or-delete-it" id="toc-b-check-the-spikes-against-the-other-data-whether-to-keep-it-or-delete-it" class="nav-link" data-scroll-target="#b-check-the-spikes-against-the-other-data-whether-to-keep-it-or-delete-it">b) check the spikes against the other data whether to keep it or delete it</a></li>
-  <li><a href="#c-do-iterative-process-with-a-and-b-for-all-data-elements" id="toc-c-do-iterative-process-with-a-and-b-for-all-data-elements" class="nav-link" data-scroll-target="#c-do-iterative-process-with-a-and-b-for-all-data-elements">c) do iterative process with a) and b) for all data elements</a></li>
-  <li><a href="#ii.-remove-the-bad-data" id="toc-ii.-remove-the-bad-data" class="nav-link" data-scroll-target="#ii.-remove-the-bad-data">II. Remove the bad data</a></li>
-  <li><a href="#a-replace-with-na" id="toc-a-replace-with-na" class="nav-link" data-scroll-target="#a-replace-with-na">a) replace with NA</a></li>
-  <li><a href="#b-replace-with-median" id="toc-b-replace-with-median" class="nav-link" data-scroll-target="#b-replace-with-median">b) replace with Median</a></li>
-  <li><a href="#c-replace-with-mean" id="toc-c-replace-with-mean" class="nav-link" data-scroll-target="#c-replace-with-mean">c) replace with Mean</a></li>
-  <li><a href="#iii.-data-gap-filling-carefully-choosing-the-correct-strategy" id="toc-iii.-data-gap-filling-carefully-choosing-the-correct-strategy" class="nav-link" data-scroll-target="#iii.-data-gap-filling-carefully-choosing-the-correct-strategy">III. Data gap filling, carefully choosing the correct strategy</a></li>
-  <li><a href="#a-fill-the-data-based-on-the-seasonal-daily-variations-and-consider-trend" id="toc-a-fill-the-data-based-on-the-seasonal-daily-variations-and-consider-trend" class="nav-link" data-scroll-target="#a-fill-the-data-based-on-the-seasonal-daily-variations-and-consider-trend">a) fill the data based on the seasonal/ daily variations/ and consider trend</a></li>
-  <li><a href="#b-fill-the-data-with-the-medianmean-or-with-the-some-relations" id="toc-b-fill-the-data-with-the-medianmean-or-with-the-some-relations" class="nav-link" data-scroll-target="#b-fill-the-data-with-the-medianmean-or-with-the-some-relations">b) fill the data with the median/mean or with the some relations</a></li>
-  <li><a href="#c-search-for-the-suitable-method" id="toc-c-search-for-the-suitable-method" class="nav-link" data-scroll-target="#c-search-for-the-suitable-method">c) Search for the suitable… method</a>
+  <li><a href="#part-2-bad-and-missing-data" id="toc-part-2-bad-and-missing-data" class="nav-link" data-scroll-target="#part-2-bad-and-missing-data">Part 2: Bad and missing data</a>
   <ul class="collapse">
   <li><a href="#and-remove-duplicates" id="toc-and-remove-duplicates" class="nav-link" data-scroll-target="#and-remove-duplicates">And remove duplicates</a></li>
   <li><a href="#data-range-explore" id="toc-data-range-explore" class="nav-link" data-scroll-target="#data-range-explore">data range explore</a>
@@ -287,52 +275,42 @@
 <h1>Part 2: Bad and missing data</h1>
 <section id="cleaning-and-handling-missing-data" class="level15">
 <p class="heading">Cleaning and Handling MISSING data</p>
-</section>
-</section>
-<section id="i.-mining-bad-data" class="level1">
-<h1>I. Mining bad data</h1>
-</section>
-<section id="a-explore-the-spikes" class="level1">
-<h1>a) explore the spikes</h1>
-</section>
-<section id="b-check-the-spikes-against-the-other-data-whether-to-keep-it-or-delete-it" class="level1">
-<h1>b) check the spikes against the other data whether to keep it or delete it</h1>
-</section>
-<section id="c-do-iterative-process-with-a-and-b-for-all-data-elements" class="level1">
-<h1>c) do iterative process with a) and b) for all data elements</h1>
-</section>
-<section id="ii.-remove-the-bad-data" class="level1">
-<h1>II. Remove the bad data</h1>
-</section>
-<section id="a-replace-with-na" class="level1">
-<h1>a) replace with NA</h1>
-</section>
-<section id="b-replace-with-median" class="level1">
-<h1>b) replace with Median</h1>
-</section>
-<section id="c-replace-with-mean" class="level1">
-<h1>c) replace with Mean</h1>
-</section>
-<section id="iii.-data-gap-filling-carefully-choosing-the-correct-strategy" class="level1">
-<h1>III. Data gap filling, carefully choosing the correct strategy</h1>
-</section>
-<section id="a-fill-the-data-based-on-the-seasonal-daily-variations-and-consider-trend" class="level1">
-<h1>a) fill the data based on the seasonal/ daily variations/ and consider trend</h1>
-</section>
-<section id="b-fill-the-data-with-the-medianmean-or-with-the-some-relations" class="level1">
-<h1>b) fill the data with the median/mean or with the some relations</h1>
-</section>
-<section id="c-search-for-the-suitable-method" class="level1">
-<h1>c) Search for the suitable… method</h1>
+<ol type="1">
+<li>Mining bad data
+<ol type="a">
+<li>explore the spikes</li>
+<li>check the spikes against the other data whether to keep it or delete it</li>
+<li>do iterative process with a) and b) for all data elements</li>
+</ol></li>
+<li>Remove the bad data
+<ol type="a">
+<li>replace with NA</li>
+<li>replace with Median</li>
+<li>replace with Mean</li>
+</ol></li>
+<li>Data gap filling, carefully choosing the correct strategy
+<ol type="a">
+<li>fill the data based on the seasonal/ daily variations/ and consider trend</li>
+<li>fill the data with the median/mean or with the some relations</li>
+<li>Search for the suitable… method</li>
+</ol></li>
+</ol>
 <section id="section" class="level77">
 <p class="heading"></p>
-<p>library(tidyverse) library(ggplot2)</p>
-<p>setwd(“~/2 Data Processing”) df &lt;- read.csv(“~/Data Input/Preprocessing data/Preprocessing data.csv”)</p>
-<p>#Data<span class="math inline">\(Station.name &lt;- as.factor(Data\)</span>Station.name) #view(Data)</p>
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../Data/Preprocessing data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
 </section>
 <section id="and-remove-duplicates" class="level2">
 <h2 class="anchored" data-anchor-id="and-remove-duplicates">And remove duplicates</h2>
-<p>df1 &lt;- df %&gt;% distinct()</p>
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 <section id="converting-types-renaming." class="level5">
 <h5 class="anchored" data-anchor-id="converting-types-renaming.">Converting types, renaming.</h5>
 <p>df1 &lt;- df1 |&gt; mutate(pm2_swap=PM10, pm10_swap=PM2, ratio = pm2_swap/pm10_swap)</p>
