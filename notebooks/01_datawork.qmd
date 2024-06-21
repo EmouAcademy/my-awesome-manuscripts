@@ -9,7 +9,7 @@ Library
 library(tidyverse)
 library(ggplot2)
 ```
-# Part 1: Import data
+
 ## Import the dataset and remove the duplicates
 
 Import the dataset from the directory of: \~/Data Input/Preprocessing data/Preprocessing data.csv, assign the dataset as object of df:
@@ -27,7 +27,6 @@ df_00 <- df |>
   mutate(PM10=correct_PM10, PM2=correct_PM2, PM10_rel=PM10, PM2_rel=PM2, ratio = PM2/PM10)
 ```
 
-# Part 2: Bad and missing data
 ## Produce a table with missing data
 
 ```{r}
@@ -223,7 +222,7 @@ df_02b1
 
 ```
 
-# Part 3: Fill the missing data
+# Tidy data
 
 ## Fill the missing data
 

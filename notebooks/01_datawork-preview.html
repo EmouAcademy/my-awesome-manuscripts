@@ -214,23 +214,17 @@
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#part-1-import-data" id="toc-part-1-import-data" class="nav-link active" data-scroll-target="#part-1-import-data">Part 1: Import data</a>
-  <ul class="collapse">
-  <li><a href="#import-the-dataset-and-remove-the-duplicates" id="toc-import-the-dataset-and-remove-the-duplicates" class="nav-link" data-scroll-target="#import-the-dataset-and-remove-the-duplicates">Import the dataset and remove the duplicates</a></li>
-  </ul></li>
-  <li><a href="#part-2-bad-and-missing-data" id="toc-part-2-bad-and-missing-data" class="nav-link" data-scroll-target="#part-2-bad-and-missing-data">Part 2: Bad and missing data</a>
-  <ul class="collapse">
+  <li><a href="#import-the-dataset-and-remove-the-duplicates" id="toc-import-the-dataset-and-remove-the-duplicates" class="nav-link active" data-scroll-target="#import-the-dataset-and-remove-the-duplicates">Import the dataset and remove the duplicates</a></li>
   <li><a href="#produce-a-table-with-missing-data" id="toc-produce-a-table-with-missing-data" class="nav-link" data-scroll-target="#produce-a-table-with-missing-data">Produce a table with missing data</a>
   <ul class="collapse">
   <li><a href="#by-percentages" id="toc-by-percentages" class="nav-link" data-scroll-target="#by-percentages">By percentages</a></li>
   </ul></li>
   <li><a href="#note-that" id="toc-note-that" class="nav-link" data-scroll-target="#note-that">Note that:</a></li>
-  </ul></li>
   <li><a href="#remove-the-spikes-and-produce-an-extended-table" id="toc-remove-the-spikes-and-produce-an-extended-table" class="nav-link" data-scroll-target="#remove-the-spikes-and-produce-an-extended-table">Remove the spikes, and produce an extended table</a>
   <ul class="collapse">
   <li><a href="#save-dataset-in-folder-01_data_raw" id="toc-save-dataset-in-folder-01_data_raw" class="nav-link" data-scroll-target="#save-dataset-in-folder-01_data_raw">Save dataset in folder: 01_data_raw</a></li>
   </ul></li>
-  <li><a href="#part-3-fill-the-missing-data" id="toc-part-3-fill-the-missing-data" class="nav-link" data-scroll-target="#part-3-fill-the-missing-data">Part 3: Fill the missing data</a>
+  <li><a href="#tidy-data" id="toc-tidy-data" class="nav-link" data-scroll-target="#tidy-data">Tidy data</a>
   <ul class="collapse">
   <li><a href="#fill-the-missing-data" id="toc-fill-the-missing-data" class="nav-link" data-scroll-target="#fill-the-missing-data">Fill the missing data</a></li>
   <li><a href="#save-dataset-in-folder-02_data_tidy" id="toc-save-dataset-in-folder-02_data_tidy" class="nav-link" data-scroll-target="#save-dataset-in-folder-02_data_tidy">Save dataset in folder: 02_data_tidy</a></li>
@@ -259,8 +253,6 @@
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<section id="part-1-import-data" class="level1">
-<h1>Part 1: Import data</h1>
 <section id="import-the-dataset-and-remove-the-duplicates" class="level2">
 <h2 class="anchored" data-anchor-id="import-the-dataset-and-remove-the-duplicates">Import the dataset and remove the duplicates</h2>
 <p>Import the dataset from the directory of: ~/Data Input/Preprocessing data/Preprocessing data.csv, assign the dataset as object of df:</p>
@@ -275,9 +267,6 @@
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PM10=</span>correct_PM10, <span class="at">PM2=</span>correct_PM2, <span class="at">PM10_rel=</span>PM10, <span class="at">PM2_rel=</span>PM2, <span class="at">ratio =</span> PM2<span class="sc">/</span>PM10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
-</section>
-<section id="part-2-bad-and-missing-data" class="level1">
-<h1>Part 2: Bad and missing data</h1>
 <section id="produce-a-table-with-missing-data" class="level2">
 <h2 class="anchored" data-anchor-id="produce-a-table-with-missing-data">Produce a table with missing data</h2>
 <div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div class="cell">
@@ -426,7 +415,6 @@
 <h2 class="anchored" data-anchor-id="note-that">Note that:</h2>
 <p>We use the data in the period of 2009-2018, which has been regarded as a monitoring work stabilized since 2008 when is the beginning of the monitoring. According to NIES, site maintenance was consistent up to 2018.</p>
 <p>+Sainshand site, data 2009-2015 get used; + Dalanzad site: 2009-2016. + UB: 2009-2018 + Zamyn uud: 2009-2018</p>
-</section>
 </section>
 <section id="remove-the-spikes-and-produce-an-extended-table" class="level1">
 <h1>Remove the spikes, and produce an extended table</h1>
@@ -674,8 +662,8 @@
 <h2 class="anchored" data-anchor-id="save-dataset-in-folder-01_data_raw">Save dataset in folder: 01_data_raw</h2>
 </section>
 </section>
-<section id="part-3-fill-the-missing-data" class="level1">
-<h1>Part 3: Fill the missing data</h1>
+<section id="tidy-data" class="level1">
+<h1>Tidy data</h1>
 <section id="fill-the-missing-data" class="level2">
 <h2 class="anchored" data-anchor-id="fill-the-missing-data">Fill the missing data</h2>
 <p>Method 1. Fill the gap Method 2. Relationship equation Method 3. Look-up table</p>
@@ -1066,7 +1054,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom"});
+</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
