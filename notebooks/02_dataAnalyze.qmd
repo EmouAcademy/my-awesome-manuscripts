@@ -58,7 +58,6 @@ df_00 <- df |>
 library(tidyverse) 
 library(ggplot2)
 
-setwd("~/2 Data Processing") 
 df <- read.csv("~/Data Input/Preprocessing data/Preprocessing data.csv")
 
 Data$Station.name <- as.factor(Data$Station.name) 
