@@ -157,15 +157,12 @@
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
      <script async="" src="https://hypothes.is/embed.js"></script>
 <script>
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     document.body.classList.add('hypothesis-enabled');
   });
-</script>  
+</script>   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script> 
       </head>
 
   <body class="quarto-notebook">
@@ -218,20 +215,30 @@
   <ul class="collapse">
   <li><a href="#import-the-dataset-and-remove-the-duplicates" id="toc-import-the-dataset-and-remove-the-duplicates" class="nav-link" data-scroll-target="#import-the-dataset-and-remove-the-duplicates">Import the dataset and remove the duplicates</a></li>
   </ul></li>
-  <li><a href="#part-2-bad-and-missing-data" id="toc-part-2-bad-and-missing-data" class="nav-link" data-scroll-target="#part-2-bad-and-missing-data">Part 2: Bad and missing data</a>
+  <li><a href="#part-2-bad-and-missing-data" id="toc-part-2-bad-and-missing-data" class="nav-link" data-scroll-target="#part-2-bad-and-missing-data">Part 2: Bad and missing data</a></li>
+  <li><a href="#i.-mining-bad-data" id="toc-i.-mining-bad-data" class="nav-link" data-scroll-target="#i.-mining-bad-data">I. Mining bad data</a></li>
+  <li><a href="#a-explore-the-spikes" id="toc-a-explore-the-spikes" class="nav-link" data-scroll-target="#a-explore-the-spikes">a) explore the spikes</a></li>
+  <li><a href="#b-check-the-spikes-against-the-other-data-whether-to-keep-it-or-delete-it" id="toc-b-check-the-spikes-against-the-other-data-whether-to-keep-it-or-delete-it" class="nav-link" data-scroll-target="#b-check-the-spikes-against-the-other-data-whether-to-keep-it-or-delete-it">b) check the spikes against the other data whether to keep it or delete it</a></li>
+  <li><a href="#c-do-iterative-process-with-a-and-b-for-all-data-elements" id="toc-c-do-iterative-process-with-a-and-b-for-all-data-elements" class="nav-link" data-scroll-target="#c-do-iterative-process-with-a-and-b-for-all-data-elements">c) do iterative process with a) and b) for all data elements</a></li>
+  <li><a href="#ii.-remove-the-bad-data" id="toc-ii.-remove-the-bad-data" class="nav-link" data-scroll-target="#ii.-remove-the-bad-data">II. Remove the bad data</a></li>
+  <li><a href="#a-replace-with-na" id="toc-a-replace-with-na" class="nav-link" data-scroll-target="#a-replace-with-na">a) replace with NA</a></li>
+  <li><a href="#b-replace-with-median" id="toc-b-replace-with-median" class="nav-link" data-scroll-target="#b-replace-with-median">b) replace with Median</a></li>
+  <li><a href="#c-replace-with-mean" id="toc-c-replace-with-mean" class="nav-link" data-scroll-target="#c-replace-with-mean">c) replace with Mean</a></li>
+  <li><a href="#iii.-data-gap-filling-carefully-choosing-the-correct-strategy" id="toc-iii.-data-gap-filling-carefully-choosing-the-correct-strategy" class="nav-link" data-scroll-target="#iii.-data-gap-filling-carefully-choosing-the-correct-strategy">III. Data gap filling, carefully choosing the correct strategy</a></li>
+  <li><a href="#a-fill-the-data-based-on-the-seasonal-daily-variations-and-consider-trend" id="toc-a-fill-the-data-based-on-the-seasonal-daily-variations-and-consider-trend" class="nav-link" data-scroll-target="#a-fill-the-data-based-on-the-seasonal-daily-variations-and-consider-trend">a) fill the data based on the seasonal/ daily variations/ and consider trend</a></li>
+  <li><a href="#b-fill-the-data-with-the-medianmean-or-with-the-some-relations" id="toc-b-fill-the-data-with-the-medianmean-or-with-the-some-relations" class="nav-link" data-scroll-target="#b-fill-the-data-with-the-medianmean-or-with-the-some-relations">b) fill the data with the median/mean or with the some relations</a></li>
+  <li><a href="#c-search-for-the-suitable-method" id="toc-c-search-for-the-suitable-method" class="nav-link" data-scroll-target="#c-search-for-the-suitable-method">c) Search for the suitable… method</a>
   <ul class="collapse">
-  <li><a href="#produce-a-table-with-missing-data" id="toc-produce-a-table-with-missing-data" class="nav-link" data-scroll-target="#produce-a-table-with-missing-data">Produce a table with missing data</a>
+  <li><a href="#and-remove-duplicates" id="toc-and-remove-duplicates" class="nav-link" data-scroll-target="#and-remove-duplicates">And remove duplicates</a></li>
+  <li><a href="#data-range-explore" id="toc-data-range-explore" class="nav-link" data-scroll-target="#data-range-explore">data range explore</a>
   <ul class="collapse">
-  <li><a href="#by-percentages" id="toc-by-percentages" class="nav-link" data-scroll-target="#by-percentages">By percentages</a></li>
+  <li><a href="#spikes-to-na-pm10-must-be-greater-than-pm2-and-pm-must-be-0" id="toc-spikes-to-na-pm10-must-be-greater-than-pm2-and-pm-must-be-0" class="nav-link" data-scroll-target="#spikes-to-na-pm10-must-be-greater-than-pm2-and-pm-must-be-0">spikes to NA, PM10 must be greater than PM2, and PM must be &gt; 0</a></li>
   </ul></li>
-  <li><a href="#note-that" id="toc-note-that" class="nav-link" data-scroll-target="#note-that">Note that:</a></li>
-  </ul></li>
-  <li><a href="#remove-the-spikes-and-produce-an-extended-table" id="toc-remove-the-spikes-and-produce-an-extended-table" class="nav-link" data-scroll-target="#remove-the-spikes-and-produce-an-extended-table">Remove the spikes, and produce an extended table</a>
+  <li><a href="#a.-data-range-constrain-0-6" id="toc-a.-data-range-constrain-0-6" class="nav-link" data-scroll-target="#a.-data-range-constrain-0-6">a. data range constrain 0-6</a>
   <ul class="collapse">
-  <li><a href="#save-dataset-in-folder-01_data_raw" id="toc-save-dataset-in-folder-01_data_raw" class="nav-link" data-scroll-target="#save-dataset-in-folder-01_data_raw">Save dataset in folder: 01_data_raw</a></li>
+  <li><a href="#if-pm2pm10-swap-not-in-this-case" id="toc-if-pm2pm10-swap-not-in-this-case" class="nav-link" data-scroll-target="#if-pm2pm10-swap-not-in-this-case">if PM2&gt;PM10 , swap —— NOT in this case</a></li>
   </ul></li>
-  <li><a href="#part-3-fill-the-missing-data" id="toc-part-3-fill-the-missing-data" class="nav-link" data-scroll-target="#part-3-fill-the-missing-data">Part 3: Fill the missing data</a>
-  <ul class="collapse">
+  <li><a href="#remove-0-measurements.-looks-like-no-data-or-malfunction." id="toc-remove-0-measurements.-looks-like-no-data-or-malfunction." class="nav-link" data-scroll-target="#remove-0-measurements.-looks-like-no-data-or-malfunction.">Remove 0 measurements. Looks like no data, or malfunction.</a></li>
   <li><a href="#fill-the-missing-data" id="toc-fill-the-missing-data" class="nav-link" data-scroll-target="#fill-the-missing-data">Fill the missing data</a></li>
   <li><a href="#save-dataset-in-folder-02_data_tidy" id="toc-save-dataset-in-folder-02_data_tidy" class="nav-link" data-scroll-target="#save-dataset-in-folder-02_data_tidy">Save dataset in folder: 02_data_tidy</a></li>
   </ul></li>
@@ -278,404 +285,144 @@
 </section>
 <section id="part-2-bad-and-missing-data" class="level1">
 <h1>Part 2: Bad and missing data</h1>
-<section id="produce-a-table-with-missing-data" class="level2">
-<h2 class="anchored" data-anchor-id="produce-a-table-with-missing-data">Produce a table with missing data</h2>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_000 <span class="ot">&lt;-</span> df_00 <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(Year<span class="sc">&lt;</span><span class="dv">2019</span> <span class="sc">&amp;</span> Year <span class="sc">&gt;</span><span class="dv">2008</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>df_01 <span class="ot">&lt;-</span> df_000 <span class="sc">|&gt;</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>((Year <span class="sc">!=</span> <span class="dv">2019</span> <span class="sc">&amp;</span> Station.name <span class="sc">==</span> <span class="st">"Zamynuud"</span>) <span class="sc">|</span> </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>       (Year <span class="sc">&lt;</span> <span class="dv">2016</span> <span class="sc">&amp;</span> Station.name <span class="sc">==</span> <span class="st">"Sainshand"</span>) <span class="sc">|</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>       (Year <span class="sc">&lt;</span> <span class="dv">2021</span> <span class="sc">&amp;</span> Station.name <span class="sc">==</span> <span class="st">"UB"</span>) <span class="sc">|</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>       (Year <span class="sc">&lt;</span> <span class="dv">2017</span> <span class="sc">&amp;</span> Station.name <span class="sc">==</span> <span class="st">"Dalanzadgad"</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>       )</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_01)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 19
-# Rowwise: 
-   Year Month   Day  Hour correct_PM10 correct_PM2 Visibility    WD    WS   WS.u
-  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;      &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;
-1  2009     1     1     0        0.087       0.073       3366   252 1.08   1.02 
-2  2009     1     1     1        0.2         0.175       1999   317 0.546  0.374
-3  2009     1     1     2        0.309       0.266       6756    87 1.03  -1.03 
-4  2009     1     1     3        0.105       0.089       9559   121 1.03  -0.885
-5  2009     1     1     4        0.063       0.052      17664   121 0.46  -0.393
-6  2009     1     1     5        0.027       0.021      11348    92 2.05  -2.05 
-# ℹ 9 more variables: WS.v &lt;dbl&gt;, OPC &lt;int&gt;, Station.name &lt;chr&gt;, Date &lt;chr&gt;,
-#   PM10 &lt;dbl&gt;, PM2 &lt;dbl&gt;, PM10_rel &lt;dbl&gt;, PM2_rel &lt;dbl&gt;, ratio &lt;dbl&gt;</code></pre>
-</div>
-</div></div>
-<section id="for-date-options-as-year-month-etc" class="level4">
-<h4 class="anchored" data-anchor-id="for-date-options-as-year-month-etc">For date options as year, month, etc:</h4>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Year <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Station.name,Year) <span class="sc">|&gt;</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">NA_date =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(Date)),</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM2 =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(PM2)),</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM10 =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(PM10)),</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_Vis =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Visibility)),</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_WD =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(WD)),</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_WS =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(WS)),</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_OPC =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(OPC))</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>            ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'Station.name'. You can override using the
-`.groups` argument.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 35 × 9
-# Groups:   Station.name [4]
-   Station.name  Year NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
-   &lt;chr&gt;        &lt;int&gt;   &lt;int&gt;  &lt;int&gt;   &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;
- 1 Dalanzadgad   2009    8760    929     715    659   748   748   8760
- 2 Dalanzadgad   2010    8784   1086     921    756   787   787   8784
- 3 Dalanzadgad   2011    8760   3309    2652   1759  2394  2394   8760
- 4 Dalanzadgad   2012    5088   3016    1074    693  1412  1412   5088
- 5 Dalanzadgad   2013    6096   1809    1766   2479  1240  1240   6096
- 6 Dalanzadgad   2014    7800    921     843   6068  1482  1482   7800
- 7 Dalanzadgad   2015    8760   1587    1539   8115  2635  2635   8760
- 8 Dalanzadgad   2016    6288   1613    1654   5995  3306  3306   6288
- 9 Sainshand     2009    8688    424     376    423   587   587   8688
-10 Sainshand     2010    8784   2577    2557   1113  1210  1210   8784
-# ℹ 25 more rows</code></pre>
-</div>
-</div></div>
-</section>
-<section id="for-station" class="level4">
-<h4 class="anchored" data-anchor-id="for-station">For station</h4>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Station <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Station.name) <span class="sc">|&gt;</span> </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">NA_date =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(Date)),</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM2 =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(PM2)),</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM10 =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(PM10)),</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_Vis =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Visibility)),</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_WD =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(WD)),</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_WS =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(WS)),</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_OPC =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(OPC))</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  ) </span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Station</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 8
-  Station.name NA_date NA_PM2 NA_PM10 NA_Vis NA_WD NA_WS NA_OPC
-  &lt;chr&gt;          &lt;int&gt;  &lt;int&gt;   &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;int&gt;  &lt;int&gt;
-1 Dalanzadgad    60336  14270   11164  26524 14004 14004  60336
-2 Sainshand      59040  11929   11727   9320  8527  8527  59040
-3 UB             76656   8716    7879   3770  4053  4053  43415
-4 Zamynuud       67392  10075    8880   3444  4960  4960  67392</code></pre>
-</div>
-</div></div>
-</section>
-<section id="by-percentages" class="level3">
-<h3 class="anchored" data-anchor-id="by-percentages">By percentages</h3>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>Table_NA_by_Station_percentage <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Station.name, Year) <span class="sc">|&gt;</span> </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">NA_date =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(Date)),</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM2 =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(PM2)),</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM10 =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(PM10)),</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_Vis =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(Visibility)),</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_WD =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(WD)),</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_WS =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(WS)),</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_OPC =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(OPC))</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">NA_PM2p =</span> <span class="fu">if_else</span>(NA_date <span class="sc">!=</span> NA_PM2, NA_PM2<span class="sc">/</span>NA_date<span class="sc">*</span><span class="dv">100</span>, <span class="dv">0</span>)</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do</span>({</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    PM10_perc <span class="ot">&lt;-</span> .<span class="sc">$</span>NA_PM2<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>.<span class="sc">$</span>NA_date; </span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>      missing_PM10 <span class="ot">&lt;-</span><span class="fu">mean</span>(PM10_perc); </span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">attr</span>(missing_PM10, <span class="st">"data.all"</span>) <span class="ot">&lt;-</span> PM10_perc; </span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    PM2_perc <span class="ot">&lt;-</span> .<span class="sc">$</span>NA_PM10<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>.<span class="sc">$</span>NA_date; </span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>      missing_PM2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(PM2_perc); </span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">attr</span>(missing_PM2, <span class="st">"data.all"</span>) <span class="ot">&lt;-</span> PM2_perc;</span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    Vis_perc <span class="ot">&lt;-</span> .<span class="sc">$</span>NA_Vis<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>.<span class="sc">$</span>NA_date; </span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>      missing_Vis <span class="ot">&lt;-</span> <span class="fu">mean</span>(Vis_perc); </span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">attr</span>(missing_Vis, <span class="st">"data.all"</span>) <span class="ot">&lt;-</span> Vis_perc; </span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    WS_perc <span class="ot">&lt;-</span> .<span class="sc">$</span>NA_WS<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>.<span class="sc">$</span>NA_date; </span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>      missing_WS <span class="ot">&lt;-</span> <span class="fu">mean</span>(WS_perc); </span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">attr</span>(missing_WS, <span class="st">"data.all"</span>) <span class="ot">&lt;-</span> WS_perc; </span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>    WD_perc <span class="ot">&lt;-</span> .<span class="sc">$</span>NA_WD<span class="sc">*</span><span class="dv">100</span><span class="sc">/</span>.<span class="sc">$</span>NA_date; </span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>      missing_WD <span class="ot">&lt;-</span> <span class="fu">mean</span>(WD_perc); </span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>      <span class="fu">attr</span>(missing_WD, <span class="st">"data.all"</span>) <span class="ot">&lt;-</span> WD_perc; </span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(missing_PM2, missing_PM10, missing_Vis, missing_WS, missing_WD)}) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'Station.name'. You can override using the
-`.groups` argument.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a> Table_NA_by_Station_percentage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 6
-# Groups:   Station.name [4]
-  Station.name missing_PM2 missing_PM10 missing_Vis missing_WS missing_WD
-  &lt;chr&gt;              &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
-1 Dalanzadgad         19.2         25.7       44.5       24.3       24.3 
-2 Sainshand           19.7         20.0       15.7       14.6       14.6 
-3 UB                  11.0         11.9        4.53       4.85       4.85
-4 Zamynuud            12.7         14.4        5.49       7.44       7.44</code></pre>
-</div>
-</div></div>
+<section id="cleaning-and-handling-missing-data" class="level15">
+<p class="heading">Cleaning and Handling MISSING data</p>
 </section>
 </section>
-<section id="note-that" class="level2">
-<h2 class="anchored" data-anchor-id="note-that">Note that:</h2>
-<p>We use the data in the period of 2009-2018, which has been regarded as a monitoring work stabilized since 2008 when is the beginning of the monitoring. According to NIES, site maintenance was consistent up to 2018.</p>
-<p>+Sainshand site, data 2009-2015 get used; + Dalanzad site: 2009-2016. + UB: 2009-2018 + Zamyn uud: 2009-2018</p>
+<section id="i.-mining-bad-data" class="level1">
+<h1>I. Mining bad data</h1>
+</section>
+<section id="a-explore-the-spikes" class="level1">
+<h1>a) explore the spikes</h1>
+</section>
+<section id="b-check-the-spikes-against-the-other-data-whether-to-keep-it-or-delete-it" class="level1">
+<h1>b) check the spikes against the other data whether to keep it or delete it</h1>
+</section>
+<section id="c-do-iterative-process-with-a-and-b-for-all-data-elements" class="level1">
+<h1>c) do iterative process with a) and b) for all data elements</h1>
+</section>
+<section id="ii.-remove-the-bad-data" class="level1">
+<h1>II. Remove the bad data</h1>
+</section>
+<section id="a-replace-with-na" class="level1">
+<h1>a) replace with NA</h1>
+</section>
+<section id="b-replace-with-median" class="level1">
+<h1>b) replace with Median</h1>
+</section>
+<section id="c-replace-with-mean" class="level1">
+<h1>c) replace with Mean</h1>
+</section>
+<section id="iii.-data-gap-filling-carefully-choosing-the-correct-strategy" class="level1">
+<h1>III. Data gap filling, carefully choosing the correct strategy</h1>
+</section>
+<section id="a-fill-the-data-based-on-the-seasonal-daily-variations-and-consider-trend" class="level1">
+<h1>a) fill the data based on the seasonal/ daily variations/ and consider trend</h1>
+</section>
+<section id="b-fill-the-data-with-the-medianmean-or-with-the-some-relations" class="level1">
+<h1>b) fill the data with the median/mean or with the some relations</h1>
+</section>
+<section id="c-search-for-the-suitable-method" class="level1">
+<h1>c) Search for the suitable… method</h1>
+<section id="section" class="level77">
+<p class="heading"></p>
+<p>library(tidyverse) library(ggplot2)</p>
+<p>setwd(“~/2 Data Processing”) df &lt;- read.csv(“~/Data Input/Preprocessing data/Preprocessing data.csv”)</p>
+<p>#Data<span class="math inline">\(Station.name &lt;- as.factor(Data\)</span>Station.name) #view(Data)</p>
+</section>
+<section id="and-remove-duplicates" class="level2">
+<h2 class="anchored" data-anchor-id="and-remove-duplicates">And remove duplicates</h2>
+<p>df1 &lt;- df %&gt;% distinct()</p>
+<section id="converting-types-renaming." class="level5">
+<h5 class="anchored" data-anchor-id="converting-types-renaming.">Converting types, renaming.</h5>
+<p>df1 &lt;- df1 |&gt; mutate(pm2_swap=PM10, pm10_swap=PM2, ratio = pm2_swap/pm10_swap)</p>
+<p>glimpse(df1) df1<span class="math inline">\(Date &lt;- as.Date(df1\)</span>Date) df1<span class="math inline">\(Station.name &lt;- as.factor(df1\)</span>Station.name)</p>
+</section>
+<section id="remove-spikes" class="level5">
+<h5 class="anchored" data-anchor-id="remove-spikes">1. Remove spikes</h5>
 </section>
 </section>
-<section id="remove-the-spikes-and-produce-an-extended-table" class="level1">
-<h1>Remove the spikes, and produce an extended table</h1>
-<p>Remove the spikes in the datasets, and produce the table with NA, with removed spikes; express it in a percentages. #| Comments*kedjkdjk ### Remove the spikes Method 1. Mean value +- (3-5)SD - Find Monthly mean #| flow: 1st - Remove spikes PMs &gt;10 mgm/hour is unreasonable. #| - Exclude 0 values in PMs.</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_10 <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PM10 <span class="sc">&lt;</span> <span class="fl">0.003</span> <span class="sc">|</span> PM2 <span class="sc">&lt;</span> <span class="fl">0.003</span>) </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 19
-# Rowwise: 
-   Year Month   Day  Hour correct_PM10 correct_PM2 Visibility    WD    WS  WS.u
-  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;      &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
-1  2009     1     9    21        0.003       0.002      20000    NA NA    NA   
-2  2009     1    16    19        0.006       0.001      20000   278  7.14  7.08
-3  2009     1    16    20        0.005       0.001      20000   276  6.42  6.38
-4  2009     1    16    22        0.008       0.002      20000   276  7.74  7.71
-5  2009     1    16    23        0.007       0.002      20000   286  5.55  5.33
-6  2009     2     5    19        0.006       0.001      20000   274  3.49  3.49
-# ℹ 9 more variables: WS.v &lt;dbl&gt;, OPC &lt;int&gt;, Station.name &lt;chr&gt;, Date &lt;chr&gt;,
-#   PM10 &lt;dbl&gt;, PM2 &lt;dbl&gt;, PM10_rel &lt;dbl&gt;, PM2_rel &lt;dbl&gt;, ratio &lt;dbl&gt;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_01)<span class="sc">+</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> Date,  <span class="at">y =</span> PM2 ))<span class="sc">+</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x =</span> Date, <span class="at">y =</span>PM10 )) <span class="sc">+</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Station.name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 23168 rows containing missing values or values outside the scale range
-(`geom_line()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 39650 rows containing missing values or values outside the scale range
-(`geom_col()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<div class="">
-<figure class="figure">
-<p class=""><a href="02_dataAnalyze_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="02_dataAnalyze_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></a></p>
-</figure>
-</div>
-</div>
-</div></div>
-<p>#| flow: 2nd - ratio check. PM10 &gt;= PM2.5</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_01 <span class="sc">|&gt;</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ratio <span class="sc">&gt;</span><span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>PM2, <span class="at">y=</span>PM10, <span class="at">size=</span>WS)) <span class="sc">+</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Station.name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1002 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<div class="">
-<figure class="figure">
-<p class=""><a href="02_dataAnalyze_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="02_dataAnalyze_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></a></p>
-</figure>
-</div>
-</div>
-</div></div>
-<p>#| flow: 2nd - ratio check. remove data of ratio&gt;1</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df_01 <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PM2<span class="sc">&lt;</span><span class="dv">10</span> <span class="sc">&amp;</span> PM10<span class="sc">&lt;</span><span class="dv">10</span> <span class="sc">&amp;</span> PM10 <span class="sc">!=</span> <span class="dv">0</span> <span class="sc">&amp;</span> PM2 <span class="sc">!=</span> <span class="dv">0</span> <span class="sc">&amp;</span> ratio <span class="sc">&lt;</span> <span class="dv">1</span>) </span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_01)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 19
-# Rowwise: 
-   Year Month   Day  Hour correct_PM10 correct_PM2 Visibility    WD    WS   WS.u
-  &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;      &lt;int&gt; &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;
-1  2009     1     1     0        0.087       0.073       3366   252 1.08   1.02 
-2  2009     1     1     1        0.2         0.175       1999   317 0.546  0.374
-3  2009     1     1     2        0.309       0.266       6756    87 1.03  -1.03 
-4  2009     1     1     3        0.105       0.089       9559   121 1.03  -0.885
-5  2009     1     1     4        0.063       0.052      17664   121 0.46  -0.393
-6  2009     1     1     5        0.027       0.021      11348    92 2.05  -2.05 
-# ℹ 9 more variables: WS.v &lt;dbl&gt;, OPC &lt;int&gt;, Station.name &lt;chr&gt;, Date &lt;chr&gt;,
-#   PM10 &lt;dbl&gt;, PM2 &lt;dbl&gt;, PM10_rel &lt;dbl&gt;, PM2_rel &lt;dbl&gt;, ratio &lt;dbl&gt;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>    df_01 <span class="sc">|&gt;</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>PM2, <span class="at">y=</span>PM10, <span class="at">size=</span>WS)) <span class="sc">+</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Station.name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 8004 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<div class="">
-<figure class="figure">
-<p class=""><a href="02_dataAnalyze_files/figure-html/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="02_dataAnalyze_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></a></p>
-</figure>
-</div>
-</div>
-</div></div>
-<p>#| flow: 2nd - Method 1. Mean value +- (3-5)SD - Monthly mean at stations #| output: false</p>
-<p>Option 1:</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df_02a <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Station.name, Month) <span class="sc">|&gt;</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(PM2, PM10) <span class="sc">|&gt;</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PM2<span class="sc">&lt;</span><span class="dv">10</span> <span class="sc">&amp;</span> PM10<span class="sc">&lt;</span><span class="dv">10</span>) <span class="sc">|&gt;</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_at</span>(<span class="fu">vars</span>(PM2, PM10), </span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>                   <span class="sc">~</span> <span class="fu">ifelse</span>(<span class="fu">near</span>(., <span class="fu">mean</span>(.), <span class="fu">sd</span>(.) <span class="sc">*</span> <span class="dv">3</span>), ., <span class="st">"Outlier"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter_if</span>(is.character, <span class="fu">any_vars</span>(. <span class="sc">==</span> <span class="st">"Outlier"</span>))</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>df_02a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2,637 × 19
-# Groups:   Station.name, Month [48]
-    Year Month   Day  Hour correct_PM10 correct_PM2 Visibility    WD    WS
-   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;      &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
- 1  2009     1     5    16        0.594       0.509       1814   260 0.788
- 2  2009     1     6     0        0.641       0.547        744   248 1.23 
- 3  2009     1     6     1        0.867       0.728       1093   277 0.738
- 4  2009     1     6     2        0.705       0.597       1723     0 1.62 
- 5  2009     1     9     1        0.756       0.656        992   292 0.429
- 6  2009     1     9     2        0.709       0.612       2098    55 1    
- 7  2009     1    15    12        0.818       0.718       5941   147 0.633
- 8  2009     1    16     1        0.742       0.556       2125   120 0.274
- 9  2009     1    30     1        0.915       0.797       1315     9 0.366
-10  2009     1    30     2        0.601       0.507       2485   309 0.713
-# ℹ 2,627 more rows
-# ℹ 10 more variables: WS.u &lt;dbl&gt;, WS.v &lt;dbl&gt;, OPC &lt;int&gt;, Station.name &lt;chr&gt;,
-#   Date &lt;chr&gt;, PM10 &lt;chr&gt;, PM2 &lt;chr&gt;, PM10_rel &lt;dbl&gt;, PM2_rel &lt;dbl&gt;,
-#   ratio &lt;dbl&gt;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(df_02a, <span class="fu">aes</span>(<span class="at">x=</span>Date, <span class="at">y=</span>PM10_rel, <span class="at">color =</span> Visibility, <span class="at">size=</span>WS)) <span class="sc">+</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Station.name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 209 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="02_dataAnalyze_files/figure-html/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="02_dataAnalyze_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></a></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(df_02a, <span class="fu">aes</span>(<span class="at">x=</span>Date, <span class="at">y=</span>PM2_rel, <span class="at">color =</span> Visibility, <span class="at">size=</span>WS)) <span class="sc">+</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Station.name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 209 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="02_dataAnalyze_files/figure-html/unnamed-chunk-10-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="02_dataAnalyze_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid figure-img" width="672"></a></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(df_02a, <span class="fu">aes</span>(<span class="at">x=</span>Date, <span class="at">y=</span>ratio, <span class="at">color =</span> Visibility, <span class="at">size=</span>WS)) <span class="sc">+</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Station.name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 209 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><a href="02_dataAnalyze_files/figure-html/unnamed-chunk-10-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="02_dataAnalyze_files/figure-html/unnamed-chunk-10-3.png" class="img-fluid figure-img" width="672"></a></p>
-</figure>
-</div>
-</div>
-</div></div>
-<p>Option 2:</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df_02a1 <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Station.name, Month) <span class="sc">|&gt;</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(PM2, PM10) <span class="sc">|&gt;</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">drop_na</span>(PM2, PM10) <span class="sc">|&gt;</span></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_at</span>(<span class="fu">vars</span>(PM2, PM10), </span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>                   <span class="sc">~</span> <span class="fu">ifelse</span>(<span class="fu">near</span>(., <span class="fu">mean</span>(.), <span class="fu">sd</span>(.) <span class="sc">*</span> <span class="dv">3</span>), ., <span class="fu">mean</span>(.)))</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>df_02a1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 118,482 × 19
-# Groups:   Station.name, Month [48]
-    Year Month   Day  Hour correct_PM10 correct_PM2 Visibility    WD    WS
-   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;      &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
- 1  2009     1     1     0        0.087       0.073       3366   252 1.08 
- 2  2009     1     1     1        0.2         0.175       1999   317 0.546
- 3  2009     1     1     2        0.309       0.266       6756    87 1.03 
- 4  2009     1     1     3        0.105       0.089       9559   121 1.03 
- 5  2009     1     1     4        0.063       0.052      17664   121 0.46 
- 6  2009     1     1     5        0.027       0.021      11348    92 2.05 
- 7  2009     1     1     6        0.065       0.055      15397     0 1.6  
- 8  2009     1     1     7        0.03        0.023      20000   300 1.74 
- 9  2009     1     1     8        0.013       0.01       17384   305 1.29 
-10  2009     1     1     9        0.029       0.023       9322   324 2.96 
-# ℹ 118,472 more rows
-# ℹ 10 more variables: WS.u &lt;dbl&gt;, WS.v &lt;dbl&gt;, OPC &lt;int&gt;, Station.name &lt;chr&gt;,
-#   Date &lt;chr&gt;, PM10 &lt;dbl&gt;, PM2 &lt;dbl&gt;, PM10_rel &lt;dbl&gt;, PM2_rel &lt;dbl&gt;,
-#   ratio &lt;dbl&gt;</code></pre>
-</div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [13]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df_02b <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(PM2, PM10) <span class="sc">|&gt;</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_at</span>(<span class="fu">vars</span>(PM2, PM10), </span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>                   <span class="sc">~</span> <span class="fu">ifelse</span>(<span class="fu">near</span>(., <span class="fu">mean</span>(., <span class="at">.by =</span> <span class="fu">c</span>(Station.name, Month)), <span class="fu">sd</span>(.) <span class="sc">*</span> <span class="dv">3</span>), ., <span class="st">"Outlier"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter_if</span>(is.character, <span class="fu">any_vars</span>(. <span class="sc">==</span> <span class="st">"Outlier"</span>))</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>df_02b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3,267 × 19
-    Year Month   Day  Hour correct_PM10 correct_PM2 Visibility    WD    WS
-   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;        &lt;dbl&gt;       &lt;dbl&gt;      &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
- 1  2009     1     1     2        0.309       0.266       6756    87 1.03 
- 2  2009     1     3    15        0.351       0.292       3444   119 0.856
- 3  2009     1     5     1        0.313       0.271       3392   275 2.56 
- 4  2009     1     5    13        0.482       0.419       1383   260 1.7  
- 5  2009     1     5    14        0.482       0.415       1072   266 1.84 
- 6  2009     1     5    15        0.549       0.466       1099   261 0.83 
- 7  2009     1     5    16        0.594       0.509       1814   260 0.788
- 8  2009     1     6     0        0.641       0.547        744   248 1.23 
- 9  2009     1     6     1        0.867       0.728       1093   277 0.738
-10  2009     1     6     2        0.705       0.597       1723     0 1.62 
-# ℹ 3,257 more rows
-# ℹ 10 more variables: WS.u &lt;dbl&gt;, WS.v &lt;dbl&gt;, OPC &lt;int&gt;, Station.name &lt;chr&gt;,
-#   Date &lt;chr&gt;, PM10 &lt;chr&gt;, PM2 &lt;chr&gt;, PM10_rel &lt;dbl&gt;, PM2_rel &lt;dbl&gt;,
-#   ratio &lt;dbl&gt;</code></pre>
-</div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df_02b1 <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(PM2, PM10) <span class="sc">|&gt;</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate_at</span>(<span class="fu">vars</span>(PM2, PM10), </span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>                   <span class="sc">~</span> <span class="fu">ifelse</span>(<span class="fu">near</span>(., <span class="fu">mean</span>(., <span class="at">.by =</span> <span class="fu">c</span>(Station.name, Month)), <span class="fu">sd</span>(.) <span class="sc">*</span> <span class="dv">3</span>), ., <span class="fu">mean</span>(., <span class="at">.by =</span><span class="fu">c</span>(Station.name, Month)))) <span class="sc">|&gt;</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">filter_if</span>(is.numeric, <span class="fu">any_vars</span>(. <span class="sc">==</span> <span class="fu">mean</span>(.)))</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>df_02b1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 0 × 19
-# ℹ 19 variables: Year &lt;int&gt;, Month &lt;int&gt;, Day &lt;int&gt;, Hour &lt;int&gt;,
-#   correct_PM10 &lt;dbl&gt;, correct_PM2 &lt;dbl&gt;, Visibility &lt;int&gt;, WD &lt;int&gt;,
-#   WS &lt;dbl&gt;, WS.u &lt;dbl&gt;, WS.v &lt;dbl&gt;, OPC &lt;int&gt;, Station.name &lt;chr&gt;,
-#   Date &lt;chr&gt;, PM10 &lt;dbl&gt;, PM2 &lt;dbl&gt;, PM10_rel &lt;dbl&gt;, PM2_rel &lt;dbl&gt;,
-#   ratio &lt;dbl&gt;</code></pre>
-</div>
-</div></div>
-<section id="save-dataset-in-folder-01_data_raw" class="level2">
-<h2 class="anchored" data-anchor-id="save-dataset-in-folder-01_data_raw">Save dataset in folder: 01_data_raw</h2>
+<section id="data-range-explore" class="level2">
+<h2 class="anchored" data-anchor-id="data-range-explore">data range explore</h2>
+<p>breaks_pm10 &lt;- c(min(df1<span class="math inline">\(pm10_swap, na.rm = T), 0.001, 1, max(df1\)</span>pm10_swap, na.rm = T)) ggplot(df1, aes(pm10_swap)) + geom_histogram(breaks=breaks_pm10)</p>
+<p>breaks_pm2 &lt;- c(min(df1<span class="math inline">\(pm2_swap, na.rm = T), 0.001, 1, max(df1\)</span>pm2_swap, na.rm = T)) ggplot(df1, aes(pm2_swap)) + geom_histogram(breaks=breaks_pm2)</p>
+<section id="spikes-to-na-pm10-must-be-greater-than-pm2-and-pm-must-be-0" class="level3">
+<h3 class="anchored" data-anchor-id="spikes-to-na-pm10-must-be-greater-than-pm2-and-pm-must-be-0">spikes to NA, PM10 must be greater than PM2, and PM must be &gt; 0</h3>
 </section>
 </section>
-<section id="part-3-fill-the-missing-data" class="level1">
-<h1>Part 3: Fill the missing data</h1>
+<section id="a.-data-range-constrain-0-6" class="level2">
+<h2 class="anchored" data-anchor-id="a.-data-range-constrain-0-6">a. data range constrain 0-6</h2>
+<p>df2 &lt;- df1 |&gt; mutate(pm10_miss = replace(pm10_swap, pm10_swap &gt; 7 | pm10_swap == 0 , NA), pm2_miss = replace(pm2_swap, pm2_swap &gt; 7 | pm2_swap == 0, NA)) write_csv(df2, file = “/Users/munkhtsetseg/WORK/Research/Data/02_data_tidy/clean_df2.csv”)</p>
+<p>plot(df2<span class="math inline">\(pm10_miss, df2\)</span>pm2_miss) # df2 &lt;- df1 |&gt; # mutate(pm10_miss = replace(pm10_swap, pm10_swap &gt; 6 | pm10_swap &lt; pm2_swap, NA), # pm2_miss = replace(pm2_swap, pm2_swap &gt; 6 | pm2_swap &gt; pm10_swap, NA), # ratio_miss = ifelse(pm10_miss &gt;0, pm2_miss/pm10_miss, NA)) # write_csv(df2, file = “/Users/munkhtsetseg/WORK/Research/Data/02_data_tidy/clean_df2.csv”)</p>
+<p>df2<span class="math inline">\(Date &lt; as.Date(df2\)</span>Date)</p>
+<p>df2_UB &lt;- df2 |&gt; filter(Station.name == “UB”) |&gt; mutate(pm2_miss = replace(pm2_swap, pm2_swap &lt; 0.0011 | pm2_swap &gt;30, NA), pm10_miss = replace(pm10_swap, pm10_swap &lt; 0.0011, NA)) write_csv(df2_UB, file = “/Users/munkhtsetseg/WORK/Research/Data/02_data_tidy/clean_df2_UB.csv”) plot(df2_UB<span class="math inline">\(pm10_miss, df2_UB\)</span>pm2_miss)</p>
+<p>df2_SSh &lt;- df2 |&gt; filter(Station.name == “Sainshand”) write_csv(df2_UB, file = “/Users/munkhtsetseg/WORK/Research/Data/02_data_tidy/clean_df2_SSh.csv”) plot(df2_SSh<span class="math inline">\(pm10_miss, df2_SSh\)</span>pm2_miss)</p>
+<section id="шуурсан-бололтой" class="level6">
+<h6 class="anchored" data-anchor-id="шуурсан-бололтой">Шуурсан бололтой</h6>
+<p>df2 |&gt; filter(Station.name == “Sainshand” &amp; Year ==2011 &amp; Month ==6) |&gt; ggplot(aes(Date, pm10_miss, size = WS, color=Visibility)) + geom_point()</p>
+<p>df2_DZ &lt;- df2 |&gt; filter(Station.name == “Dalanzadgad”) |&gt; mutate(pm2_miss = replace(pm2_swap, pm2_swap &gt; pm10_swap*3.5 | pm2_swap == 0, NA)) write_csv(df2_DZ, file = “/Users/munkhtsetseg/WORK/Research/Data/02_data_tidy/clean_df2_DZ.csv”) plot(df2_DZ<span class="math inline">\(pm10_miss, df2_DZ\)</span>pm2_miss)</p>
+<p>df2 |&gt; filter(Station.name == “Dalanzadgad”) |&gt; mutate(pm2_miss = replace(pm2_swap, pm2_swap &gt; pm10_swap*3.5 | pm2_swap == 0, NA)) |&gt; ggplot(aes(pm10_miss, pm2_miss, size = WS)) + geom_point() + facet_wrap(~Year)</p>
+</section>
+<section id="zamyn-uud" class="level4">
+<h4 class="anchored" data-anchor-id="zamyn-uud">Zamyn uud</h4>
+<p>df2_ZU &lt;- df2 |&gt; filter(Station.name == “Zamynuud” ) |&gt; mutate(pm2_miss = replace(pm2_swap, pm2_swap &gt; pm10_swap*3.5 | pm2_swap == 0, NA), pm10_miss = replace(pm10_swap, Year &gt; 2016 &amp; pm10_swap &gt; 0.5 | Year &gt; 2017, NA)) write_csv(df2_ZU, file = “/Users/munkhtsetseg/WORK/Research/Data/02_data_tidy/clean_df2_ZU.csv”) plot(df2_ZU<span class="math inline">\(pm10_miss, df2_ZU\)</span>pm2_miss)</p>
+<p>df2 |&gt; filter(Station.name == “Zamynuud”) |&gt; mutate(pm2_miss = replace(pm2_swap, pm2_swap &gt; pm10_swap*3.5 | pm2_swap == 0, NA), pm10_miss = replace(pm10_swap, Year &gt; 2016 &amp; pm10_swap &gt; 0.5| Year &gt; 2017, NA)) |&gt; ggplot(aes(pm2_miss, pm10_miss, size = WS)) + geom_point() + facet_wrap(~Year)</p>
+<p>breaks_ratio &lt;- c(min(df2<span class="math inline">\(ratio_miss, na.rm = T), 0, 1, max(df2\)</span>ratio_miss, na.rm = T)) summary(breaks_ratio)</p>
+<section id="section-1" class="level24">
+<p class="heading"></p>
+</section>
+<section id="section-2" class="level21">
+<p class="heading"></p>
+</section>
+<section id="df2-is-nice.-now-i-can-work-with." class="level6">
+<h6 class="anchored" data-anchor-id="df2-is-nice.-now-i-can-work-with.">df2 is nice. Now I can work with.</h6>
+<p>######. Харин одоо data gap filling хийх үү? ######. Handling missing data ############################### ############################### ######## Convert into log</p>
+<p>df2_log &lt;- df1 |&gt; mutate(pm10_log = log(pm10_swap+0.0000000000000000001), pm2_log = log(pm2_swap + 0.00000001), WS_log = log1p(WS))</p>
+<p>df2_log &lt;- df2_log |&gt; mutate(pm10_miss_log = replace(pm10_log, pm10_swap &gt; 6 | pm10_swap &lt; pm2_swap | pm10_swap == 0, NA), pm2_miss_log = replace(pm2_log, pm2_swap &gt; 6 | pm2_swap &gt; pm10_swap |pm2_swap == 0 , NA)) write_csv(df2_log, file = “/Users/munkhtsetseg/WORK/Research/Data/02_data_tidy/clean_df2.csv”)</p>
+<p>plot(density(df2_log<span class="math inline">\(WS_log, na.rm=TRUE))
+plot(density(df1\)</span>pm10_swap, na.rm=TRUE)) plot(df2_b<span class="math inline">\(pm10_swap, df2_b\)</span>pm10_normal_dist)</p>
+<p>write_csv(df2_01, file = “/Users/munkhtsetseg/WORK/Research/Data/02_data_tidy/clean_df2_01.csv”)</p>
+<p>log(0.04)</p>
+<p>log1p(0) log</p>
+<p>plot(df2<span class="math inline">\(pm10_miss, df2\)</span>pm2_miss)</p>
+</section>
+<section id="check-0" class="level6">
+<h6 class="anchored" data-anchor-id="check-0">Check 0</h6>
+<p>df0 &lt;- df2 |&gt; filter(pm2_miss == 0 | pm10_miss == 0)</p>
+<p>plot(df2<span class="math inline">\(ratio_miss, df2\)</span>ratio_adj)</p>
+</section>
+<section id="section-3" class="level6">
+<h6 class="anchored" data-anchor-id="section-3"></h6>
+<p>####. Dalanzad 2012 оны 6 сараас 7 сарын эхэн хүртэл PM10&lt;PM2; солих ######## df2 |&gt; filter( Station.name == “Sainshand” &amp; Year==2011 &amp; Month ==6) |&gt; ggplot(aes(x= Date, y= pm10_miss, size = WS)) + geom_point() + ylim(0,0.7) facet_wrap(~Month)</p>
+</section>
+</section>
+<section id="section-4" class="level4">
+<h4 class="anchored" data-anchor-id="section-4"></h4>
+<p>ggplot(df2, aes(x= Date, y= WS, color = WS)) + geom_point() + #ylim(0,10000) + facet_wrap(~Station.name)</p>
+<p>ggplot(df0, aes(x= WS, y= ratio_miss, color = factor(Year))) + geom_point() + ylim(0,3) + facet_wrap(~Station.name) ####</p>
+<p>ggplot(df2, aes(x= Date, y= pm10_miss, color = WS)) + geom_point() + facet_wrap(~Station.name)</p>
+<p>plot(df1<span class="math inline">\(pm2_adj, df1\)</span>pm10_adj) ggplot(df1, aes(pm2_adj, pm10_adj, color=Station.name, size=WS)) + geom_point()</p>
+<p>ggplot(df1, aes(pm2_miss, pm10_miss, color=Station.name, size=WS)) + geom_point()</p>
+<section id="section-5" class="level33">
+<p class="heading"></p>
+</section>
+<section id="not-used-pieces" class="level19">
+<p class="heading">Not used pieces</p>
+</section>
+</section>
+<section id="if-pm2pm10-swap-not-in-this-case" class="level3">
+<h3 class="anchored" data-anchor-id="if-pm2pm10-swap-not-in-this-case">if PM2&gt;PM10 , swap —— NOT in this case</h3>
+<p>df_dal &lt;- df2 |&gt; filter(Station.name == “Dalanzadgad” &amp; Year == 2011) |&gt; transform(pm10_adj = pmax(pm2_miss, pm10_miss), pm2_adj = pmin(pm2_miss, pm10_miss)) |&gt; mutate(ratio_adj = pm2_adj/pm10_adj)</p>
+<p>df_dal &lt;- df2 |&gt; transform(pm10_adj = pmax(pm2_miss, pm10_miss), pm2_adj = pmin(pm2_miss, pm10_miss)) |&gt; mutate(ratio_adj = pm2_adj/pm10_adj)</p>
+<p>d &lt;- df_dal |&gt; filter(pm10_adj != pm10_miss | pm2_adj != pm2_miss)</p>
+</section>
+</section>
+<section id="remove-0-measurements.-looks-like-no-data-or-malfunction." class="level2">
+<h2 class="anchored" data-anchor-id="remove-0-measurements.-looks-like-no-data-or-malfunction.">Remove 0 measurements. Looks like no data, or malfunction.</h2>
+<p>arrange(PM10)</p>
+<p>df1[1:87840, 6][df1[1:87840, 6] == 0] &lt;- NA</p>
+<p>df1 &lt;- df1 %&gt;% distinct() |&gt; arrange(PM2) df1[1:35460, 5][df1[1:35460, 5] == 0] &lt;- NA # Part 3: Fill the missing data</p>
+</section>
 <section id="fill-the-missing-data" class="level2">
 <h2 class="anchored" data-anchor-id="fill-the-missing-data">Fill the missing data</h2>
 <p>Method 1. Fill the gap Method 2. Relationship equation Method 3. Look-up table</p>
@@ -1104,37 +851,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":false,"descPosition":"bottom"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script> 
+</script>  </div> <!-- /content --> 
   
 </body></html>

@@ -7,7 +7,7 @@
 
     <meta name="author" content="Munkhtsetseg">
 
-    <title>01_datawork</title>
+    <title>03_resultFigures</title>
     <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -172,15 +172,15 @@
     <div id="quarto-embed-header" class="headroom fixed-top bg-primary">
       
       <a onclick="window.quartoBackToArticle(); return false;" class="btn btn-primary quarto-back-link" href=""><i class="bi bi-caret-left"></i> Back to Article</a>
-      <h6><i class="bi bi-journal-code"></i> 01_datawork</h6>
+      <h6><i class="bi bi-journal-code"></i> 03_resultFigures</h6>
 
-            <a href="../notebooks/01_datawork.qmd" class="btn btn-primary quarto-download-embed" download="01_datawork.qmd">Download Source</a>
+            <a href="../notebooks/03_resultFigures.qmd" class="btn btn-primary quarto-download-embed" download="03_resultFigures.qmd">Download Source</a>
           </div>
 
      <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">01_datawork</h1>
+      <h1 class="title">03_resultFigures</h1>
           </div>
 
     
@@ -214,13 +214,30 @@
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#import-the-dataset-and-remove-the-duplicates" id="toc-import-the-dataset-and-remove-the-duplicates" class="nav-link active" data-scroll-target="#import-the-dataset-and-remove-the-duplicates">Import the dataset and remove the duplicates</a></li>
+  <li><a href="#part-1-import-data" id="toc-part-1-import-data" class="nav-link active" data-scroll-target="#part-1-import-data">Part 1: Import data</a>
+  <ul class="collapse">
+  <li><a href="#import-the-dataset-and-remove-the-duplicates" id="toc-import-the-dataset-and-remove-the-duplicates" class="nav-link" data-scroll-target="#import-the-dataset-and-remove-the-duplicates">Import the dataset and remove the duplicates</a></li>
+  </ul></li>
+  <li><a href="#part-2-bad-and-missing-data" id="toc-part-2-bad-and-missing-data" class="nav-link" data-scroll-target="#part-2-bad-and-missing-data">Part 2: Bad and missing data</a>
+  <ul class="collapse">
   <li><a href="#produce-a-table-with-missing-data" id="toc-produce-a-table-with-missing-data" class="nav-link" data-scroll-target="#produce-a-table-with-missing-data">Produce a table with missing data</a>
   <ul class="collapse">
   <li><a href="#by-percentages" id="toc-by-percentages" class="nav-link" data-scroll-target="#by-percentages">By percentages</a></li>
   </ul></li>
   <li><a href="#note-that" id="toc-note-that" class="nav-link" data-scroll-target="#note-that">Note that:</a></li>
-  <li><a href="#remove-the-spikes-and-produce-an-extended-table" id="toc-remove-the-spikes-and-produce-an-extended-table" class="nav-link" data-scroll-target="#remove-the-spikes-and-produce-an-extended-table">Remove the spikes, and produce an extended table</a></li>
+  <li><a href="#remove-the-spikes-and-produce-an-extended-table" id="toc-remove-the-spikes-and-produce-an-extended-table" class="nav-link" data-scroll-target="#remove-the-spikes-and-produce-an-extended-table">Remove the spikes, and produce an extended table</a>
+  <ul class="collapse">
+  <li><a href="#flow-2nd---ratio-check.-pm10-pm2.5" id="toc-flow-2nd---ratio-check.-pm10-pm2.5" class="nav-link" data-scroll-target="#flow-2nd---ratio-check.-pm10-pm2.5">| flow: 2nd - ratio check. PM10 &gt;= PM2.5</a></li>
+  <li><a href="#flow-2nd---ratio-check.-remove-data-of-ratio1" id="toc-flow-2nd---ratio-check.-remove-data-of-ratio1" class="nav-link" data-scroll-target="#flow-2nd---ratio-check.-remove-data-of-ratio1">| flow: 2nd - ratio check. remove data of ratio&gt;1</a></li>
+  <li><a href="#flow-2nd---method-1.-mean-value---3-5sd---monthly-mean-at-stations-output-false" id="toc-flow-2nd---method-1.-mean-value---3-5sd---monthly-mean-at-stations-output-false" class="nav-link" data-scroll-target="#flow-2nd---method-1.-mean-value---3-5sd---monthly-mean-at-stations-output-false">| flow: 2nd - Method 1. Mean value +- (3-5)SD - Monthly mean at stations #| output: false</a></li>
+  </ul></li>
+  <li><a href="#save-dataset-in-folder-01_data_raw" id="toc-save-dataset-in-folder-01_data_raw" class="nav-link" data-scroll-target="#save-dataset-in-folder-01_data_raw">Save dataset in folder: 01_data_raw</a></li>
+  </ul></li>
+  <li><a href="#part-3-fill-the-missing-data" id="toc-part-3-fill-the-missing-data" class="nav-link" data-scroll-target="#part-3-fill-the-missing-data">Part 3: Fill the missing data</a>
+  <ul class="collapse">
+  <li><a href="#fill-the-missing-data" id="toc-fill-the-missing-data" class="nav-link" data-scroll-target="#fill-the-missing-data">Fill the missing data</a></li>
+  <li><a href="#save-dataset-in-folder-02_data_tidy" id="toc-save-dataset-in-folder-02_data_tidy" class="nav-link" data-scroll-target="#save-dataset-in-folder-02_data_tidy">Save dataset in folder: 02_data_tidy</a></li>
+  </ul></li>
   </ul>
 </nav>
 </div>
@@ -245,6 +262,8 @@
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
+<section id="part-1-import-data" class="level1">
+<h1>Part 1: Import data</h1>
 <section id="import-the-dataset-and-remove-the-duplicates" class="level2">
 <h2 class="anchored" data-anchor-id="import-the-dataset-and-remove-the-duplicates">Import the dataset and remove the duplicates</h2>
 <p>Import the dataset from the directory of: ~/Data Input/Preprocessing data/Preprocessing data.csv, assign the dataset as object of df:</p>
@@ -259,6 +278,9 @@
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">PM10=</span>correct_PM10, <span class="at">PM2=</span>correct_PM2, <span class="at">PM10_rel=</span>PM10, <span class="at">PM2_rel=</span>PM2, <span class="at">ratio =</span> PM2<span class="sc">/</span>PM10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
+</section>
+<section id="part-2-bad-and-missing-data" class="level1">
+<h1>Part 2: Bad and missing data</h1>
 <section id="produce-a-table-with-missing-data" class="level2">
 <h2 class="anchored" data-anchor-id="produce-a-table-with-missing-data">Produce a table with missing data</h2>
 <div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div class="cell">
@@ -408,9 +430,9 @@
 <p>We use the data in the period of 2009-2018, which has been regarded as a monitoring work stabilized since 2008 when is the beginning of the monitoring. According to NIES, site maintenance was consistent up to 2018.</p>
 <p>+Sainshand site, data 2009-2015 get used; + Dalanzad site: 2009-2016. + UB: 2009-2018 + Zamyn uud: 2009-2018</p>
 </section>
-<section id="remove-the-spikes-and-produce-an-extended-table" class="level1">
-<h1>Remove the spikes, and produce an extended table</h1>
-<p>Remove the spikes in the datasets, and produce the table with NA, with removed spikes; express it in a percentages. ### Method 1. Mean value +- (3-5)SD #### Find Monthly mean #| flow: 1st - Remove spikes PMs &gt;10 mgm/hour is unreasonable. #| - Exclude 0 values in PMs.</p>
+<section id="remove-the-spikes-and-produce-an-extended-table" class="level2">
+<h2 class="anchored" data-anchor-id="remove-the-spikes-and-produce-an-extended-table">Remove the spikes, and produce an extended table</h2>
+<p>Remove the spikes in the datasets, and produce the table with NA, with removed spikes; express it in a percentages. #| Comments*kedjkdjk ### Remove the spikes Method 1. Mean value +- (3-5)SD - Find Monthly mean #| flow: 1st - Remove spikes PMs &gt;10 mgm/hour is unreasonable. #| - Exclude 0 values in PMs.</p>
 <div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_10 <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PM10 <span class="sc">&lt;</span> <span class="fl">0.003</span> <span class="sc">|</span> PM2 <span class="sc">&lt;</span> <span class="fl">0.003</span>) </span>
@@ -444,13 +466,13 @@
 <div class="cell-output-display">
 <div class="">
 <figure class="figure">
-<p class=""><a href="01_datawork_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="01_datawork_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p class=""><a href="03_resultFigures_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="03_resultFigures_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
 </div></div>
-<section id="flow-2nd---ratio-check.-pm10-pm2.5" class="level4">
-<h4 class="anchored" data-anchor-id="flow-2nd---ratio-check.-pm10-pm2.5">| flow: 2nd - ratio check. PM10 &gt;= PM2.5</h4>
+<section id="flow-2nd---ratio-check.-pm10-pm2.5" class="level3">
+<h3 class="anchored" data-anchor-id="flow-2nd---ratio-check.-pm10-pm2.5">| flow: 2nd - ratio check. PM10 &gt;= PM2.5</h3>
 <div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_01 <span class="sc">|&gt;</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ratio <span class="sc">&gt;</span><span class="dv">1</span>) <span class="sc">|&gt;</span></span>
@@ -464,12 +486,14 @@
 <div class="cell-output-display">
 <div class="">
 <figure class="figure">
-<p class=""><a href="01_datawork_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="01_datawork_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p class=""><a href="03_resultFigures_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="03_resultFigures_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
 </div></div>
-<p>#| flow: 2nd - ratio check. remove data of ratio&gt;1</p>
+</section>
+<section id="flow-2nd---ratio-check.-remove-data-of-ratio1" class="level3">
+<h3 class="anchored" data-anchor-id="flow-2nd---ratio-check.-remove-data-of-ratio1">| flow: 2nd - ratio check. remove data of ratio&gt;1</h3>
 <div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df_01 <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PM2<span class="sc">&lt;</span><span class="dv">10</span> <span class="sc">&amp;</span> PM10<span class="sc">&lt;</span><span class="dv">10</span> <span class="sc">&amp;</span> PM10 <span class="sc">!=</span> <span class="dv">0</span> <span class="sc">&amp;</span> PM2 <span class="sc">!=</span> <span class="dv">0</span> <span class="sc">&amp;</span> ratio <span class="sc">&lt;</span> <span class="dv">1</span>) </span>
@@ -499,12 +523,14 @@
 <div class="cell-output-display">
 <div class="">
 <figure class="figure">
-<p class=""><a href="01_datawork_files/figure-html/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="01_datawork_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p class=""><a href="03_resultFigures_files/figure-html/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="03_resultFigures_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
 </div></div>
-<p>#| flow: 2nd - Method 1. Mean value +- (3-5)SD - Monthly mean at stations #| output: false</p>
+</section>
+<section id="flow-2nd---method-1.-mean-value---3-5sd---monthly-mean-at-stations-output-false" class="level3">
+<h3 class="anchored" data-anchor-id="flow-2nd---method-1.-mean-value---3-5sd---monthly-mean-at-stations-output-false">| flow: 2nd - Method 1. Mean value +- (3-5)SD - Monthly mean at stations #| output: false</h3>
 <p>Option 1:</p>
 <div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df_02a <span class="ot">&lt;-</span> df_01 <span class="sc">|&gt;</span></span>
@@ -545,7 +571,7 @@
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="01_datawork_files/figure-html/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="01_datawork_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p><a href="03_resultFigures_files/figure-html/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="03_resultFigures_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -559,7 +585,7 @@
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="01_datawork_files/figure-html/unnamed-chunk-10-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="01_datawork_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid figure-img" width="672"></a></p>
+<p><a href="03_resultFigures_files/figure-html/unnamed-chunk-10-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="03_resultFigures_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -573,7 +599,7 @@
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><a href="01_datawork_files/figure-html/unnamed-chunk-10-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="01_datawork_files/figure-html/unnamed-chunk-10-3.png" class="img-fluid figure-img" width="672"></a></p>
+<p><a href="03_resultFigures_files/figure-html/unnamed-chunk-10-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="03_resultFigures_files/figure-html/unnamed-chunk-10-3.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -651,6 +677,20 @@
 #   ratio &lt;dbl&gt;</code></pre>
 </div>
 </div></div>
+</section>
+</section>
+<section id="save-dataset-in-folder-01_data_raw" class="level2">
+<h2 class="anchored" data-anchor-id="save-dataset-in-folder-01_data_raw">Save dataset in folder: 01_data_raw</h2>
+</section>
+</section>
+<section id="part-3-fill-the-missing-data" class="level1">
+<h1>Part 3: Fill the missing data</h1>
+<section id="fill-the-missing-data" class="level2">
+<h2 class="anchored" data-anchor-id="fill-the-missing-data">Fill the missing data</h2>
+<p>Method 1. Fill the gap Method 2. Relationship equation Method 3. Look-up table</p>
+</section>
+<section id="save-dataset-in-folder-02_data_tidy" class="level2">
+<h2 class="anchored" data-anchor-id="save-dataset-in-folder-02_data_tidy">Save dataset in folder: 02_data_tidy</h2>
 </section>
 </section>
      </main>
@@ -1073,7 +1113,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom"});
+</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

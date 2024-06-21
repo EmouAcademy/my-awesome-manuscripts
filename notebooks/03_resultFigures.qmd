@@ -1,5 +1,5 @@
 ---
-title: "01_datawork"
+title: "03_resultFigures"
 author: "Munkhtsetseg"
 ---
 
@@ -9,7 +9,7 @@ Library
 library(tidyverse)
 library(ggplot2)
 ```
-
+# Part 1: Import data
 ## Import the dataset and remove the duplicates
 
 Import the dataset from the directory of: \~/Data Input/Preprocessing data/Preprocessing data.csv, assign the dataset as object of df:
@@ -27,6 +27,7 @@ df_00 <- df |>
   mutate(PM10=correct_PM10, PM2=correct_PM2, PM10_rel=PM10, PM2_rel=PM2, ratio = PM2/PM10)
 ```
 
+# Part 2: Bad and missing data
 ## Produce a table with missing data
 
 ```{r}
@@ -120,12 +121,9 @@ We use the data in the period of 2009-2018, which has been regarded as a monitor
 
 +Sainshand site, data 2009-2015 get used; + Dalanzad site: 2009-2016. + UB: 2009-2018 + Zamyn uud: 2009-2018
 
-# Remove the spikes, and produce an extended table
+## Remove the spikes, and produce an extended table
 
-Remove the spikes in the datasets, and produce the table with NA, with removed spikes; express it in a percentages. 
-### Method 1. Mean value +- (3-5)SD 
-#### Find Monthly mean 
-#\| flow: 1st - Remove spikes PMs \>10 mgm/hour is unreasonable. #\| - Exclude 0 values in PMs.
+Remove the spikes in the datasets, and produce the table with NA, with removed spikes; express it in a percentages. #\| Comments\*kedjkdjk \### Remove the spikes Method 1. Mean value +- (3-5)SD - Find Monthly mean #\| flow: 1st - Remove spikes PMs \>10 mgm/hour is unreasonable. #\| - Exclude 0 values in PMs.
 
 ```{r}
 df_10 <- df_01 |>
@@ -138,7 +136,7 @@ ggplot(df_01)+
 
 ```
 
-#### \| flow: 2nd - ratio check. PM10 \>= PM2.5
+### \| flow: 2nd - ratio check. PM10 \>= PM2.5
 
 ```{r}
 df_01 |>
@@ -148,7 +146,7 @@ df_01 |>
   facet_wrap(~Station.name)
 ```
 
-#\| flow: 2nd - ratio check. remove data of ratio\>1
+### \| flow: 2nd - ratio check. remove data of ratio\>1
 
 ```{r}
 df_01 <- df_01 |>
@@ -160,7 +158,7 @@ head(df_01)
   facet_wrap(~Station.name)
 ```
 
-#\| flow: 2nd - Method 1. Mean value +- (3-5)SD - Monthly mean at stations #\| output: false
+### \| flow: 2nd - Method 1. Mean value +- (3-5)SD - Monthly mean at stations #\| output: false
 
 Option 1:
 
@@ -219,4 +217,20 @@ dplyr::filter_if(is.numeric, any_vars(. == mean(.)))
 df_02b1
 ```
 
+## Save dataset in folder: 01_data_raw
 
+```{r}
+
+```
+
+# Part 3: Fill the missing data
+
+## Fill the missing data
+
+Method 1. Fill the gap Method 2. Relationship equation Method 3. Look-up table
+
+## Save dataset in folder: 02_data_tidy
+
+```{r}
+
+```
