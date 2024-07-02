@@ -89,14 +89,18 @@ Datasets were obtained from measurements at Dalanzadgad, Sainshand, and Zamyn-Uu
 
 The MTSDI method (@junger2003missing, @junger2012mtsdi) uses the EM algorithm with the Autoregressive Integrated Moving Average (ARIMA) method, also known as Box--Jenkins model (@box2015time, @meyler1998forecasting). The data provided by ARIMA (p, d, q) depend on the number of autoregressive terms (p), the number of differences (d), and the number of terms in the moving average (q) (@meyler1998forecasting). Default configuration was used. The mtdsi method is widely used to impute missing data like in cosmic data @fernandes2017data. Similar multiple imputation methods have been applied for multivariate solar data @zhang2020solargan, highly univariate seasonal data even with the large amount of missing data @chaudhry2019method, missin data imputation and modeling for leaching processes @he2017study. Recently, @motesaddi2022effects used the mtdsi method to imputing missing data air pollution in Tehran (We used the complete data of temperature (°C), relative humidity (RH) (%), wind speed (m/s), barometric pressure (BP) (mbar), PM10, PM2.5, NO2, CO, and CVD variables to impute SO2 and O3 with the mtdsi R package.).
 
-![Extended PM datasets (red color presents the data filled by mtdsi)](../Data/03_figures/fig-2_datasets_filled_by_mtdsi_NIES.png){#fig-2}
+::: {#fig-simple layout="[65, 35]"}
+![A workflow of data mining, missing data imputation and data filling](images/fig-02_diagramDataAnalysis01A_01_600pxl.png){#fig-workflow} 
 
-::: {#fig-elephants layout-ncol="2"}
-![Surus](../Data/03_figures/fig-1_sites_of_NIES.png){#fig-surus}
+::: {layout-nrow="3"}
 
-![Hanno](../Data/03_figures/fig-1_sites_of_NIES.png){#fig-hanno}
+![](images/fig-02_dataSpikes.png){#fig-dataSpikes }
+![Hanno1](../Data/03_figures/fig-1_sites_of_NIES.png){#fig-hanno1 }
 
-Famous Elephants
+![A data quality check and validation](../Data/03_figures/fig-1_sites_of_NIES.png){#fig-hanno }
+:::
+
+A workflow of data quality improvements 
 :::
 
 ### Data analysis

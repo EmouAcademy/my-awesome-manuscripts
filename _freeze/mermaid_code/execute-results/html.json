@@ -1,0 +1,15 @@
+{
+  "hash": "6bc94005dc4519c5012f92bfe71dc7d0",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Mermaids\"\nauthor: \"Munkhtsetseg\"\ndate: \"2024-07-01\"\nformat: revealjs\noutput: html\n---\n\n```{mermaid}\n{mermaid}\nsequenceDiagram\n    box 1. Data Mining\n    participant spikes\n    participant technical Error\n    end\n    box 2. Data Filling\n    participant small Gaps\n    participant big Gaps\n    end\n    box 3. Data Quality Examing\n    participant PM10\n    participant PM2.5\n    end\n    loop Spikecheck and technical error\n        spikes->spikes: Detect spikes: pm10 and pm2.5 > 7 mg/m3\n        technical Error->technical Error: Whether mistakenly pm10<pm2.5\n    end\n    loop check 3-hour max gaps\n        small Gaps->small Gaps: Fill with the imputeTS package\n    end\n    Note right of small Gaps: For the package univariation,  <br/> we used log function.\n    loop Fill large gaps\n    big Gaps->big Gaps: MTSDI method\n    end\n    Note right of big Gaps: uses  <br/>ARIMA(p,d,q)\n    PM10->PM2.5: plot(PM10,PM2.5)\n```",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
