@@ -5,8 +5,9 @@ execute:
   freeze: auto
 
 format: 
-  docx-pdf: default
-  html: 
+  docx: default
+  acs-pdf: default
+  html: default
     toc: true
     comments:
       hypothesis: true
