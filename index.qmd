@@ -79,7 +79,7 @@ In the last 2 decades, due to poverty and natural disasters there is population 
 
 Therefore, Ulaanbaatar air particulate matter mainly reflects the coal burning, and partly, natural dust.
 
-![Study sites](../Data/03_figures/fig-1_sites_of_NIES.png){#fig-1}
+![Study sites](images/fig-1_sites_of_NIES.png){#fig-1}
 
 ## Study data and data analysis
 
@@ -87,7 +87,7 @@ Therefore, Ulaanbaatar air particulate matter mainly reflects the coal burning, 
 
 Particulate matter with aerodynamic diameters less than 2.5 $\mu m$ (PM2.5) and 10 $\mu m$ (PM10) were measured at these sites using an instrument that measures light scattering by air- borne particulates. Meteorological parameters, including wind speed, wind direction and visibility were determined by automatic instruments and are detailed in previous articles (Jugder et al., 2011, 2012; Nishikawa, Sugimoto). The instruments for measuring particulate matters were placed 2.0 m above the ground level (AGL) at Dalanzadgad, Sainshand and Zamyn-Uud (@tbl-1). Wind sensors and visibility (meteorological optical range-MOR) sensors with a maximum measurement range of 20 km were installed at a height of 3 m AGL at the three Gobi sites. At the Ulaanbaatar site, the wind sensor height and a visibility sensor was placed at 15 m AGL.
 
-![Data](../Data/03_tables/table-1_data_NIES.png){#tbl-1}
+![Data](images/table-1_data_NIES.png){#tbl-1}
 
 Datasets were obtained from measurements at Dalanzadgad, Sainshand, and Zamyn-Uud from January 2009 to May 2018, and at Ulaanbaatar from the end of April to May 2008. The data used in the study are based on hourly means derived from 1 and 10 min averages.
 
