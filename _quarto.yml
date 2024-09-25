@@ -6,8 +6,7 @@ execute:
 
 format: 
   docx: default
-  acs-pdf: default
-  html: default
+  html: 
     toc: true
     comments:
       hypothesis: true
