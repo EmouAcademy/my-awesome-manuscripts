@@ -7,9 +7,9 @@ author:
     email: e.munkhtsetseg@yahoo.com
     roles:
       - Investigation
-      - Project administration
-      - Software
+      - Data interpretation
       - Visualization
+      - Drafting
     affiliations:
       - National University of Mongolia (NUM), Mongolia
       - Kanazawa University, Japan
@@ -19,9 +19,19 @@ author:
     email: shimizua@nies.go.jp
     roles: 
       - Editing
+      - Data interpretation
       - Revising
     affiliations:
       - National Institute for Environmental Studies (NIES), Japan
+  - name: Atsushi Matsuki
+    orcid: 0000-0000-0000-0000
+    corresponding: false
+    email: matsuki@staff.kanazawa-u.ac.jp
+    roles: 
+      - Editing
+      - Revising
+    affiliations:
+      - Kanazawa University, Japan
 keywords:
   - particulate matters
   - concentrations of PM10 and PM2.5
@@ -92,10 +102,10 @@ The MTSDI method (@junger2003missing, @junger2012mtsdi) uses the EM algorithm wi
 ::: {#fig-simple layout="[65, 35]"}
 ![A workflow of data mining, missing data imputation and data filling](images/fig-02_diagramDataAnalysis01A_01_600pxl.png){#fig-workflow}
 
-::: {layout-nrow="3"}
-![](images/fig-02_dataSpikes.png){#fig-dataSpikes} ![Hanno1](../Data/1%20Projects/03_figures/Fig2b.png){#fig-hanno1}
+::: {layout-nrow="2"}
+![Visibility, WS, WD](images/Fig2b.png){#fig-weather} 
 
-![A data quality check and validation](../Data/1%20Projects/03_figures/Fig2c.png){#fig-hanno}
+![A data quality check and validation](images/Fig2c.png){#fig-pm}
 :::
 
 A workflow of data quality improvements
@@ -146,10 +156,8 @@ c)  Discuss the inter-annual variations
 ### PCA analysis
 
 ## Interannual, seasonal trends of PM10 and PM2.5 variations
-![Inteannual trends](../Data/1%20Projects/03_figures/annualVariations.png){#fig-hanno}
-# Discussion {#sec-discussion}
 
-The observed spatial and temporal variations in PM2.5 and PM10 concentrations underscore the intricate interplay between anthropogenic and natural factors shaping air quality in Mongolia. While urban areas grapple with pollution stemming from industrialization and urbanization, rural regions contend with the impacts of climatic events such as dust storms and wildfires. This stark dichotomy necessitates tailored interventions that address the specific challenges faced by different regions.　Effective air quality management strategies must account for these disparities, emphasizing targeted interventions tailored to specific regions and seasons.
+![Inteannual trends](images/annualVariations.png) \# Discussion {#sec-discussion} x The observed spatial and temporal variations in PM2.5 and PM10 concentrations underscore the intricate interplay between anthropogenic and natural factors shaping air quality in Mongolia. While urban areas grapple with pollution stemming from industrialization and urbanization, rural regions contend with the impacts of climatic events such as dust storms and wildfires. This stark dichotomy necessitates tailored interventions that address the specific challenges faced by different regions.　Effective air quality management strategies must account for these disparities, emphasizing targeted interventions tailored to specific regions and seasons.
 
 To combat air pollution effectively, holistic strategies integrating regulatory measures, technological innovations, and public awareness campaigns are imperative. In urban areas, transitioning to cleaner heating technologies, improving public transportation infrastructure, and enforcing emissions standards can significantly mitigate pollution levels. In rural regions, initiatives focusing on sustainable land management practices and early warning systems for dust storms and wildfires are essential.
 
