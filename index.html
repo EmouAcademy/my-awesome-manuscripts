@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.9">
+<meta name="generator" content="quarto-1.6.13">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Erdenebayar Munkhtsetseg">
 <meta name="author" content="Atsushi Shimizu">
-<meta name="dcterms.date" content="2024-09-15">
+<meta name="dcterms.date" content="2024-09-25">
 <meta name="keywords" content="particulate matters, concentrations of PM10 and PM2.5">
 
 <title>Two distinct spatial and temporal variations of PM2.5 and PM10 concentrations in urban and rural areas of Mongolia</title>
@@ -53,10 +53,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-79bb3942e891885f9f7af119cd221462.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-018089954d508eae8a473f0b7f0491f0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7d6f82eb31ce408c23e60cac8f37829e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-f9d477f1d62ddffd2fa441715a11aa79.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -103,10 +103,10 @@ window.Quarto = {
 <meta name="citation_keywords" content="particulate matters,concentrations of PM10 and PM2.5">
 <meta name="citation_author" content="Erdenebayar Munkhtsetseg">
 <meta name="citation_author" content="Atsushi Shimizu">
-<meta name="citation_publication_date" content="2024-09-15">
-<meta name="citation_cover_date" content="2024-09-15">
+<meta name="citation_publication_date" content="2024-09-25">
+<meta name="citation_cover_date" content="2024-09-25">
 <meta name="citation_year" content="2024">
-<meta name="citation_online_date" content="2024-09-15">
+<meta name="citation_online_date" content="2024-09-25">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Earth and Space Science">
 <meta name="citation_reference" content="citation_title=Missing data imputation in multivariate time series via EM algorithm;,citation_author=W Junger;,citation_author=N Santos;,citation_author=A Ponce de Leon;,citation_publication_date=2003;,citation_cover_date=2003;,citation_year=2003;,citation_issue=8;,citation_volume=15;,citation_journal_title=Cadernos do IME;">
@@ -162,7 +162,7 @@ window.Quarto = {
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">September 15, 2024</p>
+              <p class="date">September 25, 2024</p>
             </div>
           </div>
           
@@ -208,16 +208,19 @@ window.Quarto = {
   </ul></li>
   <li><a href="#sec-results" id="toc-sec-results" class="nav-link" data-scroll-target="#sec-results"><span class="header-section-number">3</span> Results</a>
   <ul class="collapse">
-  <li><a href="#pm-intercomparisons-of-sites-between-anthropogenic-and-natural-pm-sources" id="toc-pm-intercomparisons-of-sites-between-anthropogenic-and-natural-pm-sources" class="nav-link" data-scroll-target="#pm-intercomparisons-of-sites-between-anthropogenic-and-natural-pm-sources"><span class="header-section-number">3.1</span> PM intercomparisons of sites between anthropogenic and natural PM sources</a></li>
-  <li><a href="#temporal-variations" id="toc-temporal-variations" class="nav-link" data-scroll-target="#temporal-variations"><span class="header-section-number">3.2</span> Temporal variations</a>
+  <li><a href="#spatio-temporal-variations-of-pm10-and-pm2.5" id="toc-spatio-temporal-variations-of-pm10-and-pm2.5" class="nav-link" data-scroll-target="#spatio-temporal-variations-of-pm10-and-pm2.5"><span class="header-section-number">3.1</span> Spatio-temporal variations of PM10 and PM2.5</a>
   <ul class="collapse">
-  <li><a href="#annual-variations-of-pm10-and-pm2.5" id="toc-annual-variations-of-pm10-and-pm2.5" class="nav-link" data-scroll-target="#annual-variations-of-pm10-and-pm2.5"><span class="header-section-number">3.2.1</span> Annual variations of PM10 and PM2.5</a></li>
-  <li><a href="#daily-variations-of-pm10-and-pm2.5" id="toc-daily-variations-of-pm10-and-pm2.5" class="nav-link" data-scroll-target="#daily-variations-of-pm10-and-pm2.5"><span class="header-section-number">3.2.2</span> Daily variations of PM10 and PM2.5</a></li>
+  <li><a href="#spatial-distinct-variations-among-sites" id="toc-spatial-distinct-variations-among-sites" class="nav-link" data-scroll-target="#spatial-distinct-variations-among-sites"><span class="header-section-number">3.1.1</span> Spatial distinct variations among sites</a></li>
+  <li><a href="#temporal-variations-of-pm10-and-pm2.5-for-the-study-sites" id="toc-temporal-variations-of-pm10-and-pm2.5-for-the-study-sites" class="nav-link" data-scroll-target="#temporal-variations-of-pm10-and-pm2.5-for-the-study-sites"><span class="header-section-number">3.1.2</span> Temporal variations of PM10 and PM2.5 for the study sites</a></li>
   </ul></li>
-  <li><a href="#meteorological-and-urban-heating-influence-on-pm10-and-pm2.5-variations" id="toc-meteorological-and-urban-heating-influence-on-pm10-and-pm2.5-variations" class="nav-link" data-scroll-target="#meteorological-and-urban-heating-influence-on-pm10-and-pm2.5-variations"><span class="header-section-number">3.3</span> Meteorological and urban heating influence on PM10 and PM2.5 variations</a></li>
+  <li><a href="#meteorological-and-urban-heating-influence-on-pm10-and-pm2.5-variations" id="toc-meteorological-and-urban-heating-influence-on-pm10-and-pm2.5-variations" class="nav-link" data-scroll-target="#meteorological-and-urban-heating-influence-on-pm10-and-pm2.5-variations"><span class="header-section-number">3.2</span> Meteorological and urban heating influence on PM10 and PM2.5 variations</a>
+  <ul class="collapse">
+  <li><a href="#relationships-between-meteorological-major-factors-and-variations-of-pm10-and-pm2.5" id="toc-relationships-between-meteorological-major-factors-and-variations-of-pm10-and-pm2.5" class="nav-link" data-scroll-target="#relationships-between-meteorological-major-factors-and-variations-of-pm10-and-pm2.5"><span class="header-section-number">3.2.1</span> Relationships between meteorological major factors and variations of PM10 and PM2.5</a></li>
+  <li><a href="#pca-analysis" id="toc-pca-analysis" class="nav-link" data-scroll-target="#pca-analysis"><span class="header-section-number">3.2.2</span> PCA analysis</a></li>
   </ul></li>
-  <li><a href="#sec-discussion" id="toc-sec-discussion" class="nav-link" data-scroll-target="#sec-discussion"><span class="header-section-number">4</span> Discussion</a></li>
-  <li><a href="#sec-conclusions" id="toc-sec-conclusions" class="nav-link" data-scroll-target="#sec-conclusions"><span class="header-section-number">5</span> Conclusions</a></li>
+  <li><a href="#interannual-seasonal-trends-of-pm10-and-pm2.5-variations" id="toc-interannual-seasonal-trends-of-pm10-and-pm2.5-variations" class="nav-link" data-scroll-target="#interannual-seasonal-trends-of-pm10-and-pm2.5-variations"><span class="header-section-number">3.3</span> Interannual, seasonal trends of PM10 and PM2.5 variations</a></li>
+  </ul></li>
+  <li><a href="#sec-conclusions" id="toc-sec-conclusions" class="nav-link" data-scroll-target="#sec-conclusions"><span class="header-section-number">4</span> Conclusions</a></li>
   </ul>
 <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks/01-earthquakes-preview.html"><i class="bi bi-journal-code"></i>Explore Earthquakes</a></li><li><a href="notebooks/explore-earthquakes-preview.html"><i class="bi bi-journal-code"></i>Explore Earthquakes</a></li></ul></div></nav>
 </div>
@@ -304,7 +307,7 @@ Table&nbsp;2.1: Data
 <div class="quarto-layout-panel" data-layout-nrow="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
-<p><a href="images/fig-02_dataSpikes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;2.2: A workflow of data quality improvements"><img src="images/fig-02_dataSpikes.png" id="fig-dataSpikes" class="img-fluid figure-img"></a> <a href="../Data/03_figures/fig-1_sites_of_NIES.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;2.2: A workflow of data quality improvements"><img src="../Data/03_figures/fig-1_sites_of_NIES.png" id="fig-hanno1" class="img-fluid figure-img"></a></p>
+<p><a href="images/fig-02_dataSpikes.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;2.2: A workflow of data quality improvements"><img src="images/fig-02_dataSpikes.png" id="fig-dataSpikes" class="img-fluid figure-img"></a> <a href="../Data/1%20Projects/03_figures/Fig2b.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;2.2: A workflow of data quality improvements"><img src="../Data/1%20Projects/03_figures/Fig2b.png" id="fig-hanno1" class="img-fluid figure-img"></a></p>
 </div>
 </div>
 <div class="quarto-layout-cell-subref quarto-layout-row" data-ref-parent="fig-simple">
@@ -312,7 +315,7 @@ Table&nbsp;2.1: Data
 <div id="fig-hanno" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-hanno-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="../Data/03_figures/fig-1_sites_of_NIES.png" class="lightbox" data-gallery="fig-simple" title="Figure&nbsp;2.2&nbsp;(b): A data quality check and validation"><img src="../Data/03_figures/fig-1_sites_of_NIES.png" class="img-fluid figure-img" data-ref-parent="fig-simple"></a>
+<a href="../Data/1%20Projects/03_figures/Fig2c.png" class="lightbox" data-gallery="fig-simple" title="Figure&nbsp;2.2&nbsp;(b): A data quality check and validation"><img src="../Data/1%20Projects/03_figures/Fig2c.png" class="img-fluid figure-img" data-ref-parent="fig-simple"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-hanno-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 (b) A data quality check and validation
@@ -339,8 +342,10 @@ Figure&nbsp;2.2: A workflow of data quality improvements
 </section>
 <section id="sec-results" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Results</h1>
-<section id="pm-intercomparisons-of-sites-between-anthropogenic-and-natural-pm-sources" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="pm-intercomparisons-of-sites-between-anthropogenic-and-natural-pm-sources"><span class="header-section-number">3.1</span> PM intercomparisons of sites between anthropogenic and natural PM sources</h2>
+<section id="spatio-temporal-variations-of-pm10-and-pm2.5" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="spatio-temporal-variations-of-pm10-and-pm2.5"><span class="header-section-number">3.1</span> Spatio-temporal variations of PM10 and PM2.5</h2>
+<section id="spatial-distinct-variations-among-sites" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="spatial-distinct-variations-among-sites"><span class="header-section-number">3.1.1</span> Spatial distinct variations among sites</h3>
 <div>
 
 </div>
@@ -367,10 +372,10 @@ Figure&nbsp;2.2: A workflow of data quality improvements
 <p>[AND] The analysis reveals two distinct spatial and temporal variations in PM2.5 and PM10 concentrations across Mongolia. In the first pattern, urban areas, especially the capital city Ulaanbaatar, exhibit significantly higher PM levels compared to rural regions (Batmunkh et al., 2020). This disparity is attributed to anthropogenic activities, including residential heating, industrial emissions, and vehicular traffic. Temporally, winter months coincide with peak pollution levels in urban centers due to increased heating demand and temperature inversions exacerbating pollutant accumulation (Dashdondog et al., 2019).</p>
 <p>Conversely, rural and remote areas display lower PM concentrations, with seasonal variations influenced by factors such as dust storms, wildfires, and agricultural practices (Battsengel et al., 2021). Spring and summer elevated PM levels in these regions, primarily driven by dust storms originating from arid landscapes and biomass burning activities. Moreover, meteorological conditions, including wind patterns and precipitation, play a crucial role in dispersing pollutants and shaping temporal trends (Enkhbat et al., 2020).</p>
 </section>
-<section id="temporal-variations" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="temporal-variations"><span class="header-section-number">3.2</span> Temporal variations</h2>
-<section id="annual-variations-of-pm10-and-pm2.5" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="annual-variations-of-pm10-and-pm2.5"><span class="header-section-number">3.2.1</span> Annual variations of PM10 and PM2.5</h3>
+<section id="temporal-variations-of-pm10-and-pm2.5-for-the-study-sites" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="temporal-variations-of-pm10-and-pm2.5-for-the-study-sites"><span class="header-section-number">3.1.2</span> Temporal variations of PM10 and PM2.5 for the study sites</h3>
+<section id="annual-variations-of-pm10-and-pm2.5" class="level4" data-number="3.1.2.1">
+<h4 data-number="3.1.2.1" class="anchored" data-anchor-id="annual-variations-of-pm10-and-pm2.5"><span class="header-section-number">3.1.2.1</span> Annual variations of PM10 and PM2.5</h4>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="images/fig3_1_monthly_01.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Annual variations of PM10 and PM2.5"><img src="images/fig3_1_monthly_01.png" class="img-fluid figure-img" alt="Annual variations of PM10 and PM2.5"></a></p>
@@ -378,8 +383,8 @@ Figure&nbsp;2.2: A workflow of data quality improvements
 </figure>
 </div>
 </section>
-<section id="daily-variations-of-pm10-and-pm2.5" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="daily-variations-of-pm10-and-pm2.5"><span class="header-section-number">3.2.2</span> Daily variations of PM10 and PM2.5</h3>
+<section id="daily-variations-of-pm10-and-pm2.5" class="level4" data-number="3.1.2.2">
+<h4 data-number="3.1.2.2" class="anchored" data-anchor-id="daily-variations-of-pm10-and-pm2.5"><span class="header-section-number">3.1.2.2</span> Daily variations of PM10 and PM2.5</h4>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="images/fig3_1_daily_0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Daily variations of PM10 and PM2.5"><img src="images/fig3_1_daily_0.png" class="img-fluid figure-img" alt="Daily variations of PM10 and PM2.5"></a></p>
@@ -393,8 +398,11 @@ Figure&nbsp;2.2: A workflow of data quality improvements
 </ol>
 </section>
 </section>
-<section id="meteorological-and-urban-heating-influence-on-pm10-and-pm2.5-variations" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="meteorological-and-urban-heating-influence-on-pm10-and-pm2.5-variations"><span class="header-section-number">3.3</span> Meteorological and urban heating influence on PM10 and PM2.5 variations</h2>
+</section>
+<section id="meteorological-and-urban-heating-influence-on-pm10-and-pm2.5-variations" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="meteorological-and-urban-heating-influence-on-pm10-and-pm2.5-variations"><span class="header-section-number">3.2</span> Meteorological and urban heating influence on PM10 and PM2.5 variations</h2>
+<section id="relationships-between-meteorological-major-factors-and-variations-of-pm10-and-pm2.5" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="relationships-between-meteorological-major-factors-and-variations-of-pm10-and-pm2.5"><span class="header-section-number">3.2.1</span> Relationships between meteorological major factors and variations of PM10 and PM2.5</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="images/fig3_2_relationScatter0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Relationships between meteorological major factors and variations of PM10 and PM2.5 PM2.5"><img src="images/fig3_2_relationScatter0.png" class="img-fluid figure-img" alt="Relationships between meteorological major factors and variations of PM10 and PM2.5 PM2.5"></a></p>
@@ -402,15 +410,20 @@ Figure&nbsp;2.2: A workflow of data quality improvements
 </figure>
 </div>
 </section>
+<section id="pca-analysis" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="pca-analysis"><span class="header-section-number">3.2.2</span> PCA analysis</h3>
 </section>
-<section id="sec-discussion" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Discussion</h1>
+</section>
+<section id="interannual-seasonal-trends-of-pm10-and-pm2.5-variations" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="interannual-seasonal-trends-of-pm10-and-pm2.5-variations"><span class="header-section-number">3.3</span> Interannual, seasonal trends of PM10 and PM2.5 variations</h2>
+<p><img src="../Data/1%20Projects/03_figures/annualVariations.png" id="fig-hanno" class="img-fluid" alt="Inteannual trends"> # Discussion {#sec-discussion}</p>
 <p>The observed spatial and temporal variations in PM2.5 and PM10 concentrations underscore the intricate interplay between anthropogenic and natural factors shaping air quality in Mongolia. While urban areas grapple with pollution stemming from industrialization and urbanization, rural regions contend with the impacts of climatic events such as dust storms and wildfires. This stark dichotomy necessitates tailored interventions that address the specific challenges faced by different regions.　Effective air quality management strategies must account for these disparities, emphasizing targeted interventions tailored to specific regions and seasons.</p>
 <p>To combat air pollution effectively, holistic strategies integrating regulatory measures, technological innovations, and public awareness campaigns are imperative. In urban areas, transitioning to cleaner heating technologies, improving public transportation infrastructure, and enforcing emissions standards can significantly mitigate pollution levels. In rural regions, initiatives focusing on sustainable land management practices and early warning systems for dust storms and wildfires are essential.</p>
 <p>Furthermore, international collaboration and knowledge sharing can play a pivotal role in addressing Mongolia’s air quality challenges. Leveraging expertise and resources from global partners can enhance monitoring capabilities, foster innovation, and support capacity-building efforts in air quality management.</p>
 </section>
-<section id="sec-conclusions" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Conclusions</h1>
+</section>
+<section id="sec-conclusions" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Conclusions</h1>
 <p>This manuscript highlights the complexity of air pollution dynamics in Mongolia, characterized by two distinct spatial and temporal variations in PM2.5 and PM10 concentrations.</p>
 <p>Future work requires to : By elucidating the contributing factors and underlying mechanisms driving these patterns, this study provides valuable insights for policymakers, urban planners, and environmental stakeholders. Addressing air quality challenges in Mongolia necessitates multifaceted approaches that integrate regulatory measures, technological innovations, and public awareness campaigns to safeguard human health and ecological well-being.</p>
 <p><span class="citation" data-cites="marrero2019">(<a href="#ref-marrero2019" role="doc-biblioref"><strong>marrero2019?</strong></a>)</span> # References {.unnumbered}</p>
@@ -450,7 +463,7 @@ Zhang, Wenjie, Yonghong Luo, Ying Zhang, and Dipti Srinivasan. 2020. <span>“So
   author = {Munkhtsetseg, Erdenebayar and Shimizu, Atsushi},
   title = {Two Distinct Spatial and Temporal Variations of {PM2.5} and
     {PM10} Concentrations in Urban and Rural Areas of {Mongolia}},
-  date = {2024-09-15},
+  date = {2024-09-25},
   langid = {en},
   abstract = {PM2.5 and PM10 data for the 4 distinct sites of Mongolia
     from 2008 to 2020 is found .... ...}
@@ -459,7 +472,7 @@ Zhang, Wenjie, Yonghong Luo, Ying Zhang, and Dipti Srinivasan. 2020. <span>“So
 Munkhtsetseg, Erdenebayar, and Atsushi Shimizu. 2024. <span>“Two
 Distinct Spatial and Temporal Variations of PM2.5 and PM10
 Concentrations in Urban and Rural Areas of Mongolia.”</span> Earth and
-Space Science. September 15, 2024.
+Space Science. September 25, 2024.
 </div></div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -883,7 +896,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":false});
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom","closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
