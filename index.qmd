@@ -103,7 +103,7 @@ The MTSDI method (@junger2003missing, @junger2012mtsdi) uses the EM algorithm wi
 ![A workflow of data mining, missing data imputation and data filling](images/fig-02_diagramDataAnalysis01A_01_600pxl.png){#fig-workflow}
 
 ::: {layout-nrow="2"}
-![Visibility, WS, WD](images/Fig2b.png){#fig-weather} 
+![Visibility, WS, WD](images/Fig2b.png){#fig-weather}
 
 ![A data quality check and validation](images/Fig2c.png){#fig-pm}
 :::
