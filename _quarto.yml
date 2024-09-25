@@ -6,7 +6,6 @@ execute:
 
 format: 
   docx: default
-  pdf: default
   html: 
     toc: true
     comments:
