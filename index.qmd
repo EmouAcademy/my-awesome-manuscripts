@@ -139,7 +139,7 @@ Conversely, rural and remote areas display lower PM concentrations, with seasona
 
 #### Daily variations of PM10 and PM2.5
 
-![Daily variations of PM10 and PM2.5](images/fig3_1_daily_0.png)
+![Daily variations of PM10 and PM2.5](images/fig3_1_daily_0.png){width="600"}
 
 To demonstrate the temporal variations of PM10/PM2.5: by illustrating annual and seasonal changes from 2008 to 2020. a) Discuss the changes in the seasonal maximums (peaks)
 
