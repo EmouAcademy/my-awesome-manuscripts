@@ -154,7 +154,9 @@ c)  Discuss the inter-annual variations
 ![Relationships between meteorological major factors and variations of PM10 and PM2.5 PM2.5](images/fig3_2_relationScatter0.png)
 
 ### PCA analysis
-
+1. Daily data for each sites
+![PCA](images/ub_pca.png)
+2. Monthly values for all sites
 ## Interannual, seasonal trends of PM10 and PM2.5 variations
 
 ![Inteannual trends](images/annualVariations.png) \# Discussion {#sec-discussion} x The observed spatial and temporal variations in PM2.5 and PM10 concentrations underscore the intricate interplay between anthropogenic and natural factors shaping air quality in Mongolia. While urban areas grapple with pollution stemming from industrialization and urbanization, rural regions contend with the impacts of climatic events such as dust storms and wildfires. This stark dichotomy necessitates tailored interventions that address the specific challenges faced by different regions.　Effective air quality management strategies must account for these disparities, emphasizing targeted interventions tailored to specific regions and seasons.
